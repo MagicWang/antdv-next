@@ -307,7 +307,7 @@ const InternalCompoundedButton = defineComponent<
               )
             : (
                 <DefaultLoadingIcon
-                  existIcon={hasIcon}
+                  existIcon={!!hasIcon}
                   prefixCls={prefixCls.value}
                   loading={innerLoading.value}
                   mount={isMountRef.value}
