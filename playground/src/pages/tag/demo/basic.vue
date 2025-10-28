@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CloseCircleOutlined } from '@antdv-next/icons'
+import { CloseCircleOutlined, DeleteOutlined } from '@antdv-next/icons'
 
 function preventDefault(e: Event) {
   e.preventDefault()
@@ -28,7 +28,16 @@ function preventDefault(e: Event) {
     <template #closeIcon>
       <CloseCircleOutlined />
     </template>
-
-    Prevent Default
+    Tag 2
+  </a-tag>
+  <a-tag
+    :closable="{
+      'aria-label': 'Close Button',
+    }"
+  >
+    <template #closeIcon>
+      <DeleteOutlined />
+    </template>
+    Tag 3
   </a-tag>
 </template>
