@@ -1,19 +1,32 @@
-import type { App, SlotsType } from 'vue'
+import type { App, CSSProperties, SlotsType } from 'vue'
+import type { SemanticClassNamesType, SemanticStylesType } from '../_util/hooks'
 import type { EmptyEmit, VueNode } from '../_util/type.ts'
-import type { ComponentBaseProps } from '../config-provider/context.ts'
+import type { ComponentBaseProps } from '../config-provider/context'
 import { classNames } from '@v-c/util'
 import { filterEmpty } from '@v-c/util/dist/props-util'
 import { debounce, omit } from 'es-toolkit'
 import { computed, defineComponent, shallowRef, watchEffect } from 'vue'
-import { getSlotPropsFnRun } from '../_util/tools.ts'
+import { pureAttrs, useMergeSemantic, useToArr, useToProps } from '../_util/hooks'
+import { getSlotPropsFnRun, toPropsRefs } from '../_util/tools.ts'
 import { devUseWarning, isDev } from '../_util/warning.ts'
-import { useBaseConfig, useComponentConfig } from '../config-provider/context.ts'
+import { useComponentBaseConfig, useComponentConfig } from '../config-provider/context'
 import Indicator from './Indicator'
 import useStyle from './style/index'
 import usePercent from './usePercent.ts'
 
 const _SpinSizes = ['small', 'default', 'large'] as const
 export type SpinSize = (typeof _SpinSizes)[number]
+
+type SemanticName = 'root' | 'wrapper' | 'mask' | 'indicator' | 'tip'
+
+export type SpinClassNamesType = SemanticClassNamesType<SpinProps, SemanticName>
+export type SpinStylesType = SemanticStylesType<
+  SpinProps,
+  SemanticName,
+  {
+    wrapper?: CSSProperties
+  }
+>
 
 export interface SpinProps extends ComponentBaseProps {
   /** Whether Spin is spinning */
@@ -31,6 +44,8 @@ export interface SpinProps extends ComponentBaseProps {
   /** Display a backdrop with the `Spin` component */
   fullscreen?: boolean
   percent?: number | 'auto'
+  classes?: SpinClassNamesType
+  styles?: SpinStylesType
 }
 
 export interface SpinSlots {
@@ -62,8 +77,16 @@ const Spin = defineComponent<
 >(
   (props = defaultSpinProps, { slots, attrs }) => {
     const componentCtx = useComponentConfig('spin')
-    const { direction, prefixCls } = useBaseConfig('spin', props)
+    const {
+      direction,
+      prefixCls,
+      class: contextClassName,
+      style: contextStyle,
+      classes: contextClassNames,
+      styles: contextStyles,
+    } = useComponentBaseConfig('spin', props, ['indicator'])
     const [wrapCSSVar, hashId, cssVarCls] = useStyle(prefixCls)
+    const { classes, styles } = toPropsRefs(props, 'classes', 'styles')
     const spinning = shallowRef(shouldDelay(props.spinning, props.delay) ? false : !!props.spinning)
     const mergedPercent = usePercent(spinning, computed(() => props.percent))
     watchEffect((onCleanup) => {
@@ -82,12 +105,23 @@ const Spin = defineComponent<
 
     const warning = devUseWarning('Spin')
 
+    // =========== Merged Props for Semantic ===========
+    const mergedProps = computed(() => {
+      return {
+        ...props,
+        percent: mergedPercent.value,
+      }
+    })
+    // ========================= Style ==========================
+    const [mergedClassNames, mergedStyles] = useMergeSemantic<
+      SpinClassNamesType,
+      SpinStylesType,
+      SpinProps
+    >(useToArr(contextClassNames, classes), useToArr(contextStyles, styles), useToProps(mergedProps))
     return () => {
       const { fullscreen, size, rootClass, wrapperClassName } = props
       const tip = getSlotPropsFnRun(slots, props, 'tip')
       const children = filterEmpty(slots?.default?.() || [])
-      const contextClassName = componentCtx.value?.class
-      const contextStyle = componentCtx.value?.style
       const indicator = getSlotPropsFnRun(slots, props, 'indicator')
       const contextIndicator = getSlotPropsFnRun({}, componentCtx.value, 'indicator')
       const isNestedPattern = children.length > 0 && !fullscreen
@@ -102,7 +136,7 @@ const Spin = defineComponent<
 
       const spinClassName = classNames(
         prefixCls.value,
-        contextClassName,
+        contextClassName.value,
         {
           [`${prefixCls.value}-sm`]: size === 'small',
           [`${prefixCls.value}-lg`]: size === 'large',
@@ -112,6 +146,7 @@ const Spin = defineComponent<
         },
         (attrs as any).class,
         !fullscreen && rootClass,
+        !fullscreen && mergedClassNames.value.root,
         hashId.value,
         cssVarCls.value,
       )
@@ -121,22 +156,30 @@ const Spin = defineComponent<
       })
 
       const mergedIndicator = indicator ?? contextIndicator ?? defaultIndicator
+      const mergedStyle = [contextStyle.value, (attrs as any).style]
       const spinElement = (
         <div
           {...omit(attrs, ['class', 'style'])}
-          style={[contextStyle, (attrs as any).style]}
+          style={fullscreen ? mergedStyle : [mergedStyles.value.root, mergedStyle]}
           class={spinClassName}
           aria-live="polite"
           aria-busy={spinning.value}
         >
           <Indicator
+            class={mergedClassNames.value.indicator}
+            style={mergedStyles.value.indicator}
             prefixCls={prefixCls.value}
             indicator={mergedIndicator}
             percent={mergedPercent.value as any}
           />
           {tip && (isNestedPattern || fullscreen)
             ? (
-                <div class={`${prefixCls.value}-text`}>{tip}</div>
+                <div
+                  class={[`${prefixCls.value}-text`, mergedClassNames.value.tip]}
+                  style={mergedStyles.value.tip}
+                >
+                  {tip}
+                </div>
               )
             : null}
         </div>
@@ -144,13 +187,15 @@ const Spin = defineComponent<
       if (isNestedPattern) {
         return wrapCSSVar(
           <div
-            {...omit(attrs, ['class'])}
+            {...pureAttrs(attrs)}
             class={classNames(
               `${prefixCls.value}-nested-loading`,
               wrapperClassName,
+              mergedClassNames.value.wrapper,
               hashId.value,
               cssVarCls.value,
             )}
+            style={mergedStyles.value.wrapper}
           >
             {spinning.value && <div key="loading">{spinElement}</div>}
             <div class={containerClassName} key="container">
@@ -170,7 +215,9 @@ const Spin = defineComponent<
               rootClass,
               hashId.value,
               cssVarCls.value,
+              mergedClassNames.value.mask,
             )}
+            style={mergedStyles.value.mask}
           >
             {spinElement}
           </div>,

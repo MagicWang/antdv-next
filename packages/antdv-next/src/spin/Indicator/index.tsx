@@ -14,7 +14,7 @@ const defaultProps = {
 } as any
 
 const Indicator = defineComponent<IndicatorProps>(
-  (props = defaultProps, { slots }) => {
+  (props = defaultProps, { slots, attrs }) => {
     return () => {
       const { prefixCls, percent } = props
       const dotClassName = `${prefixCls}-dot`
@@ -27,8 +27,11 @@ const Indicator = defineComponent<IndicatorProps>(
         })
       }
 
-      return <Looper prefixCls={prefixCls} percent={percent} />
+      return <Looper {...attrs} prefixCls={prefixCls} percent={percent} />
     }
+  },
+  {
+    inheritAttrs: false,
   },
 )
 

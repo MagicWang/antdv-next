@@ -8,7 +8,7 @@ export interface IndicatorProps {
 }
 
 export const Looper = defineComponent<IndicatorProps>(
-  (props) => {
+  (props, { attrs }) => {
     return () => {
       const { prefixCls, percent = 0 } = props
       const dotClassName = `${prefixCls}-dot`
@@ -17,7 +17,7 @@ export const Looper = defineComponent<IndicatorProps>(
       // ===================== Render =====================
       return (
         <>
-          <span class={classNames(holderClassName, percent > 0 && hideClassName)}>
+          <span {...attrs} class={classNames(holderClassName, percent > 0 && hideClassName)}>
             <span class={classNames(dotClassName, `${prefixCls}-dot-spin`)}>
               {[1, 2, 3, 4].map(i => (
                 <i class={`${prefixCls}-dot-item`} key={i} />
@@ -28,5 +28,8 @@ export const Looper = defineComponent<IndicatorProps>(
         </>
       )
     }
+  },
+  {
+    inheritAttrs: false,
   },
 )
