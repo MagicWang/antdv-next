@@ -16,6 +16,8 @@
     "@v-c/mutate-observer": "catalog:",
     "@v-c/qrcode": "catalog:",
     "@v-c/resize-observer": "catalog:",
+    "@v-c/tooltip": "^0.0.6",
+    "@v-c/trigger": "^0.0.7",
     "@v-c/util": "catalog:",
     "@vueuse/core": "catalog:",
     "defu": "catalog:",

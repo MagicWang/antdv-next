@@ -20,6 +20,7 @@ import type { SpinProps } from '../spin'
 import type { StatisticProps } from '../statistic'
 import type { TagProps } from '../tag'
 import type { AliasToken, MapToken, OverrideToken, SeedToken } from '../theme/interface'
+import type { TooltipProps } from '../tooltip'
 import type { RenderEmptyHandler } from './defaultRenderEmpty.tsx'
 import { computed, inject, provide, ref } from 'vue'
 
@@ -190,6 +191,15 @@ export type SkeletonConfig = ComponentStyleConfig & Pick<SkeletonProps, 'styles'
 
 export type StatisticConfig = ComponentStyleConfig & Pick<StatisticProps, 'classes' | 'styles'>
 
+export type TooltipConfig = ComponentStyleConfig & Pick<TooltipProps, 'styles' | 'classes' | 'arrow'> & {
+  /**
+   * @descCN 是否开启 Tooltip 流畅过渡动画
+   * @descEN Whether to enable smooth transition for tooltips
+   * @default false
+   */
+  unique?: boolean
+}
+
 export interface ConfigComponentProps {
   // input?: InputConfig;
   // textArea?: TextAreaConfig;
@@ -244,7 +254,7 @@ export interface ConfigComponentProps {
   timeline?: ComponentStyleConfig
   // timePicker?: TimePickerConfig;
   // tour?: TourConfig;
-  // tooltip?: TooltipConfig;
+  tooltip?: TooltipConfig
   // popover?: PopoverConfig;
   // popconfirm?: PopconfirmConfig;
   // upload?: UploadConfig;

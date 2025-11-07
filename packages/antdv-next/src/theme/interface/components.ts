@@ -56,7 +56,7 @@ import type { ComponentToken as StatisticComponentToken } from '../../statistic/
 // import type { ComponentToken as TabsComponentToken } from '../../tabs/style';
 import type { ComponentToken as TagComponentToken } from '../../tag/style'
 import type { ComponentToken as TimelineComponentToken } from '../../timeline/style'
-// import type { ComponentToken as TooltipComponentToken } from '../../tooltip/style';
+import type { ComponentToken as TooltipComponentToken } from '../../tooltip/style'
 // import type { ComponentToken as TourComponentToken } from '../../tour/style';
 // import type { ComponentToken as TransferComponentToken } from '../../transfer/style';
 // import type { ComponentToken as TreeSelectComponentToken } from '../../tree-select/style';
@@ -124,7 +124,7 @@ export interface ComponentTokenMap {
   // Modal?: ModalComponentToken;
   // Message?: MessageComponentToken;
   // Upload?: UploadComponentToken;
-  // Tooltip?: TooltipComponentToken;
+  Tooltip?: TooltipComponentToken
   // Table?: TableComponentToken;
   Space?: SpaceComponentToken
   // Progress?: ProgressComponentToken;
