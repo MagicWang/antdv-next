@@ -1,10 +1,10 @@
-import type { VueNode } from '../_util/type.ts'
+import type { SlotsType } from 'vue'
+import type { EmptyEmit, VueNode } from '../_util/type.ts'
 import type { SubMenuType } from './interface.ts'
-import { SubMenu as VcSubMenu } from '@v-c/menu'
+import { useFullPath, SubMenu as VcSubMenu } from '@v-c/menu'
 import { clsx } from '@v-c/util'
 import { omit } from 'es-toolkit'
 import { computed, createVNode, defineComponent } from 'vue'
-import { useFullPath } from '../../../../../../../github/antdv-next/vue-components/packages/menu'
 import { useZIndex } from '../_util/hooks/useZIndex.ts'
 import { getSlotPropsFnRun } from '../_util/tools.ts'
 import { useMenuContext, useMenuContextProvider } from './MenuContext.tsx'
@@ -20,7 +20,12 @@ export interface SubMenuSlots {
   default: () => any
 }
 
-const SubMenu = defineComponent(
+const SubMenu = defineComponent<
+  SubMenuProps,
+  EmptyEmit,
+  string,
+  SlotsType<SubMenuSlots>
+>(
   (props, { slots }) => {
     const menuContext = useMenuContext()
     const parentPath = useFullPath()

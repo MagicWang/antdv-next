@@ -11,7 +11,6 @@ import { filterEmpty } from '@v-c/util/dist/props-util'
 import { cloneVNode, computed, defineComponent, shallowRef, Transition, watchEffect } from 'vue'
 import { isPresetColor } from '../_util/colors.ts'
 import {
-
   useMergeSemantic,
   useToArr,
   useToProps,

@@ -21,14 +21,14 @@ export function useOverrideContext() {
   return inject(OverrideContextKey, null)
 }
 /** @internal Only used for Dropdown component. Do not use this in your production. */
-export const OverrideProvider = defineComponent(
+export const OverrideProvider = defineComponent<{ value?: OverrideContextProps | null }>(
   (props, { slots }) => {
     const override = useOverrideContext()
     const value = computed(() => {
       const _override = override?.value ?? {}
       return {
         ..._override,
-        ...props,
+        ...(props?.value ?? {}),
       }
     })
     provide(OverrideContextKey, value)

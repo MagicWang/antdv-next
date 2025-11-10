@@ -2,7 +2,7 @@ import type { InjectionKey, Ref } from 'vue'
 import type { SemanticClassNames, SemanticStyles } from '../_util/hooks'
 import type { DirectionType } from '../config-provider/context'
 import type { SemanticName, SubMenuSemanticName } from './menu'
-import { inject, provide, ref } from 'vue'
+import { computed, defineComponent, inject, provide, ref } from 'vue'
 
 export type MenuTheme = 'light' | 'dark'
 
@@ -39,3 +39,13 @@ export function useMenuContext(): Ref<MenuContextProps> {
     classes: null!,
   } as unknown as MenuContextProps))
 }
+
+export const MenuContextProvider = defineComponent<{ value: MenuContextProps }>(
+  (props, { slots }) => {
+    const value = computed(() => props.value)
+    useMenuContextProvider(value)
+    return () => {
+      return slots?.default?.()
+    }
+  },
+)

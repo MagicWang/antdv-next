@@ -15,6 +15,7 @@ import type { FlexProps } from '../flex'
 import type { FloatButtonProps } from '../float-button/FloatButton'
 import type { FloatButtonGroupProps } from '../float-button/FloatButtonGroup'
 import type { Locale } from '../locale'
+import type { MenuProps } from '../menu/menu.tsx'
 import type { PopconfirmProps } from '../popconfirm'
 import type { PopoverProps } from '../popover'
 import type { QRCodeProps } from '../qrcode'
@@ -220,6 +221,9 @@ export type PopconfirmConfig = ComponentStyleConfig & Pick<PopconfirmProps, 'cla
 
 export type SegmentedConfig = ComponentStyleConfig & Pick<SegmentedProps, 'classes' | 'styles'>
 
+export type MenuConfig = ComponentStyleConfig
+  & Pick<MenuProps, 'expandIcon' | 'classes' | 'styles'>
+
 export interface ConfigComponentProps {
   // input?: InputConfig;
   // textArea?: TextAreaConfig;
@@ -256,7 +260,7 @@ export interface ConfigComponentProps {
   result?: ResultConfig
   // slider?: SliderConfig;
   breadcrumb?: ComponentStyleConfig
-  // menu?: MenuConfig;
+  menu?: MenuConfig
   checkbox?: ComponentStyleConfig
   descriptions?: DescriptionsConfig
   empty?: EmptyConfig
