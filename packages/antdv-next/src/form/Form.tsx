@@ -87,6 +87,26 @@ export interface FormEmits {
 export interface FormSlots {
   default: () => any
 }
+
+export interface FormInstance {
+  getFieldValue: (name: NamePath) => any
+  getFieldsValue: (nameList?: NamePath[] | true) => Record<string, any>
+  getFieldError: (name: NamePath) => string[]
+  getFieldsError: (nameList?: NamePath[]) => { name: InternalNamePath, errors: string[], warnings: string[] }[]
+  getFieldWarning: (name: NamePath) => string[]
+  isFieldsTouched: (nameList?: NamePath[] | boolean, allFieldsTouched?: boolean) => boolean
+  isFieldTouched: (name: NamePath) => boolean
+  isFieldsValidating: (nameList?: NamePath[]) => boolean
+  isFieldValidating: (name: NamePath) => boolean
+  resetFields: (nameList?: NamePath[] | InternalNamePath[]) => void
+  clearValidate: (nameList?: NamePath[] | InternalNamePath[]) => void
+  setFields: (data: FieldData[]) => void
+  setFieldValue: (name: NamePath, value: any) => void
+  setFieldsValue: (values: Record<string, any>) => void
+  validateFields: (nameList?: NamePath[], options?: ValidateOptions) => Promise<Record<string, any>>
+  submit: () => void
+  nativeElement: HTMLFormElement | undefined
+}
 const defaults = {
   layout: 'horizontal',
 } as any
