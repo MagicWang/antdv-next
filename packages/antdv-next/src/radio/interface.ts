@@ -1,6 +1,6 @@
 import type { Orientation, SemanticClassNamesType, SemanticStylesType } from '../_util/hooks'
 import type { AbstractCheckboxProps, CheckboxEmits } from '../checkbox/Checkbox.tsx'
-import type { AbstractCheckboxGroupProps } from '../checkbox/Group.tsx'
+import type { AbstractCheckboxGroupProps, CheckboxOptionType } from '../checkbox/Group.tsx'
 import type { SizeType } from '../config-provider/SizeContext.tsx'
 
 export type RadioGroupButtonStyle = 'outline' | 'solid'
@@ -18,6 +18,7 @@ export interface RadioGroupProps extends AbstractCheckboxGroupProps {
   buttonStyle?: RadioGroupButtonStyle
   block?: boolean
   vertical?: boolean
+  labelRender?: (params: { item: CheckboxOptionType, index: number }) => any
 }
 
 export interface RadioGroupEmits {
@@ -32,6 +33,7 @@ export interface RadioGroupEmits {
 
 export interface RadioGroupSlots {
   default: () => any
+  labelRender: (params: { item: CheckboxOptionType, index: number }) => any
 }
 
 export interface RadioGroupContextProps {

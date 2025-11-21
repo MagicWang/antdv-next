@@ -34,6 +34,7 @@ export interface CheckboxGroupProps extends AbstractCheckboxGroupProps {
   name?: string
   defaultValue?: any[]
   value?: any[]
+  labelRender?: (params: { item: CheckboxOptionType, index: number }) => any
 }
 
 export interface CheckboxGroupEmits {
@@ -43,7 +44,9 @@ export interface CheckboxGroupEmits {
 }
 
 export interface CheckboxGroupSlots {
-  default?: () => any
+  default: () => any
+  labelRender: (params: { item: CheckboxOptionType, index: number }) => any
+
 }
 
 // type InternalCheckboxValueType = string | number | boolean
@@ -128,28 +131,32 @@ const CheckboxGroup = defineComponent<
       const children = slots?.default?.()
       const { restAttrs, className, style } = getAttrStyleAndClass(attrs)
 
+      const labelRender = slots?.labelRender ?? props?.labelRender
       const childrenNode = options.length
-        ? memoizedOptions.value.map(option => (
-            <Checkbox
-              prefixCls={prefixCls.value}
-              key={option.value.toString()}
-              disabled={'disabled' in option ? option.disabled : restProps.disabled}
-              value={option.value as any}
-              checked={value.value.includes(option.value)}
-              {
-                ...{
-                  onChange: option.onChange,
+        ? memoizedOptions.value.map((option, index) => {
+            const _label = labelRender ? labelRender({ item: option, index }) : option.label
+            return (
+              <Checkbox
+                prefixCls={prefixCls.value}
+                key={option.value.toString()}
+                disabled={'disabled' in option ? option.disabled : restProps.disabled}
+                value={option.value as any}
+                checked={value.value.includes(option.value)}
+                {
+                  ...{
+                    onChange: option.onChange,
+                  }
                 }
-              }
-              class={clsx(`${groupPrefixCls}-item`, option.class)}
-              style={option.style}
-              title={option.title}
-              id={option.id}
-              required={option.required}
-            >
-              {option.label}
-            </Checkbox>
-          ))
+                class={clsx(`${groupPrefixCls}-item`, option.class)}
+                style={option.style}
+                title={option.title}
+                id={option.id}
+                required={option.required}
+              >
+                {_label}
+              </Checkbox>
+            )
+          })
         : children
 
       const classString = clsx(

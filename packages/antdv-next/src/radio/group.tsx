@@ -89,10 +89,12 @@ const RadioGroup = defineComponent<
       )
       let childrenToRender: any = children
 
+      const labelRender = slots?.labelRender ?? props?.labelRender
       // If exists options, render options
       if (options && options.length) {
-        childrenToRender = options.map((option) => {
+        childrenToRender = options.map((option, index) => {
           if (typeof option === 'string' || typeof option === 'number') {
+            const _label = labelRender ? labelRender({ item: { label: option, value: option }, index }) : option
             return (
               <Radio
                 key={option.toString()}
@@ -101,10 +103,12 @@ const RadioGroup = defineComponent<
                 value={option}
                 checked={value.value === option}
               >
-                {option}
+                {_label}
               </Radio>
             )
           }
+          const _label = labelRender ? labelRender({ item: option, index }) : option.label
+
           return (
             <Radio
               key={`radio-group-value-options-${option.value}`}
@@ -118,7 +122,7 @@ const RadioGroup = defineComponent<
               id={option.id}
               required={option.required}
             >
-              {option.label}
+              {_label}
             </Radio>
           )
         })

@@ -1,4 +1,5 @@
 import type { App } from 'vue'
+import type { CheckboxOptionType } from '../checkbox'
 import Group from './group'
 import Radio from './radio'
 import Button from './radioButton'
@@ -15,6 +16,7 @@ export type {
 
 } from './interface'
 
+export type RadioOptionType = CheckboxOptionType
 export const RadioGroup = Group
 export const RadioButton = Button
 
