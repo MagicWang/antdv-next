@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import ShareAltOutlinedSvg from '@ant-design/icons-svg/lib/asn/ShareAltOutlined'
+import ShareAltOutlinedSvg from '@ant-design/icons-svg/es/asn/ShareAltOutlined'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

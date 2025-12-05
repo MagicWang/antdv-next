@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import ScissorOutlinedSvg from '@ant-design/icons-svg/lib/asn/ScissorOutlined'
+import ScissorOutlinedSvg from '@ant-design/icons-svg/es/asn/ScissorOutlined'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

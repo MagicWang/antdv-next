@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import TaobaoOutlinedSvg from '@ant-design/icons-svg/lib/asn/TaobaoOutlined'
+import TaobaoOutlinedSvg from '@ant-design/icons-svg/es/asn/TaobaoOutlined'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

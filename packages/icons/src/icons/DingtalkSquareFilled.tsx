@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import DingtalkSquareFilledSvg from '@ant-design/icons-svg/lib/asn/DingtalkSquareFilled'
+import DingtalkSquareFilledSvg from '@ant-design/icons-svg/es/asn/DingtalkSquareFilled'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import WifiOutlinedSvg from '@ant-design/icons-svg/lib/asn/WifiOutlined'
+import WifiOutlinedSvg from '@ant-design/icons-svg/es/asn/WifiOutlined'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

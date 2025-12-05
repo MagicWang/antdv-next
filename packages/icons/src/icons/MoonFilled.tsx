@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import MoonFilledSvg from '@ant-design/icons-svg/lib/asn/MoonFilled'
+import MoonFilledSvg from '@ant-design/icons-svg/es/asn/MoonFilled'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

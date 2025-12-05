@@ -89,7 +89,7 @@ async function generateIcons() {
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import <%= svgIdentifier %>Svg from '@ant-design/icons-svg/lib/asn/<%= svgIdentifier %>'
+import <%= svgIdentifier %>Svg from '@ant-design/icons-svg/es/asn/<%= svgIdentifier %>'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import LineChartOutlinedSvg from '@ant-design/icons-svg/lib/asn/LineChartOutlined'
+import LineChartOutlinedSvg from '@ant-design/icons-svg/es/asn/LineChartOutlined'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

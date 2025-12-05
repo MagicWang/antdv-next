@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import CarryOutFilledSvg from '@ant-design/icons-svg/lib/asn/CarryOutFilled'
+import CarryOutFilledSvg from '@ant-design/icons-svg/es/asn/CarryOutFilled'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

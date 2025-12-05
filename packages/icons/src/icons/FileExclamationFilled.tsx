@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import FileExclamationFilledSvg from '@ant-design/icons-svg/lib/asn/FileExclamationFilled'
+import FileExclamationFilledSvg from '@ant-design/icons-svg/es/asn/FileExclamationFilled'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

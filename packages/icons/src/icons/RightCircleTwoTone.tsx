@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import RightCircleTwoToneSvg from '@ant-design/icons-svg/lib/asn/RightCircleTwoTone'
+import RightCircleTwoToneSvg from '@ant-design/icons-svg/es/asn/RightCircleTwoTone'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

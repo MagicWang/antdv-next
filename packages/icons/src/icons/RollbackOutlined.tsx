@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import RollbackOutlinedSvg from '@ant-design/icons-svg/lib/asn/RollbackOutlined'
+import RollbackOutlinedSvg from '@ant-design/icons-svg/es/asn/RollbackOutlined'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

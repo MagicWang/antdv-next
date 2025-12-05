@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import ClusterOutlinedSvg from '@ant-design/icons-svg/lib/asn/ClusterOutlined'
+import ClusterOutlinedSvg from '@ant-design/icons-svg/es/asn/ClusterOutlined'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

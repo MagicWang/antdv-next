@@ -1,21 +1,35 @@
 import type { Locale } from '../locale'
 import type {
   AlertConfig,
+  BadgeConfig,
   ButtonConfig,
+  CollapseConfig,
   ComponentStyleConfig,
   CSPConfig,
   DirectionType,
+  EmptyConfig,
+  FlexConfig,
+  FloatButtonConfig,
+  FloatButtonGroupConfig,
+  InputConfig,
+  InputNumberConfig,
+  InputSearchConfig,
+  MenuConfig,
+  NotificationConfig,
+  OTPConfig,
+  PopconfirmConfig,
+  PopoverConfig,
   PopupOverflow,
+  SelectConfig,
   SpaceConfig,
+  SpinConfig,
+  TabsConfig,
+  TagConfig,
+  TextAreaConfig,
   ThemeConfig,
   TooltipConfig,
   Variant,
   WaveConfig,
-  InputConfig,
-  InputNumberConfig,
-  TextAreaConfig,
-  InputSearchConfig,
-  OTPConfig,
 } from './context.ts'
 import type { RenderEmptyHandler } from './defaultRenderEmpty'
 import type { SizeType } from './SizeContext'
@@ -33,7 +47,7 @@ export interface ConfigProviderProps {
   textArea?: TextAreaConfig
   inputSearch?: InputSearchConfig
   otp?: OTPConfig
-  // select?: SelectConfig
+  select?: SelectConfig
   // pagination?: PaginationConfig
   /**
    * @descCN 语言包配置，语言包可到 `antd/locale` 目录下寻找。
@@ -67,12 +81,12 @@ export interface ConfigProviderProps {
   carousel?: ComponentStyleConfig
   // cascader?: CascaderConfig;
   // treeSelect?: TreeSelectConfig;
-  // collapse?: CollapseConfig;
+  collapse?: CollapseConfig
   divider?: ComponentStyleConfig
   // drawer?: DrawerConfig;
   typography?: ComponentStyleConfig
   skeleton?: ComponentStyleConfig
-  // spin?: SpinConfig;
+  spin?: SpinConfig
   segmented?: ComponentStyleConfig
   statistic?: ComponentStyleConfig
   steps?: ComponentStyleConfig
@@ -85,41 +99,41 @@ export interface ConfigProviderProps {
   result?: ComponentStyleConfig
   slider?: ComponentStyleConfig
   breadcrumb?: ComponentStyleConfig
-  // menu?: MenuConfig;
-  // floatButton?: FloatButtonConfig;
-  // floatButtonGroup?: FloatButtonGroupConfig;
+  menu?: MenuConfig
+  floatButton?: FloatButtonConfig
+  floatButtonGroup?: FloatButtonGroupConfig
   checkbox?: ComponentStyleConfig
   descriptions?: ComponentStyleConfig
-  // empty?: EmptyConfig;
-  // badge?: BadgeConfig;
+  empty?: EmptyConfig
+  badge?: BadgeConfig
   radio?: ComponentStyleConfig
   rate?: ComponentStyleConfig
   switch?: ComponentStyleConfig
   // transfer?: TransferConfig;
   avatar?: ComponentStyleConfig
   message?: ComponentStyleConfig
-  // tag?: TagConfig;
+  tag?: TagConfig
   // table?: TableConfig;
   // card?: CardConfig;
-  // tabs?: TabsConfig;
+  tabs?: TabsConfig
   timeline?: ComponentStyleConfig
   // timePicker?: TimePickerConfig;
   // upload?: UploadConfig;
-  // notification?: NotificationConfig;
+  notification?: NotificationConfig
   tree?: ComponentStyleConfig
   colorPicker?: ComponentStyleConfig
   // datePicker?: DatePickerConfig;
   // rangePicker?: RangePickerConfig;
   dropdown?: ComponentStyleConfig
-  // flex?: FlexConfig;
+  flex?: FlexConfig
   // /**
   //  * Wave is special component which only patch on the effect of component interaction.
   //  */
   wave?: WaveConfig
   // tour?: TourConfig;
   tooltip?: TooltipConfig
-  // popover?: PopoverConfig;
-  // popconfirm?: PopconfirmConfig;
+  popover?: PopoverConfig
+  popconfirm?: PopconfirmConfig
 }
 
 export interface ConfigProviderSlots {

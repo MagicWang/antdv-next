@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import DingdingOutlinedSvg from '@ant-design/icons-svg/lib/asn/DingdingOutlined'
+import DingdingOutlinedSvg from '@ant-design/icons-svg/es/asn/DingdingOutlined'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

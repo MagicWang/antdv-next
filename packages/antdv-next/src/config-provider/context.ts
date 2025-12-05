@@ -31,6 +31,7 @@ import type { QRCodeProps } from '../qrcode'
 import type { RadioProps } from '../radio/interface.ts'
 import type { ResultProps } from '../result'
 import type { SegmentedProps } from '../segmented'
+import type { SelectProps } from '../select'
 import type { SkeletonProps } from '../skeleton'
 import type { SliderProps } from '../slider'
 import type { SpaceProps } from '../space'
@@ -293,6 +294,8 @@ export type TabsConfig = ComponentStyleConfig
     | 'styles'
   >
 
+export type SelectConfig = ComponentStyleConfig
+  & Pick<SelectProps, 'showSearch' | 'variant' | 'classes' | 'styles'>
 export interface ConfigComponentProps {
   input?: InputConfig
   inputNumber?: InputNumberConfig
@@ -303,7 +306,7 @@ export interface ConfigComponentProps {
   space?: SpaceConfig
   splitter?: ComponentStyleConfig
   form?: FormConfig
-  // select?: SelectConfig;
+  select?: SelectConfig
   alert?: AlertConfig
   anchor?: AnchorStyleConfig
   button?: ButtonConfig
@@ -384,7 +387,7 @@ export interface ConfigConsumerProps extends ConfigComponentProps {
   locale?: Locale
   direction?: DirectionType
   popupMatchSelectWidth?: boolean
-  // popupOverflow?: PopupOverflow
+  popupOverflow?: PopupOverflow
   theme?: ThemeConfig
   warning?: WarningContextProps
   wave?: WaveConfig
@@ -508,5 +511,9 @@ export function useComponentBaseConfig<
     getPopupContainer: context.value.getPopupContainer,
     getPrefixCls: context.value.getPrefixCls,
     getTargetContainer: context.value.getTargetContainer,
+    virtual: computed(() => context.value.virtual),
+    renderEmpty: context.value.renderEmpty,
+    popupMatchSelectWidth: computed(() => context.value.popupMatchSelectWidth),
+    popupOverflow: computed(() => context.value.popupOverflow),
   }
 }

@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import FullscreenOutlinedSvg from '@ant-design/icons-svg/lib/asn/FullscreenOutlined'
+import FullscreenOutlinedSvg from '@ant-design/icons-svg/es/asn/FullscreenOutlined'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import AlipaySquareFilledSvg from '@ant-design/icons-svg/lib/asn/AlipaySquareFilled'
+import AlipaySquareFilledSvg from '@ant-design/icons-svg/es/asn/AlipaySquareFilled'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

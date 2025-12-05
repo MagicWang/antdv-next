@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import BackwardFilledSvg from '@ant-design/icons-svg/lib/asn/BackwardFilled'
+import BackwardFilledSvg from '@ant-design/icons-svg/es/asn/BackwardFilled'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

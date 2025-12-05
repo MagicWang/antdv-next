@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import EnterOutlinedSvg from '@ant-design/icons-svg/lib/asn/EnterOutlined'
+import EnterOutlinedSvg from '@ant-design/icons-svg/es/asn/EnterOutlined'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

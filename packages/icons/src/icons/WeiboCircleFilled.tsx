@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import WeiboCircleFilledSvg from '@ant-design/icons-svg/lib/asn/WeiboCircleFilled'
+import WeiboCircleFilledSvg from '@ant-design/icons-svg/es/asn/WeiboCircleFilled'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

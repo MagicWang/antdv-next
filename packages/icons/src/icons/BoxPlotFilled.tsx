@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import BoxPlotFilledSvg from '@ant-design/icons-svg/lib/asn/BoxPlotFilled'
+import BoxPlotFilledSvg from '@ant-design/icons-svg/es/asn/BoxPlotFilled'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

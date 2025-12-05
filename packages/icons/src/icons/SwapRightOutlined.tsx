@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import SwapRightOutlinedSvg from '@ant-design/icons-svg/lib/asn/SwapRightOutlined'
+import SwapRightOutlinedSvg from '@ant-design/icons-svg/es/asn/SwapRightOutlined'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

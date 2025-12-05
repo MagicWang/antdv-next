@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import ReconciliationFilledSvg from '@ant-design/icons-svg/lib/asn/ReconciliationFilled'
+import ReconciliationFilledSvg from '@ant-design/icons-svg/es/asn/ReconciliationFilled'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import ChromeFilledSvg from '@ant-design/icons-svg/lib/asn/ChromeFilled'
+import ChromeFilledSvg from '@ant-design/icons-svg/es/asn/ChromeFilled'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

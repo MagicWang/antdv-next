@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import ShrinkOutlinedSvg from '@ant-design/icons-svg/lib/asn/ShrinkOutlined'
+import ShrinkOutlinedSvg from '@ant-design/icons-svg/es/asn/ShrinkOutlined'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

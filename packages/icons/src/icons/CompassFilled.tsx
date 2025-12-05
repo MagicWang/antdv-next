@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import CompassFilledSvg from '@ant-design/icons-svg/lib/asn/CompassFilled'
+import CompassFilledSvg from '@ant-design/icons-svg/es/asn/CompassFilled'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

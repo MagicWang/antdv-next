@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import StarOutlinedSvg from '@ant-design/icons-svg/lib/asn/StarOutlined'
+import StarOutlinedSvg from '@ant-design/icons-svg/es/asn/StarOutlined'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import QqSquareFilledSvg from '@ant-design/icons-svg/lib/asn/QqSquareFilled'
+import QqSquareFilledSvg from '@ant-design/icons-svg/es/asn/QqSquareFilled'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

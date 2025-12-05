@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import FormOutlinedSvg from '@ant-design/icons-svg/lib/asn/FormOutlined'
+import FormOutlinedSvg from '@ant-design/icons-svg/es/asn/FormOutlined'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import FolderViewOutlinedSvg from '@ant-design/icons-svg/lib/asn/FolderViewOutlined'
+import FolderViewOutlinedSvg from '@ant-design/icons-svg/es/asn/FolderViewOutlined'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

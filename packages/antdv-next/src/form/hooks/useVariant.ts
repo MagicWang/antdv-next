@@ -11,7 +11,7 @@ type VariantComponents = keyof Pick<
   | 'inputNumber'
   | 'textArea'
   // | 'mentions'
-  // | 'select'
+  | 'select'
   // | 'cascader'
   // | 'treeSelect'
   // | 'datePicker'
@@ -49,3 +49,5 @@ export default function useVariant(
 
   return [mergedVariant, enableVariantCls] as const
 }
+
+export const useVariants = useVariant

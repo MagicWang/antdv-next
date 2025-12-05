@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import CopyOutlinedSvg from '@ant-design/icons-svg/lib/asn/CopyOutlined'
+import CopyOutlinedSvg from '@ant-design/icons-svg/es/asn/CopyOutlined'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

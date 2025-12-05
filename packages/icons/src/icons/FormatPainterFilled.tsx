@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import FormatPainterFilledSvg from '@ant-design/icons-svg/lib/asn/FormatPainterFilled'
+import FormatPainterFilledSvg from '@ant-design/icons-svg/es/asn/FormatPainterFilled'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

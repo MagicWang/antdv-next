@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import BehanceOutlinedSvg from '@ant-design/icons-svg/lib/asn/BehanceOutlined'
+import BehanceOutlinedSvg from '@ant-design/icons-svg/es/asn/BehanceOutlined'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

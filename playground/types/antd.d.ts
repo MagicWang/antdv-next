@@ -77,5 +77,8 @@ declare module 'vue' {
     ATypographyLink: typeof import('antdv-next')['TypographyLink']
     ATabs: typeof import('antdv-next')['Tabs']
     ATabPane: typeof import('antdv-next')['TabPane']
+    ASelect: typeof import('antdv-next')['Select']
+    ASelectOption: typeof import('antdv-next')['SelectOption']
+    ASelectOptGroup: typeof import('antdv-next')['SelectOptGroup']
   }
 }

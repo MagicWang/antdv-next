@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import MacCommandFilledSvg from '@ant-design/icons-svg/lib/asn/MacCommandFilled'
+import MacCommandFilledSvg from '@ant-design/icons-svg/es/asn/MacCommandFilled'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

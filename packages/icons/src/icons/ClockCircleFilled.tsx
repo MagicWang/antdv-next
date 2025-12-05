@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import ClockCircleFilledSvg from '@ant-design/icons-svg/lib/asn/ClockCircleFilled'
+import ClockCircleFilledSvg from '@ant-design/icons-svg/es/asn/ClockCircleFilled'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

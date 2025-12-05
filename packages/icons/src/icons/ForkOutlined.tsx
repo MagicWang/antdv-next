@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import ForkOutlinedSvg from '@ant-design/icons-svg/lib/asn/ForkOutlined'
+import ForkOutlinedSvg from '@ant-design/icons-svg/es/asn/ForkOutlined'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

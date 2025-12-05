@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import RedEnvelopeFilledSvg from '@ant-design/icons-svg/lib/asn/RedEnvelopeFilled'
+import RedEnvelopeFilledSvg from '@ant-design/icons-svg/es/asn/RedEnvelopeFilled'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 

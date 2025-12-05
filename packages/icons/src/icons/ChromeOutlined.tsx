@@ -2,7 +2,7 @@
 // DON NOT EDIT IT MANUALLY
 
 import type { AntdIconProps } from '../components/AntdIcon'
-import ChromeOutlinedSvg from '@ant-design/icons-svg/lib/asn/ChromeOutlined'
+import ChromeOutlinedSvg from '@ant-design/icons-svg/es/asn/ChromeOutlined'
 import { defineComponent } from 'vue'
 import AntdIcon from '../components/AntdIcon'
 
