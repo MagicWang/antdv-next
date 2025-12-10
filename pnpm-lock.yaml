@@ -245,9 +245,15 @@ importers:
       '@v-c/notification':
         specifier: ^0.0.2
         version: 0.0.2(vue@3.5.24(typescript@5.9.3))
+      '@v-c/progress':
+        specifier: ^0.0.1
+        version: 0.0.1(vue@3.5.24(typescript@5.9.3))
       '@v-c/qrcode':
         specifier: 'catalog:'
         version: 0.0.5(vue@3.5.24(typescript@5.9.3))
+      '@v-c/rate':
+        specifier: ^0.0.2
+        version: 0.0.2(vue@3.5.24(typescript@5.9.3))
       '@v-c/resize-observer':
         specifier: ^1.0.1
         version: 1.0.1(vue@3.5.24(typescript@5.9.3))
@@ -1684,8 +1690,18 @@ packages:
     peerDependencies:
       vue: ^3.0.0
 
+  '@v-c/progress@0.0.1':
+    resolution: {integrity: sha512-qmVh0W04RCUbYsNPAUUtEe11ccbHP4f1O8rBHxdTGkcFgsb3IxaXm9XcnHMekVVtAyCJV60Pg5jo5TRsUfQxpA==}
+    peerDependencies:
+      vue: ^3.0.0
+
   '@v-c/qrcode@0.0.5':
     resolution: {integrity: sha512-ImGwlBqNQ8hfYEnG+pzsz5y5ZzLvR2Ir4DGY7N6SGsOAjcXTiAJXpVkbqtccok8ykZuS5mas7FJHH7+pdYNPyA==}
+    peerDependencies:
+      vue: ^3.0.0
+
+  '@v-c/rate@0.0.2':
+    resolution: {integrity: sha512-IfIdIzOrlyQkJVkuovf/t/Jn9QTjVtVU6sfadbrvALMTITddIg0UaQ1kDdk3H2ZXyRSrahzwAi/pFkQr9Yf9mQ==}
     peerDependencies:
       vue: ^3.0.0
 
@@ -5411,7 +5427,17 @@ snapshots:
       '@v-c/util': 1.0.2(vue@3.5.24(typescript@5.9.3))
       vue: 3.5.24(typescript@5.9.3)
 
+  '@v-c/progress@0.0.1(vue@3.5.24(typescript@5.9.3))':
+    dependencies:
+      '@v-c/util': 1.0.2(vue@3.5.24(typescript@5.9.3))
+      vue: 3.5.24(typescript@5.9.3)
+
   '@v-c/qrcode@0.0.5(vue@3.5.24(typescript@5.9.3))':
+    dependencies:
+      '@v-c/util': 1.0.2(vue@3.5.24(typescript@5.9.3))
+      vue: 3.5.24(typescript@5.9.3)
+
+  '@v-c/rate@0.0.2(vue@3.5.24(typescript@5.9.3))':
     dependencies:
       '@v-c/util': 1.0.2(vue@3.5.24(typescript@5.9.3))
       vue: 3.5.24(typescript@5.9.3)
