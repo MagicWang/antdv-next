@@ -377,6 +377,15 @@ importers:
         specifier: 'catalog:'
         version: 2.3.0
 
+  packages/unocss:
+    dependencies:
+      '@unocss/core':
+        specifier: ^66.5.10
+        version: 66.5.10
+      vue:
+        specifier: '>=3.2.0'
+        version: 3.5.25(typescript@5.9.3)
+
   playground:
     dependencies:
       '@ant-design/colors':
@@ -388,6 +397,9 @@ importers:
       '@antdv-next/icons':
         specifier: workspace:^
         version: link:../packages/icons
+      '@antdv-next/unocss':
+        specifier: workspace:^
+        version: link:../packages/unocss
       antdv-next:
         specifier: workspace:^
         version: link:../packages/antdv-next

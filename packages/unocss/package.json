@@ -1,0 +1,30 @@
+{
+  "name": "@antdv-next/unocss",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "antd-unocss preset for Ant Design Vue Next",
+  "repository": {
+    "type": "git",
+    "url": "https://git.lingyu.org.cn/antdv-next/ui.git"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown"
+  },
+  "peerDependencies": {
+    "vue": ">=3.2.0"
+  },
+  "dependencies": {
+    "@unocss/core": "^66.5.10"
+  }
+}

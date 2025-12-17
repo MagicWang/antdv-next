@@ -1,3 +1,4 @@
+import { presetAntd } from '@antdv-next/unocss'
 import {
   defineConfig,
   presetAttributify,
@@ -21,6 +22,7 @@ export default defineConfig({
       scale: 1.2,
       warn: true,
     }),
+    presetAntd(),
   ],
   shortcuts: [
   ],
