@@ -1,12 +1,12 @@
-import { unit } from '@ant-design/cssinjs';
+import { unit } from '@antdv-next/cssinjs'
 
-import type { PaginationToken } from '.';
-import { prepareComponentToken, prepareToken } from '.';
-import type { GenerateStyle } from '../../theme/interface';
-import { genSubStyleComponent } from '../../theme/internal';
+import type { PaginationToken } from '.'
+import { prepareComponentToken, prepareToken } from '.'
+import type { GenerateStyle } from '../../theme/interface'
+import { genSubStyleComponent } from '../../theme/internal'
 
 const genBorderedStyle: GenerateStyle<PaginationToken> = (token) => {
-  const { componentCls } = token;
+  const { componentCls } = token
 
   return {
     [`${componentCls}${componentCls}-bordered${componentCls}-disabled:not(${componentCls}-mini)`]: {
@@ -98,14 +98,14 @@ const genBorderedStyle: GenerateStyle<PaginationToken> = (token) => {
         },
       },
     },
-  };
-};
+  }
+}
 
 export default genSubStyleComponent(
   ['Pagination', 'bordered'],
   (token) => {
-    const paginationToken = prepareToken(token);
-    return genBorderedStyle(paginationToken);
+    const paginationToken = prepareToken(token)
+    return genBorderedStyle(paginationToken)
   },
   prepareComponentToken,
-);
+)

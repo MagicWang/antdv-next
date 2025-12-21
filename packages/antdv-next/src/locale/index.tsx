@@ -1,5 +1,6 @@
 import type { InjectionKey, Ref } from 'vue'
 import type { TransferLocale as TransferLocaleForEmpty } from '../empty'
+import type { PaginationLocale } from '../pagination/interface.ts'
 import type { PopconfirmLocale } from '../popconfirm/PurePanel'
 import type { TourLocale } from '../tour/interface.ts'
 import { computed, defineComponent, inject, provide } from 'vue'
@@ -19,7 +20,7 @@ export interface LocaleProviderProps {
 }
 export interface Locale {
   locale: string
-  // Pagination?: PaginationLocale;
+  Pagination?: PaginationLocale
   // DatePicker?: DatePickerLocale;
   TimePicker?: Record<string, any>
   Calendar?: Record<string, any>

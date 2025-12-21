@@ -34,7 +34,7 @@ const PASSED_PROPS: Exclude<
   'renderEmpty',
   'wave',
   // 'input',
-  // 'pagination',
+  'pagination',
   // 'form',
   // 'select',
   'button',

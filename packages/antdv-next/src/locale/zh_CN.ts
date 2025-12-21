@@ -1,4 +1,4 @@
-// import Pagination from 'rc-pagination/lib/locale/zh_CN';
+import Pagination from '../pagination/locale/zh_CN'
 
 import type { Locale } from '.'
 // import Calendar from '../calendar/locale/zh_CN';
@@ -9,7 +9,7 @@ const typeTemplate = '${label}不是一个有效的${type}'
 
 const localeValues: Locale = {
   locale: 'zh-cn',
-  // Pagination,
+  Pagination,
   // DatePicker,
   // TimePicker,
   // Calendar,

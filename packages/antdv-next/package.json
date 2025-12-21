@@ -24,6 +24,7 @@
     "@v-c/menu": "^1.0.1",
     "@v-c/mutate-observer": "catalog:",
     "@v-c/notification": "^0.0.2",
+    "@v-c/pagination": "link:/Users/yanyu/workspace/github/antdv-next/vue-components/packages/pagination",
     "@v-c/progress": "^0.0.2",
     "@v-c/qrcode": "catalog:",
     "@v-c/rate": "^0.0.2",

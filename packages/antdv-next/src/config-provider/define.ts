@@ -16,6 +16,7 @@ import type {
   InputConfig,
   InputNumberConfig,
   InputSearchConfig,
+  PaginationConfig,
   MenuConfig,
   NotificationConfig,
   OTPConfig,
@@ -51,7 +52,7 @@ export interface ConfigProviderProps {
   inputSearch?: InputSearchConfig
   otp?: OTPConfig
   select?: SelectConfig
-  // pagination?: PaginationConfig
+  pagination?: PaginationConfig
   /**
    * @descCN 语言包配置，语言包可到 `antd/locale` 目录下寻找。
    * @descEN Language package setting, you can find the packages in `antd/locale`.

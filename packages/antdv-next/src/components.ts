@@ -75,6 +75,17 @@ export { default as message, useMessage } from './message'
 export { default as Modal, useModal } from './modal'
 export type { ModalEmits, ModalProps, ModalSlots } from './modal'
 export { default as notification, useNotification } from './notification'
+export { default as Pagination } from './pagination'
+export type {
+  PaginationClassNamesType,
+  PaginationConfig,
+  PaginationEmits,
+  PaginationLocale,
+  PaginationPosition,
+  PaginationProps,
+  PaginationSlots,
+  PaginationStylesType,
+} from './pagination'
 export { default as Popconfirm } from './popconfirm'
 export type { PopconfirmEmits, PopconfirmProps, PopconfirmSlots } from './popconfirm'
 export { default as Popover } from './popover'

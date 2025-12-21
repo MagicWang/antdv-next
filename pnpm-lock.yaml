@@ -254,6 +254,9 @@ importers:
       '@v-c/notification':
         specifier: ^0.0.2
         version: 0.0.2(vue@3.5.25(typescript@5.9.3))
+      '@v-c/pagination':
+        specifier: link:/Users/yanyu/workspace/github/antdv-next/vue-components/packages/pagination
+        version: link:../../../../../github/antdv-next/vue-components/packages/pagination
       '@v-c/progress':
         specifier: ^0.0.2
         version: 0.0.2(vue@3.5.25(typescript@5.9.3))

@@ -1,4 +1,4 @@
-// import Pagination from 'rc-pagination/lib/locale/en_US';
+import Pagination from '../pagination/locale/en_US'
 
 import type { Locale } from '.'
 // import Calendar from '../calendar/locale/en_US';
@@ -9,7 +9,7 @@ const typeTemplate = '${label} is not a valid ${type}'
 
 const localeValues: Locale = {
   locale: 'en',
-  // Pagination,
+  Pagination,
   // DatePicker,
   // TimePicker,
   // Calendar,

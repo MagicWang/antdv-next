@@ -33,6 +33,7 @@ import type { ModalProps } from '../modal/interface.ts'
 import type { ArgsProps as NotificationProps } from '../notification'
 import type { PopconfirmProps } from '../popconfirm'
 import type { PopoverProps } from '../popover'
+import type { PaginationProps } from '../pagination/interface.ts'
 import type { QRCodeProps } from '../qrcode'
 import type { RadioProps } from '../radio/interface.ts'
 import type { ResultProps } from '../result'
@@ -218,6 +219,8 @@ export type ResultConfig = ComponentStyleConfig & Pick<ResultProps, 'classes' | 
 
 export type AnchorStyleConfig = ComponentStyleConfig & Pick<AnchorProps, 'classes' | 'styles'>
 
+export type PaginationConfig = ComponentStyleConfig & Pick<PaginationProps, 'showSizeChanger'>
+
 export type DividerConfig = ComponentStyleConfig & Pick<DividerProps, 'classes' | 'styles'>
 
 export type SkeletonConfig = ComponentStyleConfig & Pick<SkeletonProps, 'styles' | 'classes'>
@@ -349,7 +352,7 @@ export interface ConfigComponentProps {
   input?: InputConfig
   inputNumber?: InputNumberConfig
   textArea?: TextAreaConfig
-  // pagination?: PaginationConfig;
+  pagination?: PaginationConfig
   inputSearch?: InputSearchConfig
   otp?: OTPConfig
   space?: SpaceConfig
