@@ -1,4 +1,4 @@
-import type { GlobalToken } from '../theme/interface'
+import type { GlobalToken } from '../theme'
 import { computed } from 'vue'
 import { useToken } from '../theme/internal.ts'
 import { addMediaQueryListener, removeMediaQueryListener } from './mediaQueryUtil.ts'

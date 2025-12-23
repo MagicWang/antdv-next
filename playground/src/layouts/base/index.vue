@@ -3,7 +3,7 @@
 
 <template>
   <a-config-provider>
-    <a-app class="w-full h-full">
+    <a-app class="w-full">
       <slot />
     </a-app>
   </a-config-provider>

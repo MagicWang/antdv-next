@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import Header from './header.vue'
+import Header from '../base/header.vue'
+import Main from '../base/main.vue'
 </script>
 
 <template>
   <div class="w-full h-full">
     <Header />
-    <router-view />
+    <Main>
+      <router-view />
+    </Main>
   </div>
 </template>
