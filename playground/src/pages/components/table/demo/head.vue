@@ -16,7 +16,7 @@ interface DataType {
   address: string
 }
 
-const columns: TableProps<DataType>['columns'] = [
+const columns: TableProps['columns'] = [
   {
     title: 'Name',
     dataIndex: 'name',
@@ -64,7 +64,7 @@ const dataSource: DataType[] = [
   { key: '4', name: 'Jim Red', age: 32, address: 'London No. 2 Lake Park' },
 ]
 
-const onChange: TableProps<DataType>['onChange'] = (pagination, filters, sorter, extra) => {
+const onChange: TableProps['onChange'] = (pagination, filters, sorter, extra) => {
   console.log('params', pagination, filters, sorter, extra)
 }
 </script>

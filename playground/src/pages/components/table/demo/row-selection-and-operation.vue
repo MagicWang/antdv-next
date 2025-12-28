@@ -24,7 +24,7 @@ const dataSource: DataType[] = [
   { key: '4', name: 'Jim Red', age: 32, address: 'London No. 2 Lake Park' },
 ]
 
-const columns: TableProps<DataType>['columns'] = [
+const columns: TableProps['columns'] = [
   { title: 'Name', dataIndex: 'name', key: 'name' },
   { title: 'Age', dataIndex: 'age', key: 'age' },
   { title: 'Address', dataIndex: 'address', key: 'address' },
@@ -32,7 +32,7 @@ const columns: TableProps<DataType>['columns'] = [
 
 const selectedRowKeys = ref<string[]>([])
 
-const rowSelection = computed<TableProps<DataType>['rowSelection']>(() => ({
+const rowSelection = computed<TableProps['rowSelection']>(() => ({
   selectedRowKeys: selectedRowKeys.value,
   onChange: (keys) => {
     selectedRowKeys.value = keys as string[]

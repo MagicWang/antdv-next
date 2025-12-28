@@ -27,7 +27,7 @@ const dataSource: DataType[] = [
 const filteredInfo = ref<Record<string, any> | null>(null)
 const sortedInfo = ref<SorterResult<DataType>>({})
 
-const columns = computed<TableProps<DataType>['columns']>(() => [
+const columns = computed<TableProps['columns']>(() => [
   {
     title: 'Name',
     dataIndex: 'name',
@@ -61,7 +61,7 @@ const columns = computed<TableProps<DataType>['columns']>(() => [
   },
 ])
 
-const handleChange: TableProps<DataType>['onChange'] = (_pagination, filters, sorter) => {
+const handleChange: TableProps['onChange'] = (_pagination, filters, sorter) => {
   filteredInfo.value = filters
   sortedInfo.value = Array.isArray(sorter) ? (sorter[0] || {}) : sorter
 }

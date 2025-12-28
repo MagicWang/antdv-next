@@ -27,7 +27,7 @@ const inputValue = ref('')
 
 const editableColumns = new Set(['name', 'age', 'address'])
 
-const columns = computed<TableProps<DataType>['columns']>(() => [
+const columns = computed<TableProps['columns']>(() => [
   { title: 'Name', dataIndex: 'name', key: 'name', width: '30%' },
   { title: 'Age', dataIndex: 'age', key: 'age' },
   { title: 'Address', dataIndex: 'address', key: 'address' },

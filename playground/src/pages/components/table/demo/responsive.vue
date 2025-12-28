@@ -17,7 +17,7 @@ interface DataType {
   email: string
 }
 
-const columns: TableProps<DataType>['columns'] = [
+const columns: TableProps['columns'] = [
   { title: 'Name', dataIndex: 'name', key: 'name' },
   { title: 'Age', dataIndex: 'age', key: 'age', responsive: ['md'] },
   { title: 'Address', dataIndex: 'address', key: 'address', responsive: ['lg'] },

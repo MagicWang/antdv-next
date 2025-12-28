@@ -16,7 +16,7 @@ interface DataItem {
   address: string
 }
 
-const columns: TableProps<DataItem>['columns'] = [
+const columns: TableProps['columns'] = [
   {
     title: 'Name',
     dataIndex: 'name',

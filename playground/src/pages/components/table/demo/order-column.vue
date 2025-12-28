@@ -18,7 +18,7 @@ interface DataType {
   description: string
 }
 
-const columns: TableProps<DataType>['columns'] = [
+const columns: TableProps['columns'] = [
   { title: 'Name', dataIndex: 'name', key: 'name' },
   Table.EXPAND_COLUMN,
   { title: 'Age', dataIndex: 'age', key: 'age' },

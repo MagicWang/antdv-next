@@ -50,11 +50,11 @@ const selectedRowKeys = ref<string[]>([])
 
 const dataSource = computed(() => (useAltData.value ? dataSetB : dataSetA))
 
-const columns: TableProps<DataType>['columns'] = [
+const columns: TableProps['columns'] = [
   { title: 'Name', dataIndex: 'name', key: 'name' },
 ]
 
-const rowSelection = computed<TableProps<DataType>['rowSelection']>(() => ({
+const rowSelection = computed<TableProps['rowSelection']>(() => ({
   selectedRowKeys: selectedRowKeys.value,
   preserveSelectedRowKeys: true,
   onChange: (keys) => {

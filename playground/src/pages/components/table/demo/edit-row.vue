@@ -22,7 +22,7 @@ const dataSource = ref<DataType[]>([
   { key: '1', name: 'Edward King 1', age: '32', address: 'London, Park Lane no. 1' },
 ])
 
-const columns: TableProps<DataType>['columns'] = [
+const columns: TableProps['columns'] = [
   { title: 'Name', dataIndex: 'name', key: 'name' },
   { title: 'Age', dataIndex: 'age', key: 'age' },
   { title: 'Address', dataIndex: 'address', key: 'address' },

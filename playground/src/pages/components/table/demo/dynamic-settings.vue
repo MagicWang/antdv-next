@@ -115,7 +115,7 @@ const rowSelection = computed<TableRowSelection | undefined>(() => (
   rowSelectionEnabled.value ? {} : undefined
 ))
 const tableData = computed(() => (hasData.value ? dataSource : []))
-const pagination = computed<TableProps<DataType>['pagination']>(() => ({
+const pagination = computed<TableProps['pagination']>(() => ({
   placement: [top.value, bottom.value],
 }))
 

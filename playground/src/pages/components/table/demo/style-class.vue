@@ -16,7 +16,7 @@ interface DataType {
   address: string
 }
 
-const columns: TableProps<DataType>['columns'] = [
+const columns: TableProps['columns'] = [
   { title: 'Name', dataIndex: 'name', key: 'name' },
   { title: 'Age', dataIndex: 'age', key: 'age' },
   { title: 'Address', dataIndex: 'address', key: 'address' },
@@ -27,12 +27,12 @@ const dataSource: DataType[] = [
   { key: '2', name: 'Jim Green', age: 42, address: 'London No. 1 Lake Park' },
 ]
 
-const classNames: TableProps<DataType>['classNames'] = {
+const classNames: TableProps['classNames'] = {
   header: { row: 'custom-header-row', cell: 'custom-header-cell' },
   body: { row: 'custom-body-row', cell: 'custom-body-cell' },
 }
 
-const styles: TableProps<DataType>['styles'] = {
+const styles: TableProps['styles'] = {
   header: { row: { background: '#fafafa' }, cell: { fontWeight: 600 } },
   body: { row: { transition: 'background 0.2s' } },
 }

@@ -27,13 +27,13 @@ interface DataType {
   createdAt: string
 }
 
-const innerColumns: TableProps<ExpandedDataType>['columns'] = [
+const innerColumns: TableProps['columns'] = [
   { title: 'Date', dataIndex: 'date', key: 'date' },
   { title: 'Name', dataIndex: 'name', key: 'name' },
   { title: 'Status', dataIndex: 'status', key: 'status' },
 ]
 
-const columns: TableProps<DataType>['columns'] = [
+const columns: TableProps['columns'] = [
   { title: 'Name', dataIndex: 'name', key: 'name' },
   { title: 'Platform', dataIndex: 'platform', key: 'platform' },
   { title: 'Version', dataIndex: 'version', key: 'version' },

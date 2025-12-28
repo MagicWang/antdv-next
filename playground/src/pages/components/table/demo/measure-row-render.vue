@@ -17,7 +17,7 @@ interface DataType {
   address: string
 }
 
-const columns: TableProps<DataType>['columns'] = [
+const columns: TableProps['columns'] = [
   { title: 'Name', dataIndex: 'name', key: 'name', width: 180 },
   { title: 'Age', dataIndex: 'age', key: 'age', width: 100 },
   { title: 'Address', dataIndex: 'address', key: 'address' },
@@ -30,7 +30,7 @@ const dataSource: DataType[] = Array.from({ length: 100 }).map((_, i) => ({
   address: `London, Park Lane no. ${i}`,
 }))
 
-const measureRowRender: TableProps<DataType>['measureRowRender'] = (row: any) =>
+const measureRowRender: TableProps['measureRowRender'] = (row: any) =>
   h('div', { class: 'measure-row' }, row)
 </script>
 

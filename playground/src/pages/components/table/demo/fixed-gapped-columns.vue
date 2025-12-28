@@ -16,7 +16,7 @@ interface DataType {
   address: string
 }
 
-const columns: TableProps<DataType>['columns'] = [
+const columns: TableProps['columns'] = [
   { title: 'Full Name', dataIndex: 'name', key: 'name', width: 120, fixed: 'start' },
   { title: 'Age', dataIndex: 'age', key: 'age', width: 100 },
   { title: 'Column 1', dataIndex: 'address', key: '1', width: 160 },
