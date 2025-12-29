@@ -33,7 +33,7 @@ const treeData: TreeNode[] = [
 
 const targetKeys = ref<string[]>([])
 
-const flattenData = (list: TreeNode[] = [], result: TreeNode[] = []) => {
+function flattenData(list: TreeNode[] = [], result: TreeNode[] = []) {
   list.forEach((item) => {
     result.push(item)
     if (item.children) {
@@ -50,7 +50,7 @@ const transferDataSource = flattenData(treeData, []).map(item => ({
 
 const isChecked = (selectedKeys: string[], eventKey: string) => selectedKeys.includes(eventKey)
 
-const generateTree = (treeNodes: TreeNode[] = [], checkedKeys: string[] = []): TreeNode[] => {
+function generateTree(treeNodes: TreeNode[] = [], checkedKeys: string[] = []): TreeNode[] {
   return treeNodes.map(({ children, ...props }) => ({
     ...props,
     disabled: checkedKeys.includes(props.key),

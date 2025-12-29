@@ -4,11 +4,11 @@ import { ref } from 'vue'
 
 const percent = ref(0)
 
-const increase = () => {
+function increase() {
   percent.value = Math.min(100, percent.value + 10)
 }
 
-const decline = () => {
+function decline() {
   percent.value = Math.max(0, percent.value - 10)
 }
 </script>

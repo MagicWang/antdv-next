@@ -7,7 +7,7 @@ Reset filters and sorters.
 </docs>
 
 <script setup lang="ts">
-import type { TableProps, SorterResult } from 'antdv-next'
+import type { SorterResult, TableProps } from 'antdv-next'
 import { computed, ref } from 'vue'
 
 interface DataType {

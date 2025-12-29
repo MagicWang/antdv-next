@@ -65,9 +65,9 @@
 - Example:
   ```ts
   export interface ButtonEmits {
-    click: (ev:MouseEvent) => void
+    'click': (ev: MouseEvent) => void
     'update:loading': (v: boolean) => void
-    [key:string] :(...args:any[]) => void
+    [key: string]: (...args: any[]) => void
   }
   ```
 - In `setup()`:
@@ -81,12 +81,11 @@
 ## 🧱 Component Structure Template
 
 ```tsx
-import { defineComponent, computed } from 'vue'
-import { filterEmpty, getSlotPropFn } from '../_util'
 import type { RenderNodeFn } from '../_util/type'
-import { useComponentBaseConfig } from '../config-provider/context.ts'
 import { clsx } from '@v-c/util'
-
+import { computed, defineComponent } from 'vue'
+import { filterEmpty, getSlotPropFn } from '../_util'
+import { useComponentBaseConfig } from '../config-provider/context.ts'
 
 export interface ButtonProps {
   type?: 'default' | 'primary'
@@ -96,9 +95,9 @@ export interface ButtonProps {
   icon?: RenderNodeFn<{ size?: number }>
 }
 
-export type ButtonEmits = {
-    click: (ev:MouseEvent) => void
-    [key:string] :(...args:any[]) => void
+export interface ButtonEmits {
+  click: (ev: MouseEvent) => void
+  [key: string]: (...args: any[]) => void
 }
 
 export interface ButtonSlots {
@@ -107,25 +106,28 @@ export interface ButtonSlots {
 }
 
 export default defineComponent<
-    ButtonProps,
-    ButtonEmits,
-    string, SlotsType<ButtonSlots>
+  ButtonProps,
+  ButtonEmits,
+  string,
+  SlotsType<ButtonSlots>
 >(
-    (props, { slots, attrs, emit })=>{
-        const { prefixCls } = useComponentBaseConfig('button',props,[],'btn')
-        const onClick = (e: MouseEvent) => {
-            if (!props.disabled) emit('click', e)
-        }
-        return () =>{
-            const { className,style,restAttrs } = getAttrStyleAndClass(attrs)
-            const rootCls = clsx(prefixCls.value,className)
-            return (
-                <button class={rootCls} style={style} onClick={onClick}>
-                    {slots.default?.()}
-                </button>
-            )
-        }
-})
+  (props, { slots, attrs, emit }) => {
+    const { prefixCls } = useComponentBaseConfig('button', props, [], 'btn')
+    const onClick = (e: MouseEvent) => {
+      if (!props.disabled)
+        emit('click', e)
+    }
+    return () => {
+      const { className, style, restAttrs } = getAttrStyleAndClass(attrs)
+      const rootCls = clsx(prefixCls.value, className)
+      return (
+        <button class={rootCls} style={style} onClick={onClick}>
+          {slots.default?.()}
+        </button>
+      )
+    }
+  }
+)
 ```
 
 ## 🧰 Utility Imports

@@ -90,7 +90,7 @@ const leafSelectVal = ref('true')
 
 <template>
   <div>
-    <div  class="mb-16px">
+    <div class="mb-16px">
       showLine: <a-switch v-model:checked="showLine" />
       <br>
       <br>
@@ -109,9 +109,9 @@ const leafSelectVal = ref('true')
       />
     </div>
     <a-tree
+      v-model:expanded-keys="expandedKeys"
       :show-line="showLine ? { showLeafIcon } : false"
       :show-icon="showIcon"
-      v-model:expanded-keys="expandedKeys"
       :tree-data="treeData"
       @select="onSelect"
     >

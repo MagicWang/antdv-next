@@ -24,7 +24,7 @@ interface OSSDataType {
 const fileList = ref<UploadFile[]>([])
 const ossData = ref<OSSDataType | null>(null)
 
-const mockOSSData = () => {
+function mockOSSData() {
   return Promise.resolve({
     dir: 'user-dir/',
     expire: '1577811661',
@@ -35,7 +35,7 @@ const mockOSSData = () => {
   })
 }
 
-const init = async () => {
+async function init() {
   try {
     ossData.value = await mockOSSData()
   }
@@ -59,7 +59,7 @@ const handleRemove: UploadProps['onRemove'] = (file) => {
   fileList.value = fileList.value.filter(item => item.url !== file.url)
 }
 
-const getExtraData: UploadProps['data'] = (file) => ({
+const getExtraData: UploadProps['data'] = file => ({
   key: file.url,
   OSSAccessKeyId: ossData.value?.accessId,
   policy: ossData.value?.policy,
@@ -88,8 +88,8 @@ const beforeUpload: UploadProps['beforeUpload'] = async (file) => {
   <a-form :label-col="{ span: 4 }">
     <a-form-item label="Photos" name="photos">
       <a-upload
-        name="file"
         v-model:file-list="fileList"
+        name="file"
         :action="ossData?.host"
         :data="getExtraData"
         :before-upload="beforeUpload"

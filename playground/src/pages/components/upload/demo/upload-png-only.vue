@@ -8,8 +8,8 @@
 
 <script setup lang="ts">
 import type { UploadEmits, UploadProps } from 'antdv-next'
-import { Upload, message } from 'antdv-next'
 import { UploadOutlined } from '@antdv-next/icons'
+import { message, Upload } from 'antdv-next'
 
 const beforeUpload: UploadProps['beforeUpload'] = (file) => {
   const isPng = file.type === 'image/png'

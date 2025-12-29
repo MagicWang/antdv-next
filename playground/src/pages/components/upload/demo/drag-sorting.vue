@@ -55,16 +55,16 @@ const handleChange: UploadEmits['change'] = ({ fileList: newFileList }) => {
   fileList.value = newFileList
 }
 
-const handleDragStart = (uid: string, event: DragEvent) => {
+function handleDragStart(uid: string, event: DragEvent) {
   draggingUid.value = uid
   event.dataTransfer?.setData('text/plain', uid)
 }
 
-const handleDragEnd = () => {
+function handleDragEnd() {
   draggingUid.value = null
 }
 
-const handleDrop = (overUid: string, event: DragEvent) => {
+function handleDrop(overUid: string, event: DragEvent) {
   const activeUid = event.dataTransfer?.getData('text/plain')
   if (!activeUid || activeUid === overUid) {
     return

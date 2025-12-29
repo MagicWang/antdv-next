@@ -1,6 +1,6 @@
 import type { SlotsType } from 'vue'
-import type { UploadRef } from './Upload'
 import type { UploadProps, UploadSlots } from './interface'
+import type { UploadRef } from './Upload'
 import { computed, defineComponent, shallowRef } from 'vue'
 import { getAttrStyleAndClass } from '../_util/hooks'
 import Upload from './Upload'

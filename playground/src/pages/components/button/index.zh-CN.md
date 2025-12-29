@@ -88,10 +88,7 @@ demo:
 
 ## Semantic DOM
 
-
-
 ## FAQ
-
 
 ### 类型和颜色与变体如何选择？ {#faq-type-color-variant}
 
@@ -99,7 +96,9 @@ demo:
 
 ```vue
 <template>
-  <a-button type="primary">click</a-button>
+  <a-button type="primary">
+    click
+  </a-button>
 </template>
 ```
 
@@ -109,9 +108,8 @@ demo:
 <template>
   <a-button color="primary" variant="solid">
     click
-  </a-button>  
+  </a-button>
 </template>
-
 ```
 
 ### 如何关闭点击波纹效果？ {#faq-close-wave-effect}
@@ -122,6 +120,6 @@ demo:
 <template>
   <a-config-provider :wave="{ disabled: true }">
     <a-button>click</a-button>
-  </a-config-provider>  
+  </a-config-provider>
 </template>
 ```

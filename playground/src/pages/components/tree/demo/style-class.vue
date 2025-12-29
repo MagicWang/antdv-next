@@ -56,9 +56,9 @@ const expandedKeys = ref(['0-0-0', '0-0-1'])
 const selectedKeys = ref(['0-0-1'])
 const checkedKeys = ref(['0-0-0', '0-0-1'])
 const classes = {
-    root: 'root',
-    item: 'item',
-    itemTitle: 'itemTitle',
+  root: 'root',
+  item: 'item',
+  itemTitle: 'itemTitle',
 }
 </script>
 

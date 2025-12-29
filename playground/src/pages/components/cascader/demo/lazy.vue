@@ -40,7 +40,7 @@ const onChange: CascaderEmits['change'] = (value, selectedOptions) => {
   console.log(value, selectedOptions)
 }
 
-const loadData = (selectedOptions: Option[]) => {
+function loadData(selectedOptions: Option[]) {
   const targetOption = selectedOptions[selectedOptions.length - 1]
 
   setTimeout(() => {

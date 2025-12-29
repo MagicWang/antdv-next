@@ -1,8 +1,8 @@
-import { unit } from '@antdv-next/cssinjs'
-
 import type { PaginationToken } from '.'
-import { prepareComponentToken, prepareToken } from '.'
+
 import type { GenerateStyle } from '../../theme/interface'
+import { unit } from '@antdv-next/cssinjs'
+import { prepareComponentToken, prepareToken } from '.'
 import { genSubStyleComponent } from '../../theme/internal'
 
 const genBorderedStyle: GenerateStyle<PaginationToken> = (token) => {
@@ -81,8 +81,8 @@ const genBorderedStyle: GenerateStyle<PaginationToken> = (token) => {
       },
 
       [`${componentCls}-item`]: {
-        backgroundColor: token.itemBg,
-        border: `${unit(token.lineWidth)} ${token.lineType} ${token.colorBorder}`,
+        'backgroundColor': token.itemBg,
+        'border': `${unit(token.lineWidth)} ${token.lineType} ${token.colorBorder}`,
 
         [`&:hover:not(${componentCls}-item-active)`]: {
           borderColor: token.colorPrimary,

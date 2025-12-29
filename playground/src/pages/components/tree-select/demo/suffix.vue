@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SmileOutlined } from '@antdv-next/icons'
 import type { TreeSelectEmits } from 'antdv-next'
+import { SmileOutlined } from '@antdv-next/icons'
 import { ref } from 'vue'
 
 const treeData = [

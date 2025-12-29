@@ -21,7 +21,7 @@ type FileType = Parameters<NonNullable<UploadProps['beforeUpload']>>[0]
 const loading = ref(false)
 const imageUrl = ref('')
 
-const getBase64 = (img: FileType) => {
+function getBase64(img: FileType) {
   return new Promise<string>((resolve, reject) => {
     const reader = new FileReader()
     reader.readAsDataURL(img)

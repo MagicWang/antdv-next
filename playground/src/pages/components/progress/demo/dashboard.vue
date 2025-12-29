@@ -11,23 +11,23 @@ const gapDegree = ref<number>(50)
     <div>
       gapDegree:
       <a-segmented
+        v-model:value="gapDegree"
         :options="[
           { label: 50, value: 50 },
           { label: 100, value: 100 },
         ]"
-        v-model:value="gapDegree"
       />
     </div>
     <div>
       gapPlacement:
       <a-segmented
+        v-model:value="gapPlacement"
         :options="[
           { label: 'start', value: 'start' },
           { label: 'end', value: 'end' },
           { label: 'top', value: 'top' },
           { label: 'bottom', value: 'bottom' },
         ]"
-        v-model:value="gapPlacement"
       />
     </div>
     <a-progress type="dashboard" :gap-degree="gapDegree" :percent="30" :gap-placement="gapPlacement" />

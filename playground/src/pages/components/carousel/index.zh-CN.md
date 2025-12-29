@@ -6,7 +6,6 @@ demo:
   cols: 2
 ---
 
-
 ## 何时使用 {#when-to-use}
 
 - 当有一组平级的内容。
@@ -25,4 +24,3 @@ demo:
 </demo-group>
 
 ## API
-

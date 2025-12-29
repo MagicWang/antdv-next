@@ -80,7 +80,7 @@ function expandedRowRender() {
 </script>
 
 <template>
-  <a-table
+  <ATable
     :columns="columns"
     :data-source="dataSource"
     :expanded-row-render="expandedRowRender"

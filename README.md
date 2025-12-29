@@ -45,7 +45,6 @@ pnpm add antdv-next
 bun add antdv-next
 ```
 
-
 ## Acknowledgements
 
 Antdv Next is inspired by and built upon the following open-source projects.

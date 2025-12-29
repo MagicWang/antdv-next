@@ -36,7 +36,7 @@ const fileList = ref<UploadFile[]>([
   },
 ])
 
-const getBase64 = (file: FileType) => {
+function getBase64(file: FileType) {
   return new Promise<string>((resolve, reject) => {
     const reader = new FileReader()
     reader.readAsDataURL(file)
@@ -45,7 +45,7 @@ const getBase64 = (file: FileType) => {
   })
 }
 
-const handlePreview = async (file: UploadFile) => {
+async function handlePreview(file: UploadFile) {
   if (!file.url && !file.preview && file.originFileObj) {
     file.preview = await getBase64(file.originFileObj as FileType)
   }
@@ -57,11 +57,11 @@ const handleChange: UploadEmits['change'] = ({ fileList: newFileList }) => {
   fileList.value = newFileList
 }
 
-const handlePreviewOpenChange = (visible: boolean) => {
+function handlePreviewOpenChange(visible: boolean) {
   previewOpen.value = visible
 }
 
-const handleAfterOpenChange = (visible: boolean) => {
+function handleAfterOpenChange(visible: boolean) {
   if (!visible) {
     previewImage.value = ''
   }

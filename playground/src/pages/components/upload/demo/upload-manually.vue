@@ -15,7 +15,7 @@ import { ref } from 'vue'
 const fileList = ref<UploadFile[]>([])
 const uploading = ref(false)
 
-const handleUpload = () => {
+function handleUpload() {
   const formData = new FormData()
   fileList.value.forEach((file) => {
     formData.append('files[]', file as File)

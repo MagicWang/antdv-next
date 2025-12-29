@@ -28,8 +28,8 @@ Note:
 
 <script setup lang="ts">
 import type { TransferEmits } from 'antdv-next'
-import { Button, message } from 'antdv-next'
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@antdv-next/icons'
+import { Button, message } from 'antdv-next'
 import { computed, h, ref } from 'vue'
 
 interface RecordType {
@@ -82,11 +82,11 @@ const leftButtonDisabled = computed(() =>
   selectedKeys.value.length === 0 || selectedKeys.value.every(key => !targetKeys.value.includes(key)),
 )
 
-const handleRightButtonClick = (event: MouseEvent) => {
+function handleRightButtonClick(event: MouseEvent) {
   console.log('Right button clicked', event)
 }
 
-const handleLeftButtonClick = (event: MouseEvent) => {
+function handleLeftButtonClick(event: MouseEvent) {
   console.log('Left button clicked', event)
 }
 

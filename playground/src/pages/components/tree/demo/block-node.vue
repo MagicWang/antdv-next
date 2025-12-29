@@ -26,8 +26,8 @@ const selectedKeys = ref(['0-1'])
 
 <template>
   <a-tree
-    checkable
     v-model:selected-keys="selectedKeys"
+    checkable
     default-expand-all
     :tree-data="treeData"
     block-node

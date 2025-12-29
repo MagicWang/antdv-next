@@ -20,7 +20,7 @@ interface RecordType {
 const mockData = ref<RecordType[]>([])
 const targetKeys = ref<TransferProps['targetKeys']>([])
 
-const getMock = () => {
+function getMock() {
   const tempTargetKeys: string[] = []
   const tempMockData: RecordType[] = []
   for (let i = 0; i < 20; i++) {
@@ -43,7 +43,7 @@ onMounted(() => {
   getMock()
 })
 
-const filterOption = (inputValue: string, option: RecordType) => {
+function filterOption(inputValue: string, option: RecordType) {
   return option.description.includes(inputValue)
 }
 

@@ -1,6 +1,6 @@
 import warning from './warning'
 
-const execCopy = (text: string, isHtmlFormat: boolean) => {
+function execCopy(text: string, isHtmlFormat: boolean) {
   let copySuccess = false
 
   const onCopy = (event: ClipboardEvent) => {
@@ -27,7 +27,7 @@ const execCopy = (text: string, isHtmlFormat: boolean) => {
   }
 }
 
-const asyncCopy = async (text: string, isHtmlFormat: boolean) => {
+async function asyncCopy(text: string, isHtmlFormat: boolean) {
   try {
     if (isHtmlFormat) {
       await navigator.clipboard.write([
