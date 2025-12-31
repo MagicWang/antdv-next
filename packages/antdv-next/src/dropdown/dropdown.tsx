@@ -2,8 +2,8 @@ import type { MenuProps as VcMenuProps } from '@v-c/menu'
 import type { AlignType } from '@v-c/trigger'
 import type { App, SlotsType } from 'vue'
 import type { SemanticClassNamesType, SemanticStylesType } from '../_util/hooks'
-import type { AdjustOverflow } from '../_util/placements.ts'
-import type { ComponentBaseProps } from '../config-provider/context.ts'
+import type { AdjustOverflow } from '../_util/placements'
+import type { ComponentBaseProps } from '../config-provider/context'
 import type { MenuEmits, MenuProps, MenuSlots } from '../menu'
 import { LeftOutlined, RightOutlined } from '@antdv-next/icons'
 import VcDropdown from '@v-c/dropdown'
@@ -11,17 +11,16 @@ import { clsx } from '@v-c/util'
 import { filterEmpty } from '@v-c/util/dist/props-util'
 import { omit } from 'es-toolkit'
 import { computed, createVNode, defineComponent, isVNode, shallowRef, watch } from 'vue'
-import { useMergeSemantic, useToArr, useToProps } from '../_util/hooks'
-import { useZIndex } from '../_util/hooks/useZIndex.ts'
-import getPlacements from '../_util/placements.ts'
-import { toPropsRefs } from '../_util/tools.ts'
-import { devUseWarning } from '../_util/warning.ts'
-import { ZIndexProvider } from '../_util/zindexContext.ts'
-import { useComponentBaseConfig } from '../config-provider/context.ts'
-import useCSSVarCls from '../config-provider/hooks/useCSSVarCls.ts'
+import { useMergeSemantic, useToArr, useToProps, useZIndex } from '../_util/hooks'
+import getPlacements from '../_util/placements'
+import { toPropsRefs } from '../_util/tools'
+import { devUseWarning } from '../_util/warning'
+import { ZIndexProvider } from '../_util/zindexContext'
+import { useComponentBaseConfig } from '../config-provider/context'
+import useCSSVarCls from '../config-provider/hooks/useCSSVarCls'
 import Menu from '../menu'
 import { OverrideProvider } from '../menu/OverrideContext.tsx'
-import { useToken } from '../theme/internal.ts'
+import { useToken } from '../theme/internal'
 import useStyle from './style'
 
 const _Placements = [
@@ -145,7 +144,7 @@ const Dropdown = defineComponent<
     const alignPoint = computed(() => !!triggerActions.value?.includes('contextMenu'))
 
     // =========================== Open ============================
-    const mergedOpen = shallowRef(props?.open ?? false)
+    const mergedOpen = shallowRef(props?.open)
     watch(
       () => props.open,
       () => {

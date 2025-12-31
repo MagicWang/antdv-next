@@ -7,8 +7,8 @@ Custom selection actions.
 </docs>
 
 <script setup lang="ts">
-import { Table } from 'antdv-next'
 import type { TableProps } from 'antdv-next'
+import { Table } from 'antdv-next'
 import { computed, ref } from 'vue'
 
 type TableRowSelection = TableProps['rowSelection']
@@ -36,7 +36,7 @@ const columns: TableProps['columns'] = [
 
 const selectedRowKeys = ref<Key[]>([])
 
-const onSelectChange = (newSelectedRowKeys: Key[]) => {
+function onSelectChange(newSelectedRowKeys: Key[]) {
   console.log('selectedRowKeys changed: ', newSelectedRowKeys)
   selectedRowKeys.value = newSelectedRowKeys
 }
