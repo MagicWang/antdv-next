@@ -14,22 +14,25 @@ interface DataType {
   name: string
   age: number
   address: string
-  email: string
 }
 
 const columns: TableProps['columns'] = [
-  { title: 'Name', dataIndex: 'name', key: 'name' },
-  { title: 'Age', dataIndex: 'age', key: 'age', responsive: ['md'] },
-  { title: 'Address', dataIndex: 'address', key: 'address', responsive: ['lg'] },
-  { title: 'Email', dataIndex: 'email', key: 'email', responsive: ['xl'] },
+  { title: 'Name (all screens)', dataIndex: 'name', key: 'name' },
+  { title: 'Age (medium screen or bigger)', dataIndex: 'age', key: 'age', responsive: ['md'] },
+  { title: 'Address (large screen or bigger)', dataIndex: 'address', key: 'address', responsive: ['lg'] },
 ]
 
 const dataSource: DataType[] = [
-  { key: '1', name: 'John Brown', age: 32, address: 'New York No. 1 Lake Park', email: 'john@example.com' },
-  { key: '2', name: 'Jim Green', age: 42, address: 'London No. 1 Lake Park', email: 'jim@example.com' },
+  { key: '1', name: 'John Brown', age: 32, address: 'New York No. 1 Lake Park' },
 ]
 </script>
 
 <template>
-  <a-table :columns="columns" :data-source="dataSource" />
+  <a-table :columns="columns" :data-source="dataSource">
+    <template #bodyCell="{ column, text }">
+      <template v-if="column.key === 'name'">
+        <a>{{ text }}</a>
+      </template>
+    </template>
+  </a-table>
 </template>

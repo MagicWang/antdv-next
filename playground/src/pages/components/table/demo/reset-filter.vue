@@ -7,8 +7,13 @@ Reset filters and sorters.
 </docs>
 
 <script setup lang="ts">
-import type { SorterResult, TableProps } from 'antdv-next'
+import type { TableEmits, TableProps } from 'antdv-next'
 import { computed, ref } from 'vue'
+
+type OnChange = NonNullable<TableEmits['change']>
+type Filters = Parameters<OnChange>[1]
+type Sorter = Parameters<OnChange>[2]
+type Sorts = Sorter extends any[] ? Sorter[number] : Sorter
 
 interface DataType {
   key: string
@@ -18,14 +23,34 @@ interface DataType {
 }
 
 const dataSource: DataType[] = [
-  { key: '1', name: 'John Brown', age: 32, address: 'New York' },
-  { key: '2', name: 'Jim Green', age: 42, address: 'London' },
-  { key: '3', name: 'Joe Black', age: 32, address: 'Sydney' },
-  { key: '4', name: 'Jim Red', age: 32, address: 'London' },
+  {
+    key: '1',
+    name: 'John Brown',
+    age: 32,
+    address: 'New York No. 1 Lake Park',
+  },
+  {
+    key: '2',
+    name: 'Jim Green',
+    age: 42,
+    address: 'London No. 1 Lake Park',
+  },
+  {
+    key: '3',
+    name: 'Joe Black',
+    age: 32,
+    address: 'Sydney No. 1 Lake Park',
+  },
+  {
+    key: '4',
+    name: 'Jim Red',
+    age: 32,
+    address: 'London No. 2 Lake Park',
+  },
 ]
 
-const filteredInfo = ref<Record<string, any> | null>(null)
-const sortedInfo = ref<SorterResult<DataType>>({})
+const filteredInfo = ref<Filters>({})
+const sortedInfo = ref<Record<string, any>>({})
 
 const columns = computed<TableProps['columns']>(() => [
   {
@@ -40,6 +65,7 @@ const columns = computed<TableProps['columns']>(() => [
     onFilter: (value, record) => record.name.includes(String(value)),
     sorter: (a, b) => a.name.length - b.name.length,
     sortOrder: sortedInfo.value.columnKey === 'name' ? sortedInfo.value.order : null,
+    ellipsis: true,
   },
   {
     title: 'Age',
@@ -47,6 +73,7 @@ const columns = computed<TableProps['columns']>(() => [
     key: 'age',
     sorter: (a, b) => a.age - b.age,
     sortOrder: sortedInfo.value.columnKey === 'age' ? sortedInfo.value.order : null,
+    ellipsis: true,
   },
   {
     title: 'Address',
@@ -58,34 +85,46 @@ const columns = computed<TableProps['columns']>(() => [
     ],
     filteredValue: filteredInfo.value?.address || null,
     onFilter: (value, record) => record.address.includes(String(value)),
+    sorter: (a, b) => a.address.length - b.address.length,
+    sortOrder: sortedInfo.value.columnKey === 'address' ? sortedInfo.value.order : null,
+    ellipsis: true,
   },
 ])
 
-const handleChange: TableProps['onChange'] = (_pagination, filters, sorter) => {
+const handleChange: OnChange = (pagination, filters, sorter) => {
+  console.log('Various parameters', pagination, filters, sorter)
   filteredInfo.value = filters
-  sortedInfo.value = Array.isArray(sorter) ? (sorter[0] || {}) : sorter
+  sortedInfo.value = Array.isArray(sorter) ? ((sorter[0] || {}) as Sorts) : (sorter as Sorts)
 }
 
 function clearFilters() {
-  filteredInfo.value = null
+  filteredInfo.value = {}
 }
 
 function clearAll() {
-  filteredInfo.value = null
-  sortedInfo.value = {}
+  filteredInfo.value = {}
+  sortedInfo.value = {} as Sorts
+}
+
+function setAgeSort() {
+  sortedInfo.value = {
+    order: 'descend',
+    columnKey: 'age',
+  } as Sorts
 }
 </script>
 
 <template>
-  <a-space direction="vertical" size="middle" style="width: 100%">
-    <a-space>
-      <a-button @click="clearFilters">
-        Clear filters
-      </a-button>
-      <a-button @click="clearAll">
-        Clear filters and sorters
-      </a-button>
-    </a-space>
-    <a-table :columns="columns" :data-source="dataSource" @change="handleChange" />
+  <a-space style="margin-bottom: 16px">
+    <a-button @click="setAgeSort">
+      Sort age
+    </a-button>
+    <a-button @click="clearFilters">
+      Clear filters
+    </a-button>
+    <a-button @click="clearAll">
+      Clear filters and sorters
+    </a-button>
   </a-space>
+  <a-table :columns="columns" :data-source="dataSource" @change="handleChange" />
 </template>

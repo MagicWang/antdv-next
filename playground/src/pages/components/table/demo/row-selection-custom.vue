@@ -7,22 +7,26 @@ Custom selection actions.
 </docs>
 
 <script setup lang="ts">
+import { Table } from 'antdv-next'
 import type { TableProps } from 'antdv-next'
 import { computed, ref } from 'vue'
 
+type TableRowSelection = TableProps['rowSelection']
+type Key = string | number
+
 interface DataType {
-  key: string
+  key: Key
   name: string
   age: number
   address: string
 }
 
-const dataSource: DataType[] = [
-  { key: '1', name: 'John Brown', age: 32, address: 'New York No. 1 Lake Park' },
-  { key: '2', name: 'Jim Green', age: 42, address: 'London No. 1 Lake Park' },
-  { key: '3', name: 'Joe Black', age: 32, address: 'Sydney No. 1 Lake Park' },
-  { key: '4', name: 'Jim Red', age: 32, address: 'London No. 2 Lake Park' },
-]
+const dataSource = Array.from({ length: 46 }).map<DataType>((_, i) => ({
+  key: i,
+  name: `Edward King ${i}`,
+  age: 32,
+  address: `London, Park Lane no. ${i}`,
+}))
 
 const columns: TableProps['columns'] = [
   { title: 'Name', dataIndex: 'name', key: 'name' },
@@ -30,32 +34,35 @@ const columns: TableProps['columns'] = [
   { title: 'Address', dataIndex: 'address', key: 'address' },
 ]
 
-const selectedRowKeys = ref<string[]>([])
+const selectedRowKeys = ref<Key[]>([])
 
-const rowSelection = computed<TableProps['rowSelection']>(() => ({
+const onSelectChange = (newSelectedRowKeys: Key[]) => {
+  console.log('selectedRowKeys changed: ', newSelectedRowKeys)
+  selectedRowKeys.value = newSelectedRowKeys
+}
+
+const rowSelection = computed<TableRowSelection>(() => ({
   selectedRowKeys: selectedRowKeys.value,
-  onChange: (keys) => {
-    selectedRowKeys.value = keys as string[]
-  },
+  onChange: onSelectChange,
   selections: [
+    Table.SELECTION_ALL,
+    Table.SELECTION_INVERT,
+    Table.SELECTION_NONE,
     {
       key: 'odd',
       text: 'Select Odd Row',
       onSelect: (changeableRowKeys) => {
-        selectedRowKeys.value = (changeableRowKeys as string[]).filter((_key, index) => index % 2 === 0)
+        selectedRowKeys.value = (changeableRowKeys as Key[]).filter((_, index) => index % 2 === 0)
       },
     },
     {
       key: 'even',
       text: 'Select Even Row',
       onSelect: (changeableRowKeys) => {
-        selectedRowKeys.value = (changeableRowKeys as string[]).filter((_key, index) => index % 2 === 1)
+        selectedRowKeys.value = (changeableRowKeys as Key[]).filter((_, index) => index % 2 === 1)
       },
     },
   ],
-  getCheckboxProps: record => ({
-    disabled: record.name === 'Joe Black',
-  }),
 }))
 </script>
 

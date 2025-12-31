@@ -10,19 +10,22 @@ Row selection with operations.
 import type { TableProps } from 'antdv-next'
 import { computed, ref } from 'vue'
 
+type TableRowSelection = TableProps['rowSelection']
+type Key = string | number
+
 interface DataType {
-  key: string
+  key: Key
   name: string
   age: number
   address: string
 }
 
-const dataSource: DataType[] = [
-  { key: '1', name: 'John Brown', age: 32, address: 'New York No. 1 Lake Park' },
-  { key: '2', name: 'Jim Green', age: 42, address: 'London No. 1 Lake Park' },
-  { key: '3', name: 'Joe Black', age: 32, address: 'Sydney No. 1 Lake Park' },
-  { key: '4', name: 'Jim Red', age: 32, address: 'London No. 2 Lake Park' },
-]
+const dataSource = Array.from({ length: 46 }).map<DataType>((_, i) => ({
+  key: i,
+  name: `Edward King ${i}`,
+  age: 32,
+  address: `London, Park Lane no. ${i}`,
+}))
 
 const columns: TableProps['columns'] = [
   { title: 'Name', dataIndex: 'name', key: 'name' },
@@ -30,27 +33,40 @@ const columns: TableProps['columns'] = [
   { title: 'Address', dataIndex: 'address', key: 'address' },
 ]
 
-const selectedRowKeys = ref<string[]>([])
+const selectedRowKeys = ref<Key[]>([])
+const loading = ref(false)
 
-const rowSelection = computed<TableProps['rowSelection']>(() => ({
+const start = () => {
+  loading.value = true
+  setTimeout(() => {
+    selectedRowKeys.value = []
+    loading.value = false
+  }, 1000)
+}
+
+const onSelectChange = (newSelectedRowKeys: Key[]) => {
+  console.log('selectedRowKeys changed: ', newSelectedRowKeys)
+  selectedRowKeys.value = newSelectedRowKeys
+}
+
+const rowSelection = computed<TableRowSelection>(() => ({
   selectedRowKeys: selectedRowKeys.value,
-  onChange: (keys) => {
-    selectedRowKeys.value = keys as string[]
-  },
+  onChange: onSelectChange,
 }))
+
+const hasSelected = computed(() => selectedRowKeys.value.length > 0)
 </script>
 
 <template>
-  <a-space direction="vertical" size="middle" style="width: 100%">
-    <a-space>
-      <a-button :disabled="selectedRowKeys.length === 0">
-        Delete
+  <a-flex gap="middle" vertical>
+    <a-flex align="center" gap="middle">
+      <a-button type="primary" :disabled="!hasSelected" :loading="loading" @click="start">
+        Reload
       </a-button>
-      <a-button :disabled="selectedRowKeys.length === 0">
-        Export
-      </a-button>
-      <span>{{ selectedRowKeys.length }} items selected</span>
-    </a-space>
+      <span v-if="hasSelected">
+        Selected {{ selectedRowKeys.length }} items
+      </span>
+    </a-flex>
     <a-table :columns="columns" :data-source="dataSource" :row-selection="rowSelection" />
-  </a-space>
+  </a-flex>
 </template>

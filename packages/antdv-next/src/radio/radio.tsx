@@ -66,9 +66,9 @@ const InternalRadio = defineComponent<
       const _radioProps: any = {
         ...omit(props, ['prefixCls', 'classes', 'styles', 'title', 'rootClass']),
       }
+      _radioProps.onChange = onChange
       if (groupContext?.value) {
         _radioProps.name = groupContext.value.name
-        _radioProps.onChange = onChange
         _radioProps.checked = props.value === groupContext.value.value
         _radioProps.disabled = _radioProps.disabled ?? _radioProps.disabled
       }
