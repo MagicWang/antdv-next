@@ -7,5 +7,6 @@ export default defineConfig({
     'src/index.ts',
   ],
   external: [
+    'unocss',
   ],
 })

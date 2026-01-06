@@ -1,5 +1,5 @@
-import type { Preset } from '@unocss/core'
-import { definePreset } from '@unocss/core'
+import type { Preset } from 'unocss'
+import { definePreset } from 'unocss'
 
 function generatePalette(name: ColorName, antPrefix: string = 'ant') {
   const palette: Record<string, string> = {}
