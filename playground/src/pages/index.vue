@@ -55,7 +55,7 @@ const features = [
           <a-button type="primary" size="large" class="hero-btn-next !h-14 !px-10 !text-lg !rounded-2xl border-none shadow-lg shadow-primary/20">
             快速上手
           </a-button>
-          <a-button size="large" class="!h-14 !px-10 !text-lg !rounded-2xl border-slate-200 dark:border-slate-700 bg-transparent hover:!bg-slate-50 dark:hover:!bg-slate-800/50 transition-all">
+          <a-button size="large" class="h-14! px-10! text-lg! rounded-2xl! border-slate-200 dark:border-slate-700 bg-transparent hover:!bg-slate-50 dark:hover:!bg-slate-800/50 transition-all">
             仓库地址
           </a-button>
         </div>
