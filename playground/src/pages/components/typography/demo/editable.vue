@@ -1,3 +1,11 @@
+<docs lang="zh-CN">
+提供可编辑的交互能力。
+</docs>
+
+<docs lang="en-US">
+Makes Typography editable.
+</docs>
+
 <script setup lang="ts">
 import { CheckOutlined, HighlightOutlined } from '@antdv-next/icons'
 import { computed, h, ref } from 'vue'

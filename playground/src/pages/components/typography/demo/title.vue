@@ -1,5 +1,10 @@
-<script setup lang="ts">
-</script>
+<docs lang="zh-CN">
+展示不同级别的标题。
+</docs>
+
+<docs lang="en-US">
+Display title in different levels.
+</docs>
 
 <template>
   <div>

@@ -1,3 +1,11 @@
+<docs lang="zh-CN">
+受控多行文本省略。
+</docs>
+
+<docs lang="en-US">
+Controlled multi line text omission.
+</docs>
+
 <script setup lang="ts">
 import { ref } from 'vue'
 

@@ -1,3 +1,11 @@
+<docs lang="zh-CN">
+内置不同样式的文本以及超链接组件。
+</docs>
+
+<docs lang="en-US">
+Provides multiple types of text and a link.
+</docs>
+
 <template>
   <a-space vertical>
     <a-typography-text>Antdv Next (default)</a-typography-text>

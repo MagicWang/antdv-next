@@ -1,3 +1,11 @@
+<docs lang="zh-CN">
+提供可复制的交互能力。
+</docs>
+
+<docs lang="en-US">
+Makes Typography copyable with the click of a button.
+</docs>
+
 <script setup lang="ts">
 import { SmileFilled, SmileOutlined } from '@antdv-next/icons'
 import { h } from 'vue'

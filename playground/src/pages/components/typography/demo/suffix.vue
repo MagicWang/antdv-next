@@ -1,3 +1,11 @@
+<docs lang="zh-CN">
+添加后缀的省略。
+</docs>
+
+<docs lang="en-US">
+Add suffix ellipsis support.
+</docs>
+
 <script setup lang="ts">
 import { ref } from 'vue'
 

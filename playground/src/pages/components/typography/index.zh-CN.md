@@ -12,9 +12,21 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*LT2jR41Uj2EAAA
 
 ## 何时使用 {#when-to-use}
 
-## 示例 {#examples}
+- 当需要展示标题、段落、列表内容时使用，如文章/博客/日志的文本样式。
+- 当需要一列基于文本的基础操作时，如拷贝/省略/可编辑。
+
+## 代码演示 {#examples}
 
 <demo-group>
+  <demo src="./demo/basic.vue">基本</demo>
+  <demo src="./demo/title.vue">标题组件</demo>
+  <demo src="./demo/text.vue">文本与超链接组件</demo>
+  <demo src="./demo/editable.vue">可编辑</demo>
+  <demo src="./demo/copyable.vue">可复制</demo>
+  <demo src="./demo/ellipsis.vue">省略号</demo>
+  <demo src="./demo/ellipsis-controlled.vue">受控省略展开/收起</demo>
+  <demo src="./demo/ellipsis-middle.vue">省略中间</demo>
+  <demo src="./demo/suffix.vue">后缀</demo>
 </demo-group>
 
 ## API
@@ -23,103 +35,119 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*LT2jR41Uj2EAAA
 
 通用属性参考：[通用属性](/docs/vue/common-props)
 
-#### Block
+### Typography.Text
 
-| 属性 | 说明 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | --- | --- |
-| title | - | string | - | - |
-| editable | 是否可编辑，为对象时可对编辑进行控制 | boolean \| EditConfig | false | - |
-| copyable | 是否可拷贝，为对象时可进行各种自定义 | boolean \| CopyConfig | false | - |
-| type | 文本类型 | BaseType | - | success: 4.6.0 |
-| disabled | 禁用文本 | boolean | false | - |
-| ellipsis | 自动溢出省略，为对象时不能设置省略行数、是否可展开、onExpand 展开事件。不同于 Typography.Paragraph，Text 组件自身不带 100% 宽度样式，因而默认情况下初次缩略后宽度便不再变化。如果需要自适应宽度，请手动配置宽度样式 | boolean \| EllipsisConfig | false | - |
-| code | 添加代码样式 | boolean | false | - |
-| mark | 添加标记样式 | boolean | false | - |
-| underline | 添加下划线样式 | boolean | false | - |
-| delete | 添加删除线样式 | boolean | false | - |
-| strong | 是否加粗 | boolean | false | - |
-| keyboard | 添加键盘样式 | boolean | false | 4.3.0 |
-| italic | 是否斜体 | boolean | false | 4.16.0 |
-| component | - | keyof HTMLElementTagNameMap \| string | - | - |
-| direction | - | DirectionType | - | - |
-| classes | - | TypographyClassNamesType | - | - |
-| styles | - | TypographyStylesType | - | - |
-| id | - | string | - | - |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| code | 添加代码样式 | boolean | false |
+| copyable | 是否可拷贝，为对象时可进行各种自定义 | boolean \| [copyable](#copyable) | false |
+| delete | 添加删除线样式 | boolean | false |
+| disabled | 禁用文本 | boolean | false |
+| editable | 是否可编辑，为对象时可对编辑进行控制 | boolean \| [editable](#editable) | false |
+| ellipsis | 自动溢出省略，为对象时不能设置省略行数、是否可展开、onExpand 展开事件。不同于 Typography.Paragraph，Text 组件自身不带 100% 宽度样式，因而默认情况下初次缩略后宽度便不再变化。如果需要自适应宽度，请手动配置宽度样式 | boolean \| [Omit<ellipsis, 'expandable' \| 'rows' \| 'onExpand'>](#ellipsis) | false |
+| keyboard | 添加键盘样式 | boolean | false |
+| mark | 添加标记样式 | boolean | false |
+| strong | 是否加粗 | boolean | false |
+| italic | 是否斜体 | boolean | false |
+| type | 文本类型 | `secondary` \| `success` \| `warning` \| `danger` | - |
+| underline | 添加下划线样式 | boolean | false |
+| classes | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | TypographyClassNamesType | - |
+| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | TypographyStylesType | - |
 
-#### Link
+### Typography.Title
 
-| 属性 | 说明 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | --- | --- |
-| title | - | string | - | - |
-| editable | 是否可编辑，为对象时可对编辑进行控制 | boolean \| EditConfig | false | - |
-| copyable | 是否可拷贝，为对象时可进行各种自定义 | boolean \| CopyConfig | false | - |
-| type | 文本类型 | BaseType | - | success: 4.6.0 |
-| disabled | 禁用文本 | boolean | false | - |
-| ellipsis | 自动溢出省略，为对象时不能设置省略行数、是否可展开、onExpand 展开事件。不同于 Typography.Paragraph，Text 组件自身不带 100% 宽度样式，因而默认情况下初次缩略后宽度便不再变化。如果需要自适应宽度，请手动配置宽度样式 | boolean \| EllipsisConfig | false | - |
-| code | 添加代码样式 | boolean | false | - |
-| mark | 添加标记样式 | boolean | false | - |
-| underline | 添加下划线样式 | boolean | false | - |
-| delete | 添加删除线样式 | boolean | false | - |
-| strong | 是否加粗 | boolean | false | - |
-| keyboard | 添加键盘样式 | boolean | false | 4.3.0 |
-| italic | 是否斜体 | boolean | false | 4.16.0 |
-| component | - | keyof HTMLElementTagNameMap \| string | - | - |
-| direction | - | DirectionType | - | - |
-| classes | - | TypographyClassNamesType | - | - |
-| styles | - | TypographyStylesType | - | - |
-| id | - | string | - | - |
-| href | - | string | - | - |
-| target | - | string | - | - |
-| rel | - | string | - | - |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| code | 添加代码样式 | boolean | false |
+| copyable | 是否可拷贝，为对象时可进行各种自定义 | boolean \| [copyable](#copyable) | false |
+| delete | 添加删除线样式 | boolean | false |
+| disabled | 禁用文本 | boolean | false |
+| editable | 是否可编辑，为对象时可对编辑进行控制 | boolean \| [editable](#editable) | false |
+| ellipsis | 自动溢出省略，为对象时可设置省略行数、是否可展开、添加后缀等 | boolean \| [ellipsis](#ellipsis) | false |
+| level | 重要程度，相当于 `h1`、`h2`、`h3`、`h4`、`h5` | number: 1, 2, 3, 4, 5 | 1 |
+| mark | 添加标记样式 | boolean | false |
+| italic | 是否斜体 | boolean | false |
+| type | 文本类型 | `secondary` \| `success` \| `warning` \| `danger` | - |
+| underline | 添加下划线样式 | boolean | false |
+| classes | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | TypographyClassNamesType | - |
+| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | TypographyStylesType | - |
 
-#### Paragraph
+### Typography.Paragraph
 
-| 属性 | 说明 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | --- | --- |
-| title | - | string | - | - |
-| editable | 是否可编辑，为对象时可对编辑进行控制 | boolean \| EditConfig | false | - |
-| copyable | 是否可拷贝，为对象时可进行各种自定义 | boolean \| CopyConfig | false | - |
-| type | 文本类型 | BaseType | - | success: 4.6.0 |
-| disabled | 禁用文本 | boolean | false | - |
-| ellipsis | 自动溢出省略，为对象时不能设置省略行数、是否可展开、onExpand 展开事件。不同于 Typography.Paragraph，Text 组件自身不带 100% 宽度样式，因而默认情况下初次缩略后宽度便不再变化。如果需要自适应宽度，请手动配置宽度样式 | boolean \| EllipsisConfig | false | - |
-| code | 添加代码样式 | boolean | false | - |
-| mark | 添加标记样式 | boolean | false | - |
-| underline | 添加下划线样式 | boolean | false | - |
-| delete | 添加删除线样式 | boolean | false | - |
-| strong | 是否加粗 | boolean | false | - |
-| keyboard | 添加键盘样式 | boolean | false | 4.3.0 |
-| italic | 是否斜体 | boolean | false | 4.16.0 |
-| component | - | keyof HTMLElementTagNameMap \| string | - | - |
-| direction | - | DirectionType | - | - |
-| classes | - | TypographyClassNamesType | - | - |
-| styles | - | TypographyStylesType | - | - |
-| id | - | string | - | - |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| code | 添加代码样式 | boolean | false |
+| copyable | 是否可拷贝，为对象时可进行各种自定义 | boolean \| [copyable](#copyable) | false |
+| delete | 添加删除线样式 | boolean | false |
+| disabled | 禁用文本 | boolean | false |
+| editable | 是否可编辑，为对象时可对编辑进行控制 | boolean \| [editable](#editable) | false |
+| ellipsis | 自动溢出省略，为对象时可设置省略行数、是否可展开、添加后缀等 | boolean \| [ellipsis](#ellipsis) | false |
+| mark | 添加标记样式 | boolean | false |
+| strong | 是否加粗 | boolean | false |
+| italic | 是否斜体 | boolean | false |
+| type | 文本类型 | `secondary` \| `success` \| `warning` \| `danger` | - |
+| underline | 添加下划线样式 | boolean | false |
+| classes | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | TypographyClassNamesType | - |
+| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | TypographyStylesType | - |
 
-#### Text
+### 事件 {#events}
 
-| 属性 | 说明 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | --- | --- |
-| title | - | string | - | - |
-| editable | 是否可编辑，为对象时可对编辑进行控制 | boolean \| EditConfig | false | - |
-| copyable | 是否可拷贝，为对象时可进行各种自定义 | boolean \| CopyConfig | false | - |
-| type | 文本类型 | BaseType | - | success: 4.6.0 |
-| disabled | 禁用文本 | boolean | false | - |
-| ellipsis | 自动溢出省略，为对象时不能设置省略行数、是否可展开、onExpand 展开事件。不同于 Typography.Paragraph，Text 组件自身不带 100% 宽度样式，因而默认情况下初次缩略后宽度便不再变化。如果需要自适应宽度，请手动配置宽度样式 | boolean \| EllipsisConfig | false | - |
-| code | 添加代码样式 | boolean | false | - |
-| mark | 添加标记样式 | boolean | false | - |
-| underline | 添加下划线样式 | boolean | false | - |
-| delete | 添加删除线样式 | boolean | false | - |
-| strong | 是否加粗 | boolean | false | - |
-| keyboard | 添加键盘样式 | boolean | false | 4.3.0 |
-| italic | 是否斜体 | boolean | false | 4.16.0 |
-| component | - | keyof HTMLElementTagNameMap \| string | - | - |
-| direction | - | DirectionType | - | - |
-| classes | - | TypographyClassNamesType | - | - |
-| styles | - | TypographyStylesType | - | - |
-| id | - | string | - | - |
+| 事件 | 说明 | 类型 |
+| --- | --- | --- |
+| click | 点击时的回调 | (event: MouseEvent) => void |
 
-#### Title
+### copyable
 
-| 属性 | 说明 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | --- | --- |
-| level | - | (typeof TITLE_ELE_LIST)[number] | - | - |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| format | 剪切板数据的 Mime Type | 'text/plain' \| 'text/html' | - |
+| icon | 自定义拷贝图标：\[默认图标, 拷贝后的图标] | \[VueNode, VueNode] | - |
+| text | 拷贝到剪切板里的文本 | string | - |
+| tooltips | 自定义提示文案，为 false 时隐藏文案 | \[VueNode, VueNode] | \[`复制`, `复制成功`] |
+| tabIndex | 自定义复制按钮的 tabIndex | number | 0 |
+
+### editable
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| autoSize | `autoSize` 属性的 textarea | boolean \| { minRows: number, maxRows: number } | - |
+| editing | 控制是否是编辑中状态 | boolean | false |
+| icon | 自定义编辑图标 | VueNode | &lt;EditOutlined /> |
+| maxLength | 编辑中文本域最大长度 | number | - |
+| tooltip | 自定义提示文本，为 false 时关闭 | VueNode | `编辑` |
+| text | 显式地指定编辑文案，为空时将隐式地使用 children | string | - |
+| triggerType | 编辑模式触发器类型，图标、文本或者两者都设置（不设置图标作为触发器时它会隐藏） | Array&lt;`icon`\|`text`> | \[`icon`] |
+| enterIcon | 在编辑段中自定义"enter"图标（传递"null"将删除图标） | VueNode | `<EnterOutlined />` |
+| tabIndex | 自定义编辑按钮的 tabIndex | number | 0 |
+
+### 事件 {#events-editable}
+
+| 事件 | 说明 | 类型 |
+| --- | --- | --- |
+| change | 文本域编辑时触发 | (value: string) => void |
+| cancel | 按 ESC 退出编辑状态时触发 | () => void |
+| start | 进入编辑中状态时触发 | () => void |
+| end | 按 ENTER 结束编辑状态时触发 | () => void |
+
+### ellipsis
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| expandable | 是否可展开 | boolean \| 'collapsible' | - |
+| rows | 最多显示的行数 | number | - |
+| suffix | 自定义省略内容后缀 | string | - |
+| symbol | 自定义展开描述文案 | VueNode \| ((expanded: boolean) => VueNode) | `展开` `收起` |
+| tooltip | 省略时，展示提示信息 | VueNode \| [TooltipProps](/components/tooltip-cn/#api) | - |
+| defaultExpanded | 默认展开或收起 | boolean | - |
+| expanded | 展开或收起 | boolean | - |
+
+### 事件 {#events-ellipsis}
+
+| 事件 | 说明 | 类型 |
+| --- | --- | --- |
+| ellipsis | 触发省略时的回调 | (ellipsis: boolean) => void |
+| expand | 点击展开或收起时的回调 | (event: MouseEvent, info: { expanded: boolean }) => void |
+
+## 主题变量（Design Token）{#design-token}
+
+查看 [定制主题](/docs/vue/customize-theme) 了解如何使用主题变量。
