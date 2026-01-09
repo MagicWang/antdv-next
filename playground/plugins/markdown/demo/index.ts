@@ -5,6 +5,20 @@ import { normalizePath } from 'vite'
 import { parse } from 'vue/compiler-sfc'
 import { createMarkdown, loadBaseMd, loadShiki } from '../markdown'
 
+/**
+ * 将绝对路径转换为相对于项目根目录的路径
+ * @param absolutePath 绝对路径
+ * @param root 项目根目录
+ * @returns 相对路径
+ */
+export function toRelativePath(absolutePath: string, root: string): string {
+  const normalizedPath = normalizePath(absolutePath)
+  const normalizedRoot = normalizePath(root)
+  return normalizedPath.startsWith(normalizedRoot)
+    ? normalizedPath.slice(normalizedRoot.length)
+    : normalizedPath
+}
+
 export function demoPlugin(): PluginOption {
   const md = createMarkdown()({
     withPlugin: false,
@@ -85,9 +99,10 @@ export function demoPlugin(): PluginOption {
       }
     },
     handleHotUpdate(ctx) {
-      const normalizedFile = normalizePath(ctx.file)
-      const isDemo = DEMO_GLOB.some(pattern => pm.isMatch(normalizedFile, pattern))
+      const relativePath = toRelativePath(ctx.file, ctx.server.config.root)
+      const isDemo = DEMO_GLOB.some(pattern => pm.isMatch(relativePath, pattern))
       if (isDemo) {
+        const normalizedFile = normalizePath(ctx.file)
         const server = ctx.server
         // const virtualModule = server.moduleGraph.getModuleById(RESOLVED_VIRTUAL_MODULE_ID)
         // if (virtualModule) {
