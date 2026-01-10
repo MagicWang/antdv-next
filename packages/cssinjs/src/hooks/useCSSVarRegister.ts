@@ -1,8 +1,10 @@
 import type { Ref } from 'vue'
 import type { TokenWithCSSVar } from '../util/css-variables'
 import type { ExtractStyle } from './useGlobalCache'
+import canUseDom from '@v-c/util/dist/Dom/canUseDom'
 import { removeCSS, updateCSS } from '@v-c/util/dist/Dom/dynamicCSS'
 import { computed } from 'vue'
+import { collectStyleText } from '../ssr/styleCollector'
 import { ATTR_MARK, ATTR_TOKEN, CSS_IN_JS_INSTANCE, useStyleContext } from '../StyleContext'
 import { isClientSide, toStyleStr } from '../util'
 import { transformToken } from '../util/css-variables'
@@ -27,65 +29,6 @@ export interface CSSVarRegisterConfig {
   scope?: string
   token: any
   hashId?: string
-}
-
-export default function useCSSVarRegister<V, T extends Record<string, V>>(
-  config: Ref<CSSVarRegisterConfig>,
-  fn: () => T,
-) {
-  const styleContext = useStyleContext()
-
-  const stylePath = computed<any[]>(() => {
-    const { key, prefix, scope = '' } = config.value
-    return [
-      ...config.value.path,
-      key,
-      prefix,
-      scope,
-    ]
-  })
-
-  return useGlobalCache<CSSVarCacheValue<V, T>>(
-    computed(() => CSS_VAR_PREFIX),
-    stylePath,
-    () => {
-      const originToken = fn()
-      const { key, prefix, unitless, ignore, hashId, scope = '' } = config.value
-      const hashPriority = styleContext.value.hashPriority!
-      const [mergedToken, cssVarsStr] = transformToken<V, T>(originToken, key, {
-        prefix,
-        unitless,
-        ignore,
-        scope,
-        hashPriority,
-        hashCls: hashId,
-      })
-      const styleId = uniqueHash(stylePath.value, cssVarsStr)
-      return [mergedToken, cssVarsStr, styleId, key]
-    },
-    ([, , styleId]) => {
-      if (isClientSide) {
-        removeCSS(styleId, { mark: ATTR_MARK, attachTo: styleContext.value.container })
-      }
-    },
-    ([, cssVarsStr, styleId]) => {
-      if (!cssVarsStr) {
-        return
-      }
-
-      const context = styleContext.value
-      const style = updateCSS(cssVarsStr, styleId, {
-        mark: ATTR_MARK,
-        prepend: 'queue',
-        attachTo: context.container,
-        priority: -999,
-      })
-
-      ;(style as any)[CSS_IN_JS_INSTANCE] = context.cache.instanceId
-      // Used for `useCacheToken` to remove on batch when token removed
-      style.setAttribute(ATTR_TOKEN, config.value.key)
-    },
-  )
 }
 
 export const extract: ExtractStyle<CSSVarCacheValue<any>> = (
@@ -118,4 +61,73 @@ export const extract: ExtractStyle<CSSVarCacheValue<any>> = (
   )
 
   return [order, styleId, styleText]
+}
+
+export default function useCSSVarRegister<V, T extends Record<string, V>>(
+  config: Ref<CSSVarRegisterConfig>,
+  fn: () => T,
+) {
+  const styleContext = useStyleContext()
+
+  const stylePath = computed<any[]>(() => {
+    const { key, scope = '', token } = config.value
+    const tokenKey = token?._tokenKey
+    return [
+      ...config.value.path,
+      key,
+      scope,
+      tokenKey,
+    ]
+  })
+
+  return useGlobalCache<CSSVarCacheValue<V, T>>(
+    computed(() => CSS_VAR_PREFIX),
+    stylePath,
+    () => {
+      const originToken = fn()
+      const { key, prefix, unitless, ignore, hashId, scope = '' } = config.value
+      const hashPriority = styleContext.value.hashPriority!
+      const [mergedToken, cssVarsStr] = transformToken<V, T>(originToken, key, {
+        prefix,
+        unitless,
+        ignore,
+        scope,
+        hashPriority,
+        hashCls: hashId,
+      })
+      const styleId = uniqueHash(stylePath.value, cssVarsStr)
+      return [mergedToken, cssVarsStr, styleId, key]
+    },
+    ([, , styleId]) => {
+      if (isClientSide) {
+        removeCSS(styleId, { mark: ATTR_MARK, attachTo: styleContext.value.container })
+      }
+    },
+    (cacheValue) => {
+      const [, cssVarsStr, styleId] = cacheValue
+      if (!canUseDom()) {
+        const extracted = extract(cacheValue, {}, { plain: false })
+        if (extracted) {
+          const [, , styleText] = extracted
+          collectStyleText(styleText)
+        }
+        return
+      }
+      if (!cssVarsStr) {
+        return
+      }
+
+      const context = styleContext.value
+      const style = updateCSS(cssVarsStr, styleId, {
+        mark: ATTR_MARK,
+        prepend: 'queue',
+        attachTo: context.container,
+        priority: -999,
+      })
+
+      ;(style as any)[CSS_IN_JS_INSTANCE] = context.cache.instanceId
+      // Used for `useCacheToken` to remove on batch when token removed
+      style.setAttribute(ATTR_TOKEN, config.value.key)
+    },
+  )
 }
