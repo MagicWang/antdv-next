@@ -4,7 +4,9 @@ import { tsxResolveTypes } from 'vite-plugin-tsx-resolve-types'
 
 export default defineConfig({
   plugins: [
-    tsxResolveTypes(),
+    tsxResolveTypes({
+      defaultPropsToUndefined: true,
+    }),
     vueJsx(),
   ],
   build: {
