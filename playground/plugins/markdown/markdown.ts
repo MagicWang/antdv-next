@@ -14,7 +14,6 @@ import {
   transformerNotationHighlight,
   transformerNotationWordHighlight,
 } from '@shikijs/transformers'
-import { transformerTwoslash } from '@shikijs/twoslash'
 import anchorPlugin from 'markdown-it-anchor'
 import MarkdownIt from 'markdown-it-async'
 import attrsPlugin from 'markdown-it-attrs'
@@ -37,7 +36,7 @@ export function loadShiki(md: MarkdownItAsync, cls: string = 'ant-doc-code') {
     defaultColor: false,
     cssVariablePrefix: '--ant-doc-',
     transformers: [
-      transformerTwoslash(),
+      // transformerTwoslash(),
       transformerMetaHighlight(),
       transformerMetaWordHighlight(),
       transformerNotationDiff(),

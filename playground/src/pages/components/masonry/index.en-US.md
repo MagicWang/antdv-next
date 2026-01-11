@@ -2,51 +2,81 @@
 category: Components
 group: Layout
 title: Masonry
+description: A masonry layout component for displaying content with different heights.
 cover: https://mdn.alipayobjects.com/huamei_iwk9zp/afts/img/A*cELTRrM5HpAAAAAAOGAAAAgAegCCAQ/original
 coverDark: https://mdn.alipayobjects.com/huamei_iwk9zp/afts/img/A*2CxJRYJmfbIAAAAAPqAAAAgAegCCAQ/original
 demo:
   cols: 1
+tag: 6.0.0
 ---
 
 <DocHeading></DocHeading>
 
-## When To Use {#when-to-use}
+## When To Use
+
+- When displaying images or cards with irregular heights.
+- When content needs to be evenly distributed in columns.
+- When column count needs to be responsive.
 
 ## Examples {#examples}
 
 <demo-group>
+  <demo src="./demo/basic.vue">Basic</demo>
+  <demo src="./demo/responsive.vue">Responsive</demo>
+  <demo src="./demo/image.vue">Image</demo>
+  <demo src="./demo/dynamic.vue">Dynamic</demo>
+  <demo src="./demo/style-class.vue">Custom semantic dom styling</demo>
+  <demo src="./demo/fresh.vue" debug>Fresh</demo>
 </demo-group>
 
 ## API
 
-### Property {#property}
-
 Common props ref：[Common props](/docs/vue/common-props)
+
+### Masonry
+
+#### Property {#masonry-property}
 
 | Property | Description | Type | Default | Version |
 | --- | --- | --- | --- | --- |
-| classes | - | MasonryClassNamesType | - | - |
-| styles | - | MasonryStylesType | - | - |
-| gutter | Spacing between items | RowProps['gutter'] | - | - |
-| items | - | MasonryItemType[] | - | - |
-| itemRender | - | (itemInfo: MasonryItemType & \{ index: number \}) =&gt; any | - | - |
-| columns | Number of columns in the masonry grid layout | number \| Partial&lt;Record&lt;Breakpoint, number&gt;&gt; | - | - |
-| fresh | Trigger when item layout order changed | boolean | - | - |
+| classes | Customize class for each semantic structure inside the component. Supports object or function | Record&lt;[SemanticDOM](#semantic-dom), string&gt; \| (info: \{ props \}) =&gt; Record&lt;[SemanticDOM](#semantic-dom), string&gt; | - | - |
+| styles | Customize inline style for each semantic structure inside the component. Supports object or function | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties&gt; \| (info: \{ props \}) =&gt; Record&lt;[SemanticDOM](#semantic-dom), CSSProperties&gt; | - | - |
+| columns | Number of columns, can be a fixed value or a responsive configuration | number \| \{ xs?: number; sm?: number; md?: number; lg?: number; xl?: number; xxl?: number \} | 3 | - |
+| fresh | Whether to continuously monitor the size changes of child items | boolean | false | - |
+| gutter | Spacing, can be a fixed value, responsive configuration, or a configuration for horizontal and vertical spacing | [Gap](#gap) \| [[Gap](#gap), [Gap](#gap)] | 0 | - |
+| items | Masonry items | [MasonryItem](#masonryitem)[] | - | - |
+| itemRender | Custom item rendering function | (item: MasonryItem) =&gt; VueNode | - | - |
 
-### Events {#events}
+#### Events {#masonry-events}
 
 | Event | Description | Type | Version |
 | --- | --- | --- | --- |
-| layoutChange | - | (sortInfo: \{ key: Key, column: number \}[]) =&gt; void | - |
+| layoutChange | Callback for column sorting changes | (sortInfo: \{ key: Key; column: number \}[]) =&gt; void | - |
 
-### Slots {#slots}
+#### Slots {#masonry-slots}
 
 | Slot | Description | Type | Version |
 | --- | --- | --- | --- |
-| itemRender | - | (itemInfo: MasonryItemType & \{ index: number \}) =&gt; any | - |
+| itemRender | Custom item rendering slot | (itemInfo: MasonryItem & \{ index: number \}) =&gt; VueNode | - |
 
-### Methods {#methods}
+### MasonryItem
 
-| Method | Description | Type | Version |
+| Parameter | Description | Type | Default Value |
 | --- | --- | --- | --- |
-| nativeElement | - | HTMLDivElement | - |
+| key | Unique identifier for the item | string \| number | - |
+| height | Height of the item | number | - |
+| column | Specifies the column to which the item belongs | number | - |
+| data | Custom data storage | T | - |
+| children | Custom display content, takes precedence over `itemRender` | VueNode | - |
+
+### Gap
+
+`Gap` represents the spacing between items. It can either be a fixed value or a responsive configuration.
+
+```ts
+type Gap = undefined | number | Partial<Record<'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl', number>>
+```
+
+## Semantic DOM
+
+## Design Token

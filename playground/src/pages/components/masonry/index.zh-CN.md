@@ -33,36 +33,50 @@ demo:
 
 通用属性参考：[通用属性](/docs/vue/common-props)
 
-
 ### Masonry
-
 
 #### 属性 {#masonry-property}
 
 | 属性 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
-| classes | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | MasonryClassNamesType | - | - |
-| styles | 语义化结构 style，支持对象和函数形式 | MasonryStylesType | - | - |
-| gutter | 间距，可以是固定值、响应式配置或水平垂直间距配置 | RowProps['gutter'] | `0` | - |
-| items | 瀑布流项 | MasonryItemType[] | - | - |
-| itemRender | 自定义项渲染 | (itemInfo: MasonryItemType & \{ index: number \}) =&gt; any | - | - |
-| columns | 列数，可以是固定值或响应式配置 | number \| Partial&lt;Record&lt;Breakpoint, number&gt;&gt; | `3` | - |
+| classes | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record&lt;[SemanticDOM](#semantic-dom), string&gt; \| (info: \{ props \}) =&gt; Record&lt;[SemanticDOM](#semantic-dom), string&gt; | - | - |
+| styles | 语义化结构 style，支持对象和函数形式 | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties&gt; \| (info: \{ props \}) =&gt; Record&lt;[SemanticDOM](#semantic-dom), CSSProperties&gt; | - | - |
+| columns | 列数，可以是固定值或响应式配置 | number \| \{ xs?: number; sm?: number; md?: number; lg?: number; xl?: number; xxl?: number \} | `3` | - |
 | fresh | 是否持续监听子项尺寸变化 | boolean | `false` | - |
+| gutter | 间距，可以是固定值、响应式配置或水平垂直间距配置 | [Gap](#gap) \| [[Gap](#gap), [Gap](#gap)] | `0` | - |
+| items | 瀑布流项 | [MasonryItem](#masonryitem)[] | - | - |
+| itemRender | 自定义项渲染 | (item: MasonryItem) =&gt; VueNode | - | - |
 
 #### 事件 {#masonry-events}
 
 | 事件 | 说明 | 类型 | 版本 |
 | --- | --- | --- | --- |
-| layoutChange | 列排序回调 | (sortInfo: \{ key: Key, column: number \}[]) =&gt; void | - |
+| layoutChange | 列排序回调 | (sortInfo: \{ key: Key; column: number \}[]) =&gt; void | - |
 
 #### 插槽 {#masonry-slots}
 
 | 插槽 | 说明 | 类型 | 版本 |
 | --- | --- | --- | --- |
-| itemRender | 自定义项渲染 | (itemInfo: MasonryItemType & \{ index: number \}) =&gt; any | - |
+| itemRender | 自定义项渲染插槽 | (itemInfo: MasonryItem & \{ index: number \}) =&gt; VueNode | - |
 
-#### 方法 {#masonry-methods}
+### MasonryItem
 
-| 方法 | 说明 | 类型 | 版本 |
+| 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| nativeElement | - | HTMLDivElement | - |
+| key | 唯一标识 | string \| number | - |
+| height | 高度 | number | - |
+| column | 自定义所在列 | number | - |
+| data | 自定义存储数据 | T | - |
+| children | 自定义展示内容，相对 `itemRender` 具有更高优先级 | VueNode | - |
+
+### Gap
+
+Gap 是项之间的间距，可以是固定值，也可以是响应式配置。
+
+```ts
+type Gap = undefined | number | Partial<Record<'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl', number>>
+```
+
+## Semantic DOM
+
+## Design Token
