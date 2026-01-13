@@ -73,7 +73,6 @@ demo:
 
 | 事件 | 说明 | 类型 | 版本 |
 | --- | --- | --- | --- |
-| update:open | 菜单显隐变化时触发 | (open: boolean) =&gt; void | - |
 | openChange | 菜单显示状态改变时调用，点击菜单按钮导致的消失不会触发 | (open: boolean, info: &#123; source: 'trigger' \| 'menu' &#125;) =&gt; void | - |
 | menuClick | 点击菜单项的回调 | MenuEmits['click'] | - |
 
@@ -101,7 +100,6 @@ Dropdown 会透传 Menu 的插槽（例如 `labelRender`）。
 
 ## 主题变量（Design Token）{#design-token}
 
-<ComponentTokenTable component="Dropdown"></ComponentTokenTable>
 
 参考 [定制主题](/docs/vue/customize-theme) 了解如何使用主题变量。
 

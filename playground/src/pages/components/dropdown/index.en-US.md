@@ -69,7 +69,6 @@ Common props ref：[Common props](/docs/vue/common-props)
 
 | Event | Description | Type | Version |
 | --- | --- | --- | --- |
-| update:open | Emit when dropdown open state changes | (open: boolean) =&gt; void | - |
 | openChange | Called when the open state is changed. Not trigger when hidden by click item | (open: boolean, info: &#123; source: 'trigger' \| 'menu' &#125;) =&gt; void | - |
 | menuClick | Callback when menu item clicked | MenuEmits['click'] | - |
 
@@ -96,8 +95,6 @@ Please ensure that the child node of `Dropdown` accepts `mouseenter`, `mouseleav
 | itemContent | Menu item content |
 
 ## Design Token {#design-token}
-
-<ComponentTokenTable component="Dropdown"></ComponentTokenTable>
 
 See [Customize Theme](/docs/vue/customize-theme) to learn how to use Design Token.
 
