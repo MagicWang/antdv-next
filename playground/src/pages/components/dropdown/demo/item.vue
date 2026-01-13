@@ -1,9 +1,9 @@
 <docs lang="zh-CN">
-默认是移入触发菜单，可以点击触发。
+分割线和不可用菜单项。
 </docs>
 
 <docs lang="en-US">
-The default trigger mode is `hover`, you can change it to `click`.
+Divider and disabled menu item.
 </docs>
 
 <script setup lang="ts">
@@ -23,8 +23,9 @@ const items: MenuItemType[] = [
     type: 'divider',
   },
   {
-    label: '3rd menu item',
+    label: '3rd menu item (disabled)',
     key: '3',
+    disabled: true,
   },
 ]
 
@@ -35,10 +36,10 @@ const href: Record<string, string> = {
 </script>
 
 <template>
-  <a-dropdown :menu="{ items }" :trigger="['click']">
+  <a-dropdown :menu="{ items }">
     <a @click.prevent>
       <a-space>
-        Click me
+        Hover me
         <DownOutlined />
       </a-space>
     </a>

@@ -1,14 +1,16 @@
 <docs lang="zh-CN">
-最简单的下拉菜单。
+使用 `popupRender` 对下拉菜单进行自由扩展。如果你并不需要 Menu 内容，请直接使用 Popover 组件。
 </docs>
 
 <docs lang="en-US">
-The most basic dropdown menu.
+Customize the dropdown menu via `popupRender`. If you don't need the Menu content, use the Popover component directly.
 </docs>
 
 <script setup lang="ts">
 import type { MenuItemType } from 'antdv-next'
-import { DownOutlined, SmileOutlined } from '@antdv-next/icons'
+import { DownOutlined } from '@antdv-next/icons'
+import { theme } from 'antdv-next'
+import { computed } from 'vue'
 
 const items: MenuItemType[] = [
   {
@@ -18,7 +20,6 @@ const items: MenuItemType[] = [
   {
     key: '2',
     label: '2nd menu item (disabled)',
-    icon: SmileOutlined,
     disabled: true,
   },
   {
@@ -26,21 +27,40 @@ const items: MenuItemType[] = [
     label: '3rd menu item (disabled)',
     disabled: true,
   },
-  {
-    key: '4',
-    danger: true,
-    label: 'a danger item',
-  },
 ]
+
 const href: Record<string, string> = {
   1: 'https://www.antgroup.com',
   2: 'https://www.aliyun.com',
   3: 'https://www.luohanacademy.com',
 }
+
+const { token } = theme.useToken()
+
+const contentStyle = computed(() => ({
+  backgroundColor: token.value.colorBgElevated,
+  borderRadius: token.value.borderRadiusLG,
+  boxShadow: token.value.boxShadowSecondary,
+}))
+
+const menuStyle = {
+  boxShadow: 'none',
+}
 </script>
 
 <template>
   <a-dropdown :menu="{ items }">
+    <template #popupRender="menu">
+      <div :style="contentStyle">
+        <component :is="menu" :style="menuStyle" />
+        <a-divider style="margin: 0" />
+        <a-space style="padding: 8px">
+          <a-button type="primary">
+            Click me!
+          </a-button>
+        </a-space>
+      </div>
+    </template>
     <a @click.prevent>
       <a-space>
         Hover me

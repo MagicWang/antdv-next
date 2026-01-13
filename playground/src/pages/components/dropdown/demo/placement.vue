@@ -1,9 +1,9 @@
 <docs lang="zh-CN">
-可以展示一个箭头。
+支持 6 个弹出位置。
 </docs>
 
 <docs lang="en-US">
-You could display an arrow.
+Support 6 placements.
 </docs>
 
 <script setup lang="ts">
@@ -34,7 +34,7 @@ const href: Record<string, string> = {
 <template>
   <a-space direction="vertical">
     <a-space wrap>
-      <a-dropdown :menu="{ items }" placement="bottomLeft" arrow>
+      <a-dropdown :menu="{ items }" placement="bottomLeft">
         <a-button>bottomLeft</a-button>
         <template #labelRender="item">
           <a
@@ -47,7 +47,7 @@ const href: Record<string, string> = {
           </a>
         </template>
       </a-dropdown>
-      <a-dropdown :menu="{ items }" placement="bottom" arrow>
+      <a-dropdown :menu="{ items }" placement="bottom">
         <a-button>bottom</a-button>
         <template #labelRender="item">
           <a
@@ -60,7 +60,7 @@ const href: Record<string, string> = {
           </a>
         </template>
       </a-dropdown>
-      <a-dropdown :menu="{ items }" placement="bottomRight" arrow>
+      <a-dropdown :menu="{ items }" placement="bottomRight">
         <a-button>bottomRight</a-button>
         <template #labelRender="item">
           <a
@@ -75,7 +75,7 @@ const href: Record<string, string> = {
       </a-dropdown>
     </a-space>
     <a-space wrap>
-      <a-dropdown :menu="{ items }" placement="topLeft" arrow>
+      <a-dropdown :menu="{ items }" placement="topLeft">
         <a-button>topLeft</a-button>
         <template #labelRender="item">
           <a
@@ -88,7 +88,7 @@ const href: Record<string, string> = {
           </a>
         </template>
       </a-dropdown>
-      <a-dropdown :menu="{ items }" placement="top" arrow>
+      <a-dropdown :menu="{ items }" placement="top">
         <a-button>top</a-button>
         <template #labelRender="item">
           <a
@@ -101,7 +101,7 @@ const href: Record<string, string> = {
           </a>
         </template>
       </a-dropdown>
-      <a-dropdown :menu="{ items }" placement="topRight" arrow>
+      <a-dropdown :menu="{ items }" placement="topRight">
         <a-button>topRight</a-button>
         <template #labelRender="item">
           <a

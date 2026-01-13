@@ -1,3 +1,11 @@
+<docs lang="zh-CN">
+设置 `arrow` 并指定 `pointAtCenter: true` 后，箭头将指向目标元素的中心。
+</docs>
+
+<docs lang="en-US">
+Set `arrow` with `pointAtCenter: true`, the arrow will point to the center of the target element.
+</docs>
+
 <script setup lang="ts">
 import type { MenuItemType } from 'antdv-next'
 

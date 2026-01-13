@@ -1,12 +1,25 @@
+<docs lang="zh-CN">
+左边是按钮，右边是额外的相关功能菜单。可设置 `icon` 属性来修改右边的图标。
+</docs>
+
+<docs lang="en-US">
+A button is on the left, and a related functional menu is on the right. You can set the icon property to modify the icon of right.
+</docs>
+
 <script setup lang="ts">
 import type { MenuItemType } from 'antdv-next'
 import { DownOutlined, EllipsisOutlined, UserOutlined } from '@antdv-next/icons'
+import { message } from 'antdv-next'
+
+const [messageApi, ContextHolder] = message.useMessage()
 
 function handleButtonClick(e: MouseEvent) {
+  messageApi.info('Click on left button.')
   console.log('click left button', e)
 }
 
 function handleMenuClick(e: any) {
+  messageApi.info('Click on menu item.')
   console.log('click', e)
 }
 
@@ -43,6 +56,7 @@ const menuProps = {
 </script>
 
 <template>
+  <ContextHolder />
   <a-space wrap>
     <a-space-compact>
       <a-button @click="handleButtonClick">

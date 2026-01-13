@@ -1,3 +1,11 @@
+<docs lang="zh-CN">
+带有快捷方式的下拉菜单。
+</docs>
+
+<docs lang="en-US">
+The dropdown menu with shortcut.
+</docs>
+
 <script setup lang="ts">
 import type { MenuItemType } from 'antdv-next'
 import { DownOutlined, SettingOutlined } from '@antdv-next/icons'
