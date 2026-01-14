@@ -84,10 +84,10 @@ function changeTheme(value: boolean) {
 </script>
 
 <template>
-  <a-switch @change="changeMode" />
+  <a-switch :checked="mode === 'vertical'" @change="changeMode" />
   Change Mode
   <a-divider type="vertical" />
-  <a-switch @change="changeTheme" />
+  <a-switch :checked="theme === 'dark'" @change="changeTheme" />
   Change Style
   <br>
   <br>

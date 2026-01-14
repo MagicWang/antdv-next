@@ -6,8 +6,6 @@ subtitle: 导航菜单
 description: 为页面和功能提供导航的菜单列表。
 cover: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*KeyQQL5iKkkAAAAAAAAAAAAADrJ8AQ/original
 coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*Vn4XSqJFAxcAAAAAAAAAAAAADrJ8AQ/original
-demo:
-  cols: 2
 ---
 
 <DocHeading></DocHeading>
