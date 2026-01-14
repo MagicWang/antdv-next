@@ -1,3 +1,11 @@
+<docs lang="zh-CN">
+设置颜色选择器的预设颜色。
+</docs>
+
+<docs lang="en-US">
+Set the presets color of the color picker.
+</docs>
+
 <script setup lang="ts">
 import { generate, green, presetPalettes, red } from '@ant-design/colors'
 import { theme } from 'antdv-next'

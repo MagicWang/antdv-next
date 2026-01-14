@@ -1,3 +1,11 @@
+<docs lang="zh-CN">
+禁用颜色透明度。
+</docs>
+
+<docs lang="en-US">
+Disabled color alpha.
+</docs>
+
 <script setup lang="ts">
 import { shallowRef } from 'vue'
 

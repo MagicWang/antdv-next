@@ -1,8 +1,16 @@
+<docs lang="zh-CN">
+自定义颜色面板的触发器。
+</docs>
+
+<docs lang="en-US">
+Triggers for customizing color panels.
+</docs>
+
 <script setup lang="ts">
 import type { ColorValueType } from 'antdv-next'
 import { computed, shallowRef } from 'vue'
 
-type Color = Extract<ColorValueType, 'string' | { cleared: any }> | string
+type Color = Extract<ColorValueType, string | { cleared: any }>
 
 const color = shallowRef<Color>('#1677ff')
 

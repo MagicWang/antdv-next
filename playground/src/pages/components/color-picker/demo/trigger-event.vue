@@ -1,9 +1,11 @@
-<script setup lang="ts">
-import { shallowRef } from 'vue'
+<docs lang="zh-CN">
+自定义颜色面板的触发事件，提供 `click` 和 `hover` 两个选项。
+</docs>
 
-const color = shallowRef('#1677ff')
-</script>
+<docs lang="en-US">
+Triggers event for customizing color panels, provide options `click` and `hover`.
+</docs>
 
 <template>
-  <a-color-picker v-model:value="color" trigger="hover" />
+  <a-color-picker default-value="#1677ff" trigger="hover" />
 </template>

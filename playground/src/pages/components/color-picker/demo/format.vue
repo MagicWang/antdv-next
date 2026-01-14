@@ -1,8 +1,16 @@
+<docs lang="zh-CN">
+编码格式，支持 `HEX`、`HSB`、`RGB`。
+</docs>
+
+<docs lang="en-US">
+Encoding formats, support `HEX`, `HSB`, `RGB`.
+</docs>
+
 <script setup lang="ts">
 import type { ColorPickerProps, ColorValueType } from 'antdv-next'
 import { computed, shallowRef } from 'vue'
 
-type Color = Extract<ColorValueType, 'string' | { cleared: any }> | string
+type Color = Extract<ColorValueType, string | { cleared: any }>
 
 type FormatType = ColorPickerProps['format']
 

@@ -1,3 +1,11 @@
+<docs lang="zh-CN">
+设置颜色选择器的预设渐变色。
+</docs>
+
+<docs lang="en-US">
+Set the presets gradient color of the color picker.
+</docs>
+
 <script setup lang="ts">
 const PRESET_COLORS = [
   ['rgb(42, 188, 191)', 'rgb(56, 54, 221)'],

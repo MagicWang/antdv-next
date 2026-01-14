@@ -1,27 +1,26 @@
-<script setup lang="ts">
-import { reactive } from 'vue'
+<docs lang="zh-CN">
+触发器有大、中、小三种尺寸。
 
-const colors = reactive({
-  small: '#1677ff',
-  middle: '#1677ff',
-  large: '#1677ff',
-  smallText: '#1677ff',
-  middleText: '#1677ff',
-  largeText: '#1677ff',
-})
-</script>
+通过设置 `size` 为 `large` `small` 分别把触发器设为大、小尺寸。若不设置 `size`，则尺寸默认为中。
+</docs>
+
+<docs lang="en-US">
+Ant Design supports three trigger sizes: small, default and large.
+
+If a large or small trigger is desired, set the `size` property to either `large` or `small` respectively. Omit the `size` property for a trigger with the default size.
+</docs>
 
 <template>
   <a-space>
     <a-space vertical>
-      <a-color-picker v-model:value="colors.small" size="small" />
-      <a-color-picker v-model:value="colors.middle" />
-      <a-color-picker v-model:value="colors.large" size="large" />
+      <a-color-picker default-value="#1677ff" size="small" />
+      <a-color-picker default-value="#1677ff" />
+      <a-color-picker default-value="#1677ff" size="large" />
     </a-space>
     <a-space vertical>
-      <a-color-picker v-model:value="colors.smallText" size="small" show-text />
-      <a-color-picker v-model:value="colors.middleText" show-text />
-      <a-color-picker v-model:value="colors.largeText" size="large" show-text />
+      <a-color-picker default-value="#1677ff" size="small" show-text />
+      <a-color-picker default-value="#1677ff" show-text />
+      <a-color-picker default-value="#1677ff" size="large" show-text />
     </a-space>
   </a-space>
 </template>

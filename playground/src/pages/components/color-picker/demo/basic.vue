@@ -1,9 +1,11 @@
-<script setup lang="ts">
-import { shallowRef } from 'vue'
+<docs lang="zh-CN">
+最简单的使用方法。
+</docs>
 
-const color = shallowRef('#1677ff')
-</script>
+<docs lang="en-US">
+Basic Usage.
+</docs>
 
 <template>
-  <a-color-picker v-model:value="color" />
+  <a-color-picker default-value="#1677ff" />
 </template>

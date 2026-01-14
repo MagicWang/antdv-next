@@ -1,3 +1,11 @@
+<docs lang="zh-CN">
+通过 `panelRender` 自由控制面板的渲染。
+</docs>
+
+<docs lang="en-US">
+Rendering of the free control panel via `panelRender`.
+</docs>
+
 <script setup lang="ts">
 import { cyan, generate, green, presetPalettes, red } from '@ant-design/colors'
 import { theme } from 'antdv-next'
