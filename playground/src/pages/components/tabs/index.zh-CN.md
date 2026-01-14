@@ -6,8 +6,6 @@ subtitle: 标签页
 description: 选项卡切换组件。
 cover: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*72NDQqXkyOEAAAAAAAAAAAAADrJ8AQ/original
 coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*8HMoTZUoSGoAAAAAAAAAAAAADrJ8AQ/original
-demo:
-  cols: 2
 ---
 
 <DocHeading></DocHeading>
