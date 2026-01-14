@@ -52,11 +52,16 @@ export const { genComponentStyleHook, genStyleHooks, genSubStyleComponent } = ge
   getCompUnitless: (() => unitless) as GetCompUnitless<ComponentTokenMap, AliasToken>,
 })
 
-export function genCssVar(antCls: string, componentAbbr: string) {
-  const cssPrefix = `--${antCls.replace('.', '')}-${componentAbbr}-`
+type CssVarName = (name: string) => `--${string}`
+type CssVarRef = (name: string, fallback?: string | number) => `var(--${string})`
 
-  return (name: string, withVar = false) => {
-    const raw = `${cssPrefix}${name}`
-    return withVar ? `var(${raw})` : raw
+export function genCssVar(antCls: string, component: string): readonly [varName: CssVarName, varRef: CssVarRef] {
+  const cssPrefix = `--${antCls.replace(/\./g, '')}-${component}-` satisfies `--${string}`
+  const varName: CssVarName = (name) => {
+    return `${cssPrefix}${name}`
   }
+  const varRef: CssVarRef = (name, fallback) => {
+    return fallback ? `var(${cssPrefix}${name}, ${fallback})` : `var(${cssPrefix}${name})`
+  }
+  return [varName, varRef] as const
 }
