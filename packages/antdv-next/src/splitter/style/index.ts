@@ -3,6 +3,7 @@ import type { CSSObject } from '@antdv-next/cssinjs'
 import type { FullToken, GenerateStyle, GetDefaultToken } from '../../theme/internal'
 import { resetComponent } from '../../style'
 import { genStyleHooks } from '../../theme/internal'
+import { genCssVar } from '../../theme/util/genStyleUtils'
 
 export interface ComponentToken {
   /**
@@ -83,17 +84,18 @@ const genSplitterStyle: GenerateStyle<SplitterToken> = (token: SplitterToken): C
     controlItemBgHover,
     controlItemBgActive,
     controlItemBgActiveHover,
-    prefixCls,
     colorPrimary,
+    antCls,
+    calc,
   } = token
 
   const splitBarCls = `${componentCls}-bar`
   const splitMaskCls = `${componentCls}-mask`
   const splitPanelCls = `${componentCls}-panel`
 
-  const halfTriggerSize = token.calc(splitTriggerSize).div(2).equal()
+  const [, varRef] = genCssVar(antCls, 'splitter')
 
-  const splitterBarPreviewOffsetVar = `${prefixCls}-bar-preview-offset`
+  const halfTriggerSize = calc(splitTriggerSize).div(2).equal()
 
   const splitterBarPreviewStyle: CSSObject = {
     position: 'absolute',
@@ -282,7 +284,7 @@ const genSplitterStyle: GenerateStyle<SplitterToken> = (token: SplitterToken): C
 
             [`&${splitBarCls}-preview-active`]: {
               display: 'block',
-              transform: `translateX(var(--${splitterBarPreviewOffsetVar}))`,
+              transform: `translate3d(${varRef('bar-preview-offset')}, 0, 0)`,
             },
           },
 
@@ -349,7 +351,7 @@ const genSplitterStyle: GenerateStyle<SplitterToken> = (token: SplitterToken): C
 
             [`&${splitBarCls}-preview-active`]: {
               display: 'block',
-              transform: `translateY(var(--${splitterBarPreviewOffsetVar}))`,
+              transform: `translate3d(0, ${varRef('bar-preview-offset')}, 0)`,
             },
           },
 

@@ -6,6 +6,12 @@
 Custom each Segmented Item.
 </docs>
 
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const spring = ref('spring')
+</script>
+
 <template>
   <a-segmented
     :options="[
@@ -47,6 +53,7 @@ Custom each Segmented Item.
   <br>
   <br>
   <a-segmented
+    v-model:value="spring"
     :options="[
       {
         value: 'spring',
@@ -61,7 +68,6 @@ Custom each Segmented Item.
         value: 'winter',
       },
     ]"
-    v-model:value="spring"
   >
     <template #labelRender="{ value }">
       <template v-if="value === 'spring'">
@@ -91,9 +97,3 @@ Custom each Segmented Item.
     </template>
   </a-segmented>
 </template>
-
-<script setup lang="ts">
-  import { ref } from 'vue';
-
-  const spring = ref('spring');
-</script>

@@ -50,6 +50,7 @@ catalog:
   '@v-c/rate': ^0.0.2
   '@v-c/resize-observer': ^1.0.2
   '@v-c/segmented': ^0.0.8
+  '@v-c/select': ^1.0.5
   '@v-c/slick': ^0.0.1
   '@v-c/slider': ^1.0.8
   '@v-c/steps': ^0.0.1
@@ -60,7 +61,6 @@ catalog:
   '@v-c/tooltip': ^1.0.1
   '@v-c/tour': ^1.0.1
   '@v-c/tree': ^0.0.2
-  "@v-c/select": ^1.0.5
   '@v-c/tree-select': ^0.0.1
   '@v-c/trigger': ^1.0.2
   '@v-c/upload': ^0.0.1

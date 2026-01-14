@@ -187,7 +187,6 @@ demo:
 | popup.list | 弹出层列表 | - |
 | popup.listItem | 弹出层列表项 | - |
 
-
 ## FAQ
 
 ### `mode="tags"` 模式下为何搜索有时会出现两个相同选项？ {#faq-tags-mode-duplicate}

@@ -4,6 +4,7 @@ import type { GenerateStyle } from '../../theme/interface'
 import type { SelectToken } from './token'
 import { unit } from '@antdv-next/cssinjs'
 import { resetComponent, textEllipsis } from '../../style'
+import { genCssVar } from '../../theme/util/genStyleUtils'
 import genSelectInputCustomizeStyle from './select-input-customize'
 import genSelectInputMultipleStyle from './select-input-multiple'
 
@@ -24,33 +25,36 @@ interface VariableColors {
 
 /** Set CSS variables and hover/focus styles for a Select input based on provided colors. */
 function genSelectInputVariableStyle(token: SelectToken, colors: VariableColors): CSSObject {
-  const { componentCls } = token
+  const { componentCls, antCls } = token
+
+  const [varName] = genCssVar(antCls, 'select')
+
   const { border, borderHover, borderActive, borderOutline } = colors
 
-  const baseBG = colors.background || token.colorBgContainer
+  const baseBG = colors.background || token.selectorBg || token.colorBgContainer
 
   return {
-    '--select-border-color': border,
-    '--select-background': baseBG,
-    '--select-color': colors.color || token.colorText,
+    [varName('border-color')]: border,
+    [varName('background-color')]: baseBG,
+    [varName('color')]: colors.color || token.colorText,
 
     [`&:not(${componentCls}-disabled)`]: {
       '&:hover': {
-        '--select-border-color': borderHover,
-        '--select-background': colors.backgroundHover || baseBG,
+        [varName('border-color')]: borderHover,
+        [varName('background-color')]: colors.backgroundHover || baseBG,
       },
 
       [`&${componentCls}-focused`]: {
-        '--select-border-color': borderActive,
-        '--select-background': colors.backgroundActive || baseBG,
+        [varName('border-color')]: borderActive,
+        [varName('background-color')]: colors.backgroundActive || baseBG,
 
-        'boxShadow': `0 0 0 ${unit(token.controlOutlineWidth)} ${borderOutline}`,
+        boxShadow: `0 0 0 ${unit(token.controlOutlineWidth)} ${borderOutline}`,
       },
     },
 
     [`&${componentCls}-disabled`]: {
-      '--select-border-color': colors.borderDisabled || colors.border,
-      '--select-background': colors.backgroundDisabled || colors.background,
+      [varName('border-color')]: colors.borderDisabled || colors.border,
+      [varName('background-color')]: colors.backgroundDisabled || colors.background,
     },
   }
 }
@@ -58,7 +62,6 @@ function genSelectInputVariableStyle(token: SelectToken, colors: VariableColors)
 /** Generate variant-scoped variable styles and status overrides for a Select input. */
 function genSelectInputVariantStyle(token: SelectToken, variant: string, colors: VariableColors, errorColors: Partial<VariableColors> = {}, warningColors: Partial<VariableColors> = {}, patchStyle?: CSSObject): CSSObject {
   const { componentCls } = token
-
   return {
     [`&${componentCls}-${variant}`]: [
       genSelectInputVariableStyle(token, colors),
@@ -80,61 +83,61 @@ function genSelectInputVariantStyle(token: SelectToken, variant: string, colors:
 }
 
 const genSelectInputStyle: GenerateStyle<SelectToken> = (token) => {
-  const { componentCls, calc, fontHeight, controlHeight, iconCls } = token
-
+  const { componentCls, fontHeight, controlHeight, antCls, calc } = token
+  const [varName, varRef] = genCssVar(antCls, 'select')
   return {
     [componentCls]: [
       {
         // Border
-        '--select-border-radius': token.borderRadius,
-        '--select-border-color': '#000',
-        '--select-border-size': token.lineWidth,
+        [varName('border-radius')]: token.borderRadius,
+        [varName('border-color')]: '#000',
+        [varName('border-size')]: token.lineWidth,
         // Background
-        '--select-background': token.colorBgContainer,
+        [varName('background-color')]: token.colorBgContainer,
         // Font
-        '--select-font-size': token.fontSize,
-        '--select-line-height': token.lineHeight,
-        '--select-font-height': fontHeight,
-        '--select-color': token.colorText,
+        [varName('font-size')]: token.fontSize,
+        [varName('line-height')]: token.lineHeight,
+        [varName('font-height')]: fontHeight,
+        [varName('color')]: token.colorText,
         // Size
-        '--select-height': controlHeight,
+        [varName('height')]: controlHeight,
 
-        '--select-padding-horizontal': calc(token.paddingSM).sub(token.lineWidth).equal(),
-        '--select-padding-vertical':
-          'calc((var(--select-height) - var(--select-font-height)) / 2 - var(--select-border-size))',
+        [varName('padding-horizontal')]: calc(token.paddingSM).sub(token.lineWidth).equal(),
+        [varName('padding-vertical')]:
+          `calc((${varRef('height')} - ${varRef('font-height')}) / 2 - ${varRef('border-size')})`,
 
         // ==========================================================
         // ==                         Base                         ==
         // ==========================================================
         ...resetComponent(token, true),
 
-        'display': 'inline-flex',
+        display: 'inline-flex',
         // gap: calc(token.paddingXXS).mul(1.5).equal(),
-        'flexWrap': 'nowrap',
-        'position': 'relative',
-        'transition': `all ${token.motionDurationSlow}`,
-        'alignItems': 'flex-start',
-        'outline': 0,
+        flexWrap: 'nowrap',
+        position: 'relative',
+        transition: `all ${token.motionDurationSlow}`,
+        alignItems: 'flex-start',
+        outline: 0,
 
-        'cursor': 'pointer',
+        cursor: 'pointer',
 
         // Border
-        'borderRadius': 'var(--select-border-radius)',
-        'borderWidth': 'var(--select-border-size)',
-        'borderStyle': token.lineType,
-        'borderColor': 'var(--select-border-color)',
+        borderRadius: varRef('border-radius'),
+        borderWidth: varRef('border-size'),
+        borderStyle: token.lineType,
+        borderColor: varRef('border-color'),
 
         // Background
-        'background': 'var(--select-background)',
+        background: varRef('background-color'),
 
         // Font
-        'fontSize': 'var(--select-font-size)',
-        'lineHeight': 'var(--select-line-height)',
-        'color': 'var(--select-color)',
+        fontSize: varRef('font-size'),
+        lineHeight: varRef('line-height'),
+        color: varRef('color'),
 
         // Padding
-        'paddingInline': 'var(--select-padding-horizontal)',
-        'paddingBlock': 'var(--select-padding-vertical)',
+        paddingInline: varRef('padding-horizontal'),
+        paddingBlock: varRef('padding-vertical'),
 
         // ========================= Prefix =========================
         [`${componentCls}-prefix`]: {
@@ -198,186 +201,170 @@ const genSelectInputStyle: GenerateStyle<SelectToken> = (token) => {
 
         [`${componentCls}-prefix, ${componentCls}-suffix`]: {
           alignSelf: 'center',
+        },
 
-          [iconCls]: {
-            verticalAlign: 'top',
+        // ========================= Search =========================
+        [`${componentCls}-search`]: {
+          flex: 'auto',
+
+          // >>> Icon
+          [`${componentCls}-suffix`]: {
+            pointerEvents: 'none',
           },
         },
 
-        // ==========================================================
-        // ==                       Disabled                       ==
-        // ==========================================================
-        '&-disabled': {
-          background: token.colorBgContainerDisabled,
-          color: token.colorTextDisabled,
+        // ========================= Clear ==========================
+        [`${componentCls}-clear`]: {
+          'position': 'absolute',
+          'top': '50%',
+          'insetInlineEnd': token.paddingXS,
+          'transform': 'translateY(-50%)',
+
+          'lineHeight': 0,
+          'fontSize': token.fontSizeIcon,
+          'color': token.colorTextQuaternary,
+          'background': varRef('background-color'),
+          'cursor': 'pointer',
+          'transition': `color ${token.motionDurationMid}`,
+
+          '&:hover': {
+            color: token.colorTextTertiary,
+          },
+        },
+
+        // ======================= Clear Hover ======================
+        [`&${componentCls}-allow-clear ${componentCls}-content`]: {
+          marginInlineEnd: token.fontSizeIcon + token.controlPaddingHorizontal,
+        },
+
+        // ====================== Arrow & Clear ======================
+        [`&${componentCls}-show-arrow`]: {
+          [`${componentCls}-suffix`]: {
+            cursor: 'pointer',
+          },
+        },
+
+        // ========================= Disabled ========================
+        [`&${componentCls}-disabled`]: {
           cursor: 'not-allowed',
-        },
-
-        // ==========================================================
-        // ==                         Size                         ==
-        // ==========================================================
-        '&-sm': {
-          '--select-height': token.controlHeightSM,
-          '--select-padding-horizontal': calc(token.paddingXS).sub(token.lineWidth).equal(),
-          '--select-border-radius': token.borderRadiusSM,
-        },
-
-        '&-lg': {
-          '--select-height': token.controlHeightLG,
-          '--select-font-size': token.fontSizeLG,
-          '--select-line-height': token.lineHeightLG,
-          '--select-font-height': token.fontHeightLG,
-          '--select-border-radius': token.borderRadiusLG,
-        },
-      },
-
-      // ============================================================
-      // ==                         Input                          ==
-      // ============================================================
-      {
-        [`&:not(${componentCls}-customize)`]: {
-          [`${componentCls}-input`]: {
-            'outline': 'none',
-            'background': 'transparent',
-            'appearance': 'none',
-            'border': 0,
-            'margin': 0,
-            'padding': 0,
-            'color': 'inherit',
-
-            '&::-webkit-search-cancel-button': {
-              display: 'none',
-              appearance: 'none',
-            },
+          [`${componentCls}-selection-item`]: {
+            userSelect: 'none',
           },
         },
       },
 
-      // ============================================================
-      // ==                         Single                         ==
-      // ============================================================
-      {
-        [`&-single:not(${componentCls}-customize)`]: {
-          [`${componentCls}-input`]: {
-            position: 'absolute',
-            insetInline: 0,
-            insetBlock: 'calc(var(--select-padding-vertical) * -1)',
-            lineHeight: 'calc(var(--select-font-height) + var(--select-padding-vertical) * 2)',
-          },
-
-          // Content center align
-          [`${componentCls}-content`]: {
-            alignSelf: 'center',
-          },
-        },
-      },
-
-      // ============================================================
-      // ==                        Multiple                        ==
-      // ============================================================
-      genSelectInputMultipleStyle(token),
-
-      // ========================= Variant ==========================
-      // >>> Outlined
-      genSelectInputVariantStyle(
-        token,
-        'outlined',
-        {
-          border: token.colorBorder,
-          borderHover: token.hoverBorderColor,
-          borderActive: token.activeBorderColor,
-          borderOutline: token.activeOutlineColor,
-          borderDisabled: token.colorBorderDisabled,
-        },
-        // Error
-        {
-          border: token.colorError,
-          borderHover: token.colorErrorHover,
-          borderActive: token.colorError,
-          borderOutline: token.colorErrorOutline,
-        },
-        // Warning
-        {
-          border: token.colorWarning,
-          borderHover: token.colorWarningHover,
-          borderActive: token.colorWarning,
-          borderOutline: token.colorWarningOutline,
-        },
-      ),
-
-      // >>> Filled
+      // ======================= Variants =======================
+      genSelectInputVariantStyle(token, 'outlined', {
+        border: token.colorBorder,
+        borderHover: token.hoverBorderColor,
+        borderActive: token.activeBorderColor,
+        borderOutline: token.activeOutlineColor,
+        borderDisabled: token.colorBorder,
+      }),
       genSelectInputVariantStyle(
         token,
         'filled',
         {
           border: 'transparent',
           borderHover: 'transparent',
-          borderActive: token.activeBorderColor,
-          borderOutline: 'transparent',
-          borderDisabled: token.colorBorderDisabled,
-
+          borderActive: 'transparent',
+          borderOutline: token.activeOutlineColor,
           background: token.colorFillTertiary,
           backgroundHover: token.colorFillSecondary,
-          backgroundActive: token.colorBgContainer,
+          backgroundActive: token.colorFillSecondary,
         },
-        // Error
         {
-          background: token.colorErrorBg,
-          backgroundHover: token.colorErrorBgHover,
           borderActive: token.colorError,
+          borderOutline: token.colorErrorOutline,
+          backgroundActive: token.colorErrorBg,
+          backgroundHover: token.colorErrorBg,
         },
-        // Warning
         {
-          background: token.colorWarningBg,
-          backgroundHover: token.colorWarningBgHover,
           borderActive: token.colorWarning,
+          borderOutline: token.colorWarningOutline,
+          backgroundActive: token.colorWarningBg,
+          backgroundHover: token.colorWarningBg,
+        },
+        {
+          [`&${componentCls}-disabled`]: {
+            [varName('background-color')]: token.colorFillTertiary,
+          },
         },
       ),
-
-      // >>> Borderless
       genSelectInputVariantStyle(token, 'borderless', {
         border: 'transparent',
         borderHover: 'transparent',
         borderActive: 'transparent',
         borderOutline: 'transparent',
-
         background: 'transparent',
+        backgroundHover: 'transparent',
+        backgroundActive: 'transparent',
+      }),
+      genSelectInputVariantStyle(token, 'underlined', {
+        border: 'transparent',
+        borderHover: 'transparent',
+        borderActive: 'transparent',
+        borderOutline: 'transparent',
+        background: 'transparent',
+        backgroundHover: 'transparent',
+        backgroundActive: 'transparent',
       }),
 
-      // Underlined
-      genSelectInputVariantStyle(
-        token,
-        'underlined',
-        {
-          border: token.colorBorder,
-          borderHover: token.hoverBorderColor,
-          borderActive: token.activeBorderColor,
-          borderOutline: 'transparent',
-        },
-        // Error
-        {
-          border: token.colorError,
-          borderHover: token.colorErrorHover,
-          borderActive: token.colorError,
-        },
-        // Warning
-        {
-          border: token.colorWarning,
-          borderHover: token.colorWarningHover,
-          borderActive: token.colorWarning,
-        },
-        {
-          borderRadius: 0,
-          borderTopColor: 'transparent',
-          borderRightColor: 'transparent',
-          borderLeftColor: 'transparent',
-        },
-      ),
+      // ====================== Multiple Input =======================
+      genSelectInputMultipleStyle(token),
 
-      // ============================================================
-      // ==                         Custom                         ==
-      // ============================================================
+      // ===================== Custom Input ======================
       genSelectInputCustomizeStyle(token),
+
+      // ========================= RTL ==========================
+      {
+        '&-rtl': {
+          direction: 'rtl',
+          [`${componentCls}-content`]: {
+            flexDirection: 'row-reverse',
+            marginInlineEnd: 0,
+            marginInlineStart: calc(token.paddingXXS).mul(1.5).equal(),
+          },
+        },
+      },
+
+      // ========================= Size ==========================
+      {
+        '&-sm': {
+          [varName('height')]: token.controlHeightSM,
+          [varName('padding-horizontal')]: calc(token.paddingXS).sub(token.lineWidth).equal(),
+          [varName('border-radius')]: token.borderRadiusSM,
+        },
+
+        '&-lg': {
+          [varName('height')]: token.controlHeightLG,
+          [varName('font-size')]: token.fontSizeLG,
+          [varName('line-height')]: token.lineHeightLG,
+          [varName('font-height')]: token.fontHeightLG,
+          [varName('border-radius')]: token.borderRadiusLG,
+        },
+      },
+
+      // ===================== Single Input =====================
+      {
+        [`&${componentCls}-single`]: {
+          [`${componentCls}-clear`]: {
+            insetBlock: `calc(${varRef('padding-vertical')} * -1)`,
+            lineHeight: `calc(${varRef('font-height')} + ${varRef('padding-vertical')} * 2)`,
+          },
+        },
+      },
+
+      // ======================== Selector =======================
+      {
+        [`${componentCls}-selector`]: {
+          flex: 'auto',
+          alignSelf: 'center',
+          display: 'inline-flex',
+          alignItems: 'center',
+          maxWidth: '100%',
+        },
+      },
     ],
   }
 }

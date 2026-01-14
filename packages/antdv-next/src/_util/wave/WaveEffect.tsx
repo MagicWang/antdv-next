@@ -4,6 +4,8 @@ import type { ShowWaveEffect, WaveComponent } from './interface'
 import { classNames } from '@v-c/util'
 import raf from '@v-c/util/dist/raf'
 import { computed, createVNode, defineComponent, nextTick, onBeforeUnmount, onMounted, ref, render, shallowRef, watch } from 'vue'
+import { useConfig } from '../../config-provider/context.ts'
+import { genCssVar } from '../../theme/util/genStyleUtils'
 import { TARGET_CLS } from './interface'
 import { getTargetWaveColor } from './util'
 
@@ -34,6 +36,9 @@ export const WaveEffect = defineComponent({
   },
   emits: ['finish'],
   setup(props, { emit }) {
+    const configCtx = useConfig()
+    const rootPrefixCls = computed(() => configCtx.value.getPrefixCls())
+    const waveVarName = computed(() => genCssVar(rootPrefixCls.value, 'wave')[0])
     const divRef = shallowRef<HTMLDivElement>()
     const waveColor = ref<string | null>(null)
     const borderRadius = ref<number[]>([0, 0, 0, 0])
@@ -53,7 +58,7 @@ export const WaveEffect = defineComponent({
         borderRadius: borderRadius.value.map(radius => `${radius}px`).join(' '),
       }
       if (waveColor.value) {
-        (style as any)['--wave-color'] = waveColor.value
+        style[waveVarName.value('color')] = waveColor.value
       }
       return style
     })

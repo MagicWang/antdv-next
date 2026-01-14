@@ -4,9 +4,12 @@ import type { CSSProperties } from 'vue'
 import { classNames } from '@v-c/util'
 import { isPresetColor } from '../_util/colors'
 import { generateColor } from '../color-picker/util'
+import { genCssVar } from '../theme/util/genStyleUtils'
 
-export function parseColor(prefixCls: string, color?: string) {
+export function parseColor(rootPrefixCls: string, prefixCls: string, color?: string) {
   const isInternalColor = isPresetColor(color)
+
+  const [varName] = genCssVar(rootPrefixCls, 'tooltip')
 
   const className = classNames({
     [`${prefixCls}-${color}`]: color && isInternalColor,
@@ -19,8 +22,8 @@ export function parseColor(prefixCls: string, color?: string) {
   const textColor = luminance < 0.5 ? '#FFF' : '#000'
   if (color && !isInternalColor) {
     overlayStyle.background = color
-    overlayStyle['--ant-tooltip-color'] = textColor
-    arrowStyle['--antd-arrow-background-color'] = color
+    overlayStyle[varName('overlay-color')] = textColor
+    arrowStyle[varName('arrow-background-color')] = color
   }
 
   return { className, overlayStyle, arrowStyle }

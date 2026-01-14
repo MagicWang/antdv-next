@@ -4,6 +4,7 @@ import { DownOutlined, LeftOutlined, RightOutlined, UpOutlined } from '@antdv-ne
 import { clsx } from '@v-c/util'
 import { computed, defineComponent, shallowRef, watch } from 'vue'
 import { getSlotPropsFnRun, toPropsRefs } from '../_util/tools.ts'
+import { genCssVar } from '../theme/util/genStyleUtils'
 
 export type ShowCollapsibleIconMode = boolean | 'auto'
 
@@ -13,6 +14,7 @@ export interface SplitBarProps {
   draggerStyle?: CSSProperties
   draggerClassName?: SplitterSemanticDraggerClassNames
   prefixCls: string
+  rootPrefixCls: string
   resizable: boolean
   startCollapsible: boolean
   endCollapsible: boolean
@@ -49,6 +51,7 @@ const SplitBar = defineComponent<SplitBarProps>(
       ariaMin,
       ariaMax,
       prefixCls,
+      rootPrefixCls,
       lazy,
     } = toPropsRefs(
       props,
@@ -60,10 +63,12 @@ const SplitBar = defineComponent<SplitBarProps>(
       'ariaMin',
       'ariaMax',
       'prefixCls',
+      'rootPrefixCls',
       'lazy',
     )
 
     const splitBarPrefixCls = computed(() => `${prefixCls.value}-bar`)
+    const barVarName = computed(() => genCssVar(rootPrefixCls.value, 'splitter')[0])
     // ======================== Resize ========================
     const startPos = shallowRef<[x: number, y: number]>()
     const constrainedOffset = shallowRef(0)
@@ -206,7 +211,7 @@ const SplitBar = defineComponent<SplitBarProps>(
         showEndCollapsibleIcon,
       } = props
       const transformStyle: Record<string, any> = {
-        [`--${splitBarPrefixCls.value}-preview-offset`]: `${constrainedOffset.value}px`,
+        [barVarName.value('bar-preview-offset')]: `${constrainedOffset.value}px`,
       }
 
       const propCollapsibleIconStart = collapsibleIcon?.start

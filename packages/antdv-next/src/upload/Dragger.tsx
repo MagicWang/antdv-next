@@ -1,4 +1,5 @@
 import type { SlotsType } from 'vue'
+import type { EmptyEmit } from '../_util/type.ts'
 import type { UploadProps, UploadSlots } from './interface'
 import type { UploadRef } from './Upload'
 import { computed, defineComponent, shallowRef } from 'vue'
@@ -9,7 +10,7 @@ export type DraggerProps<T = any> = UploadProps<T> & { height?: number }
 
 const Dragger = defineComponent<
   DraggerProps,
-  {},
+  EmptyEmit,
   string,
   SlotsType<UploadSlots>
 >(

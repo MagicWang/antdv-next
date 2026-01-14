@@ -3,6 +3,7 @@ import type { AliasToken, TokenWithCommonCls } from '../theme/internal'
 
 import type { ArrowToken } from './roundedArrow'
 import { unit } from '@antdv-next/cssinjs'
+import { genCssVar } from '../theme/util/genStyleUtils'
 import { genRoundedArrow } from './roundedArrow'
 
 export const MAX_VERTICAL_CONTENT_RADIUS = 8
@@ -46,7 +47,15 @@ export default function getArrowStyle<
     }
   },
 ): CSSInterpolation {
-  const { componentCls, boxShadowPopoverArrow, arrowOffsetVertical, arrowOffsetHorizontal } = token
+  const {
+    componentCls,
+    boxShadowPopoverArrow,
+    arrowOffsetVertical,
+    arrowOffsetHorizontal,
+    antCls,
+  } = token
+
+  const [varName] = genCssVar(antCls, 'tooltip')
 
   const {
     arrowDistance = 0,
@@ -97,7 +106,7 @@ export default function getArrowStyle<
         },
 
         '&-placement-topLeft': {
-          '--arrow-offset-horizontal': arrowOffsetHorizontal,
+          [varName('arrow-offset-horizontal')]: arrowOffsetHorizontal,
 
           [`> ${componentCls}-arrow`]: {
             left: {
@@ -108,7 +117,7 @@ export default function getArrowStyle<
         },
 
         '&-placement-topRight': {
-          '--arrow-offset-horizontal': `calc(100% - ${unit(arrowOffsetHorizontal)})`,
+          [varName('arrow-offset-horizontal')]: `calc(100% - ${unit(arrowOffsetHorizontal)})`,
 
           [`> ${componentCls}-arrow`]: {
             right: {
@@ -139,7 +148,7 @@ export default function getArrowStyle<
         },
 
         '&-placement-bottomLeft': {
-          '--arrow-offset-horizontal': arrowOffsetHorizontal,
+          [varName('arrow-offset-horizontal')]: arrowOffsetHorizontal,
 
           [`> ${componentCls}-arrow`]: {
             left: {
@@ -150,7 +159,7 @@ export default function getArrowStyle<
         },
 
         '&-placement-bottomRight': {
-          '--arrow-offset-horizontal': `calc(100% - ${unit(arrowOffsetHorizontal)})`,
+          [varName('arrow-offset-horizontal')]: `calc(100% - ${unit(arrowOffsetHorizontal)})`,
 
           [`> ${componentCls}-arrow`]: {
             right: {

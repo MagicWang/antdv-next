@@ -132,10 +132,9 @@ function useStyle() {
   const rawDerivative = computed<DerivativeToken>(() =>
     theme.getDerivativeToken(mergedToken.value),
   )
-
-  const tokenKey = computed(() => token2key(rawDerivative.value, cssVarConfig.value?.prefix ?? 'rc'))
-
   const cssVarConfig = computed(() => context.value.cssVar)
+  const tokenKey = computed(() => token2key(rawDerivative.value, cssVarConfig?.value?.prefix ?? 'rc'))
+
   const cssVarKey = computed(() => cssVarConfig.value?.key ?? '')
   const cssVarPrefix = computed(() => cssVarConfig.value?.prefix ?? 'rc')
 

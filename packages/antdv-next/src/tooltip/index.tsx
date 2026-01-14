@@ -133,8 +133,8 @@ const InternalTooltip = defineComponent<
   (props = defaults, { slots, attrs, expose, emit }) => {
     const [,token] = useToken()
     const {
-      getPrefixCls,
       prefixCls,
+      rootPrefixCls,
       direction,
       arrow: contextArrow,
       class: contextClassName,
@@ -206,8 +206,6 @@ const InternalTooltip = defineComponent<
       TooltipStylesType,
       TooltipProps
     >(useToArr(contextClassNames, classes), useToArr(contextStyles, styles), useToProps(mergedProps))
-    const rootPrefixCls = computed(() => getPrefixCls())
-
     const injectFromPopover = props.dataPopoverInject
 
     // Style
@@ -245,7 +243,7 @@ const InternalTooltip = defineComponent<
       const childCls = !childProps?.class || typeof childProps?.class === 'string' ? clsx(childProps.class, openClass || `${prefixCls.value}-open`) : childProps.class
 
       // Color
-      const colorInfo = parseColor(prefixCls.value, color)
+      const colorInfo = parseColor(rootPrefixCls.value, prefixCls.value, color)
       const arrowContentStyle = colorInfo.arrowStyle
       const themeCls = clsx(rootCls.value, hashId.value, cssVarCls.value)
       const rootClassNames = clsx(

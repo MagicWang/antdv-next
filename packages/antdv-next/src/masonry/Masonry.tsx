@@ -19,6 +19,7 @@ import { useComponentBaseConfig } from '../config-provider/context'
 import useCSSVarCls from '../config-provider/hooks/useCSSVarCls'
 import useBreakpoint from '../grid/hooks/useBreakpoint'
 import useGutter from '../grid/hooks/useGutter'
+import { genCssVar } from '../theme/util/genStyleUtils'
 import useDelay from './hooks/useDelay'
 import usePositions from './hooks/usePositions'
 import useRefs from './hooks/useRefs'
@@ -87,11 +88,13 @@ const Masonry = defineComponent<
       classes: contextClassNames,
       styles: contextStyles,
       prefixCls,
+      rootPrefixCls,
     } = useComponentBaseConfig('masonry', props)
     const { classes, styles, gutter, columns } = toPropsRefs(props, 'classes', 'styles', 'gutter', 'columns')
 
     const rootCls = useCSSVarCls(prefixCls)
     const [hashId, cssVarCls] = useStyle(prefixCls, rootCls)
+    const [varName, varRef] = genCssVar(rootPrefixCls.value, 'masonry')
     // ======================= Refs =======================
     const containerRef = shallowRef<HTMLDivElement>()
     expose({
@@ -283,11 +286,11 @@ const Masonry = defineComponent<
                 const columnIndex = position?.column ?? 0
                 const widthVar = `calc((100% + ${horizontalGutter.value}px) / ${columnCount.value})`
                 const itemStyle: CSSProperties = {
-                  '--item-width': widthVar,
-                  'insetInlineStart': `calc(var(--item-width) * ${columnIndex})`,
-                  'width': `calc(var(--item-width) - ${horizontalGutter.value}px)`,
-                  'top': `${position?.top}px`,
-                  'position': 'absolute',
+                  [varName('item-width')]: widthVar,
+                  insetInlineStart: `calc(${varRef('item-width')} * ${columnIndex})`,
+                  width: `calc(${varRef('item-width')} - ${horizontalGutter.value}px)`,
+                  top: `${position?.top}px`,
+                  position: 'absolute',
                 }
 
                 return (

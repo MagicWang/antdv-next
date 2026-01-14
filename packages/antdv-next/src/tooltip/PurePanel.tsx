@@ -19,8 +19,8 @@ const defaults = {
 /** @private Internal Component. Do not use in your production. */
 const PurePanel = defineComponent<PurePanelProps>(
   (props = defaults, { attrs }) => {
-    const { prefixCls, getPrefixCls } = useComponentBaseConfig('tooltip', props)
-    const rootCls = computed(() => getPrefixCls())
+    const { prefixCls, rootPrefixCls } = useComponentBaseConfig('tooltip', props)
+    const rootCls = rootPrefixCls
     const { placement, classes, styles } = toPropsRefs(props, 'placement', 'classes', 'styles')
     const [hashId, cssVarCls] = useStyle(prefixCls, rootCls)
 
@@ -28,7 +28,7 @@ const PurePanel = defineComponent<PurePanelProps>(
       ...props,
       placement: placement.value,
     }))
-    const colorInfo = computed(() => parseColor(prefixCls.value, props.color))
+    const colorInfo = computed(() => parseColor(rootPrefixCls.value, prefixCls.value, props.color))
 
     const innerStyles = computed(() => ({
       container: colorInfo.value.overlayStyle,

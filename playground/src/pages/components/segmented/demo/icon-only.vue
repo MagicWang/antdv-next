@@ -7,17 +7,17 @@ Set icon without label for Segmented Item.
 </docs>
 
 <script setup lang="ts">
-  import { AppstoreOutlined, BarsOutlined } from '@antdv-next/icons'
-  import { h } from 'vue'
+import { AppstoreOutlined, BarsOutlined } from '@antdv-next/icons'
+import { h } from 'vue'
 
-  const options = [
-    { value: 'List', icon: h(BarsOutlined) },
-    { value: 'Kanban', icon: h(AppstoreOutlined) },
-  ]
-  const options2 = [
-    { value: 'List' },
-    { value: 'Kanban' },
-  ]
+const options = [
+  { value: 'List', icon: h(BarsOutlined) },
+  { value: 'Kanban', icon: h(AppstoreOutlined) },
+]
+const options2 = [
+  { value: 'List' },
+  { value: 'Kanban' },
+]
 </script>
 
 <template>

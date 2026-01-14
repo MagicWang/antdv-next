@@ -34,6 +34,7 @@ const Splitter = defineComponent<
   (props, { slots, emit, attrs }) => {
     const {
       prefixCls,
+      rootPrefixCls,
       direction,
       class: contextClassName,
       style: contextStyle,
@@ -232,6 +233,7 @@ const Splitter = defineComponent<
                     index={idx}
                     active={movingIndex.value === idx}
                     prefixCls={prefixCls.value}
+                    rootPrefixCls={rootPrefixCls.value}
                     vertical={isVertical.value}
                     resizable={resizableInfo.resizable}
                     draggerStyle={mergedStyles.value.dragger}

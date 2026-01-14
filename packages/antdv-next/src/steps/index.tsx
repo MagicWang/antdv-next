@@ -15,6 +15,7 @@ import { TARGET_CLS } from '../_util/wave/interface'
 import { useComponentBaseConfig } from '../config-provider/context'
 import { useSize } from '../config-provider/hooks/useSize'
 import useBreakpoint from '../grid/hooks/useBreakpoint'
+import { genCssVar } from '../theme/util/genStyleUtils'
 import Tooltip from '../tooltip'
 import { useInternalContext } from './context'
 import PanelArrow from './PanelArrow'
@@ -150,6 +151,7 @@ const Steps = defineComponent<
       classes: contextClassNames,
       styles: contextStyles,
       prefixCls,
+      rootPrefixCls,
     } = useComponentBaseConfig('steps', props)
     const { size, items, responsive, type, classes, styles } = toPropsRefs(props, 'size', 'items', 'responsive', 'type', 'classes', 'styles')
     const components = computed(() => {
@@ -161,6 +163,7 @@ const Steps = defineComponent<
 
     const itemIconCls = computed(() => `${prefixCls.value}-item-icon`)
     const [hashId, cssVarCls] = useStyle(prefixCls)
+    const [varName] = genCssVar(rootPrefixCls.value, 'cmp-steps')
     // ============================= Size =============================
     const mergedSize = useSize(size)
 
@@ -287,7 +290,11 @@ const Steps = defineComponent<
               let numNode = <span class={`${itemIconCls.value}-number`}>{info.index + 1}</span>
               if (status === 'process' && mergedPercent.value !== undefined) {
                 numNode = (
-                  <ProgressIcon prefixCls={prefixCls.value} percent={mergedPercent.value}>
+                  <ProgressIcon
+                    prefixCls={prefixCls.value}
+                    rootPrefixCls={rootPrefixCls.value}
+                    percent={mergedPercent.value}
+                  >
                     {numNode}
                   </ProgressIcon>
                 )
@@ -361,7 +368,7 @@ const Steps = defineComponent<
 
       // ============================ Styles ============================
       const mergedStyle = {
-        '--steps-items-offset': offset,
+        [varName('items-offset')]: `${offset}`,
         ...contextStyle.value,
         ...style,
       }

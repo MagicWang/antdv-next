@@ -25,7 +25,7 @@ const imgStyle: CSSProperties = {
         alt="avatar"
         src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
         :style="imgStyle"
-      ></img>
+      >
       <a-flex vertical align="flex-end" justify="space-between" :style="{ padding: '32px' }">
         <a-typography>
           <a-typography-title :level="3">
