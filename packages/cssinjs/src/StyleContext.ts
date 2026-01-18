@@ -1,6 +1,5 @@
 import type { App, InjectionKey, Ref } from 'vue'
 import type { Linter } from './linters'
-import defu from 'defu'
 import { computed, defineComponent, inject, markRaw, provide, ref } from 'vue'
 
 /**
@@ -9,6 +8,7 @@ import { computed, defineComponent, inject, markRaw, provide, ref } from 'vue'
  */
 
 import CacheEntity from './Cache'
+import { AUTO_PREFIX } from './transformers/autoPrefix.ts'
 
 export const ATTR_TOKEN = 'data-token-hash'
 export const ATTR_MARK = 'data-css-hash'
@@ -115,7 +115,30 @@ export const StyleProvider = defineComponent<Partial<StyleContextProps>>(
   (props, { slots }) => {
     const parentContext = useStyleContext()
     const context = computed(() => {
-      return defu(props, parentContext.value || defaultStyleContext) as StyleContextProps
+      const restProps = props
+      const mergedContext: StyleContextProps = {
+        ...parentContext.value,
+      };
+
+      (
+        Object.keys(restProps) as (keyof Omit<StyleProviderProps, 'children'>)[]
+      ).forEach((key) => {
+        const value = restProps[key]
+        if (restProps[key] !== undefined) {
+          (mergedContext as any)[key] = value
+        }
+      })
+
+      const { cache, transformers = [] } = restProps
+      mergedContext.cache = mergedContext.cache || createCache()
+      mergedContext.defaultCache = !cache && parentContext.value?.defaultCache
+
+      // autoPrefix
+      if (transformers.includes(AUTO_PREFIX)) {
+        mergedContext.autoPrefix = true
+      }
+
+      return mergedContext
     })
     useStyleContextProvide(context)
     return () => {

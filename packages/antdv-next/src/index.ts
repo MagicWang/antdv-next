@@ -1,5 +1,6 @@
 import type { App, Plugin } from 'vue'
 import type { SizeType } from './config-provider/SizeContext'
+import { StyleProvider } from '@antdv-next/cssinjs'
 import * as components from './components'
 import version from './version'
 
@@ -21,6 +22,7 @@ export default {
         app.use(component)
       }
     })
+    app.component('AStyleProvider', StyleProvider)
   },
   version,
 } as Plugin
@@ -30,5 +32,6 @@ export { useBreakpoint } from './grid'
 export { default as theme } from './theme'
 
 export {
+  StyleProvider,
   version,
 }

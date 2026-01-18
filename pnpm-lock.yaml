@@ -130,8 +130,8 @@ catalogs:
       specifier: ^0.0.1
       version: 0.0.1
     '@v-c/picker':
-      specifier: ^0.0.6
-      version: 0.0.6
+      specifier: ^0.0.7
+      version: 0.0.7
     '@v-c/progress':
       specifier: ^0.0.2
       version: 0.0.2
@@ -344,7 +344,7 @@ catalogs:
       version: 3.1.8
 
 overrides:
-  '@v-c/resize-observer': ^1.0.6
+  '@v-c/resize-observer': ^1.0.7
   '@v-c/trigger': ^1.0.5
   '@v-c/util': ^1.0.8
   vite: ^8.0.0-beta.5
@@ -376,8 +376,8 @@ importers:
         specifier: 'catalog:'
         version: 24.10.4
       '@v-c/resize-observer':
-        specifier: ^1.0.6
-        version: 1.0.6(vue@3.5.25(typescript@5.9.3))
+        specifier: ^1.0.7
+        version: 1.0.7(vue@3.5.25(typescript@5.9.3))
       '@v-c/trigger':
         specifier: ^1.0.5
         version: 1.0.5(vue@3.5.25(typescript@5.9.3))
@@ -515,7 +515,7 @@ importers:
         version: 0.0.1(vue@3.5.25(typescript@5.9.3))
       '@v-c/picker':
         specifier: 'catalog:'
-        version: 0.0.6(dayjs@1.11.19)(vue@3.5.25(typescript@5.9.3))
+        version: 0.0.7(dayjs@1.11.19)(vue@3.5.25(typescript@5.9.3))
       '@v-c/progress':
         specifier: 'catalog:'
         version: 0.0.2(vue@3.5.25(typescript@5.9.3))
@@ -526,8 +526,8 @@ importers:
         specifier: 'catalog:'
         version: 0.0.2(vue@3.5.25(typescript@5.9.3))
       '@v-c/resize-observer':
-        specifier: ^1.0.6
-        version: 1.0.6(vue@3.5.25(typescript@5.9.3))
+        specifier: ^1.0.7
+        version: 1.0.7(vue@3.5.25(typescript@5.9.3))
       '@v-c/segmented':
         specifier: 'catalog:'
         version: 0.0.8(vue@3.5.25(typescript@5.9.3))
@@ -2265,8 +2265,8 @@ packages:
     peerDependencies:
       vue: ^3.0.0
 
-  '@v-c/picker@0.0.6':
-    resolution: {integrity: sha512-gSLmNdS+iV5V65dXh0A/ZNKcFxE4rcvPhq/Wet5YFhs8MSJPMj45m3n7Jie4adifa7edoAJoJbm26iUtVIWUqQ==}
+  '@v-c/picker@0.0.7':
+    resolution: {integrity: sha512-o5DOGaTS20mwhWDz88pocUrtZ6LDIk/+RhN1r17ji5I5a3rSyQiqwxLK1qh236ctsBv1MTS/ZydDSY2nJ2Ai2A==}
     peerDependencies:
       date-fns: '>= 2.x'
       dayjs: '>= 1.x'
@@ -2313,8 +2313,8 @@ packages:
     peerDependencies:
       vue: ^3.0.0
 
-  '@v-c/resize-observer@1.0.6':
-    resolution: {integrity: sha512-v/RU8mRrbvg/+PGhejC6f5+Y6VX10zxmrFs7NWX3zRqS/drS5at2fMb+rmpKnRv8YeDkxn5jHC0Bb2w13zW/jg==}
+  '@v-c/resize-observer@1.0.7':
+    resolution: {integrity: sha512-R1ylj+KUCQ7KWWYwyca5yuhFK2tp1lFYaxbzAU8Df7RvIA6EqE6/zT/p0uCkG6kE1DwKhbv8oDvSEi8Uf2zwGA==}
     peerDependencies:
       vue: ^3.0.0
 
@@ -7051,7 +7051,7 @@ snapshots:
 
   '@v-c/mutate-observer@0.0.2(vue@3.5.25(typescript@5.9.3))':
     dependencies:
-      '@v-c/resize-observer': 1.0.6(vue@3.5.25(typescript@5.9.3))
+      '@v-c/resize-observer': 1.0.7(vue@3.5.25(typescript@5.9.3))
       '@v-c/util': 1.0.8(vue@3.5.25(typescript@5.9.3))
       vue: 3.5.25(typescript@5.9.3)
 
@@ -7062,7 +7062,7 @@ snapshots:
 
   '@v-c/overflow@1.0.1(vue@3.5.25(typescript@5.9.3))':
     dependencies:
-      '@v-c/resize-observer': 1.0.6(vue@3.5.25(typescript@5.9.3))
+      '@v-c/resize-observer': 1.0.7(vue@3.5.25(typescript@5.9.3))
       '@v-c/util': 1.0.8(vue@3.5.25(typescript@5.9.3))
       vue: 3.5.25(typescript@5.9.3)
 
@@ -7071,10 +7071,10 @@ snapshots:
       '@v-c/util': 1.0.8(vue@3.5.25(typescript@5.9.3))
       vue: 3.5.25(typescript@5.9.3)
 
-  '@v-c/picker@0.0.6(dayjs@1.11.19)(vue@3.5.25(typescript@5.9.3))':
+  '@v-c/picker@0.0.7(dayjs@1.11.19)(vue@3.5.25(typescript@5.9.3))':
     dependencies:
       '@v-c/overflow': 1.0.1(vue@3.5.25(typescript@5.9.3))
-      '@v-c/resize-observer': 1.0.6(vue@3.5.25(typescript@5.9.3))
+      '@v-c/resize-observer': 1.0.7(vue@3.5.25(typescript@5.9.3))
       '@v-c/trigger': 1.0.5(vue@3.5.25(typescript@5.9.3))
       '@v-c/util': 1.0.8(vue@3.5.25(typescript@5.9.3))
       vue: 3.5.25(typescript@5.9.3)
@@ -7111,7 +7111,7 @@ snapshots:
       '@v-c/util': 1.0.8(vue@3.5.25(typescript@5.9.3))
       vue: 3.5.25(typescript@5.9.3)
 
-  '@v-c/resize-observer@1.0.6(vue@3.5.25(typescript@5.9.3))':
+  '@v-c/resize-observer@1.0.7(vue@3.5.25(typescript@5.9.3))':
     dependencies:
       '@v-c/util': 1.0.8(vue@3.5.25(typescript@5.9.3))
       resize-observer-polyfill: 1.5.1
@@ -7167,7 +7167,7 @@ snapshots:
 
   '@v-c/table@0.0.3(vue@3.5.25(typescript@5.9.3))':
     dependencies:
-      '@v-c/resize-observer': 1.0.6(vue@3.5.25(typescript@5.9.3))
+      '@v-c/resize-observer': 1.0.7(vue@3.5.25(typescript@5.9.3))
       '@v-c/util': 1.0.8(vue@3.5.25(typescript@5.9.3))
       '@v-c/virtual-list': 1.0.5(vue@3.5.25(typescript@5.9.3))
       vue: 3.5.25(typescript@5.9.3)
@@ -7177,14 +7177,14 @@ snapshots:
       '@v-c/dropdown': 1.0.1(vue@3.5.25(typescript@5.9.3))
       '@v-c/menu': 1.0.5(vue@3.5.25(typescript@5.9.3))
       '@v-c/overflow': 1.0.1(vue@3.5.25(typescript@5.9.3))
-      '@v-c/resize-observer': 1.0.6(vue@3.5.25(typescript@5.9.3))
+      '@v-c/resize-observer': 1.0.7(vue@3.5.25(typescript@5.9.3))
       '@v-c/util': 1.0.8(vue@3.5.25(typescript@5.9.3))
       vue: 3.5.25(typescript@5.9.3)
 
   '@v-c/textarea@1.0.1(vue@3.5.25(typescript@5.9.3))':
     dependencies:
       '@v-c/input': 1.0.1(vue@3.5.25(typescript@5.9.3))
-      '@v-c/resize-observer': 1.0.6(vue@3.5.25(typescript@5.9.3))
+      '@v-c/resize-observer': 1.0.7(vue@3.5.25(typescript@5.9.3))
       '@v-c/util': 1.0.8(vue@3.5.25(typescript@5.9.3))
       vue: 3.5.25(typescript@5.9.3)
 
@@ -7223,7 +7223,7 @@ snapshots:
   '@v-c/trigger@1.0.5(vue@3.5.25(typescript@5.9.3))':
     dependencies:
       '@v-c/portal': 1.0.4(vue@3.5.25(typescript@5.9.3))
-      '@v-c/resize-observer': 1.0.6(vue@3.5.25(typescript@5.9.3))
+      '@v-c/resize-observer': 1.0.7(vue@3.5.25(typescript@5.9.3))
       '@v-c/util': 1.0.8(vue@3.5.25(typescript@5.9.3))
       vue: 3.5.25(typescript@5.9.3)
 
@@ -7238,7 +7238,7 @@ snapshots:
 
   '@v-c/virtual-list@1.0.5(vue@3.5.25(typescript@5.9.3))':
     dependencies:
-      '@v-c/resize-observer': 1.0.6(vue@3.5.25(typescript@5.9.3))
+      '@v-c/resize-observer': 1.0.7(vue@3.5.25(typescript@5.9.3))
       '@v-c/util': 1.0.8(vue@3.5.25(typescript@5.9.3))
       vue: 3.5.25(typescript@5.9.3)
 

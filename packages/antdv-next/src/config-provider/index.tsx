@@ -19,6 +19,10 @@ import useStyle from './style'
 
 export type { CSPConfig } from './context'
 
+export type {
+  ConfigProviderProps,
+}
+
 interface ProviderChildrenProps extends ConfigProviderProps {
   parentContext: ConfigConsumerProps
   legacyLocale?: Locale

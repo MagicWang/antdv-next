@@ -25,9 +25,11 @@ watch(
 </script>
 
 <template>
-  <a-config-provider :locale="antdLocale">
-    <a-app>
-      <slot />
-    </a-app>
-  </a-config-provider>
+  <a-style-provider>
+    <a-config-provider :locale="antdLocale">
+      <a-app>
+        <slot />
+      </a-app>
+    </a-config-provider>
+  </a-style-provider>
 </template>
