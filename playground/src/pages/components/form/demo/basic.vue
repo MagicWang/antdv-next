@@ -1,11 +1,19 @@
+<docs lang="zh-CN">
+基础表单用法。
+</docs>
+
+<docs lang="en-US">
+Basic form usage.
+</docs>
+
 <script setup lang="ts">
 import type { FormInstance } from 'antdv-next'
 import { reactive, shallowRef } from 'vue'
 
 const model = reactive({
-  username: '11',
+  username: '',
   password: '',
-  remember: false,
+  remember: true,
 })
 function handleFinished(values: any) {
   console.log('Success:', values)
@@ -17,12 +25,6 @@ const formRef = shallowRef<FormInstance>()
 </script>
 
 <template>
-  <a-button @click="formRef?.resetFields?.()">
-    重置表单
-  </a-button>
-  <a-button @click="formRef?.clearValidate?.()">
-    清空校验
-  </a-button>
   <a-form
     ref="formRef"
     :model="model"
@@ -33,13 +35,15 @@ const formRef = shallowRef<FormInstance>()
     @finish-failed="handleFinishFailed"
   >
     <a-form-item name="username" label="Username" :rules="[{ required: true, message: 'Please input your username!' }]">
-      <input v-model="model.username">
+      <a-input v-model:value="model.username" />
     </a-form-item>
     <a-form-item name="password" label="Password" :rules="[{ required: true, message: 'Please input your password!' }]">
-      <input v-model="model.password" type="password">
+      <a-input-password v-model:value="model.password" />
     </a-form-item>
     <a-form-item name="remember" :label="null">
-      <input v-model="model.remember" type="checkbox"> Remember me!
+      <a-checkbox v-model:checked="model.remember">
+        Remember me!
+      </a-checkbox>
     </a-form-item>
     <a-form-item :label="null">
       <a-button type="primary" html-type="submit">
