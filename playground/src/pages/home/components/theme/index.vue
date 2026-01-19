@@ -28,7 +28,7 @@ function generateColor(color: string | { h: number, s: number, b: number }): Agg
 const locales = {
   'zh-CN': {
     themeTitle: '定制主题，随心所欲',
-    themeDesc: 'Ant Design 开放更多样式算法，让你定制主题更简单',
+    themeDesc: 'Antdv Next 开放更多样式算法，让你定制主题更简单',
     customizeTheme: '定制主题',
     myTheme: '我的主题',
     titlePrimaryColor: '主色',
@@ -44,7 +44,7 @@ const locales = {
   },
   'en-US': {
     themeTitle: 'Flexible theme customization',
-    themeDesc: 'Ant Design enable extendable algorithm, make custom theme easier',
+    themeDesc: 'Antdv Next enable extendable algorithm, make custom theme easier',
     customizeTheme: 'Customize Theme',
     myTheme: 'My Theme',
     titlePrimaryColor: 'Primary Color',

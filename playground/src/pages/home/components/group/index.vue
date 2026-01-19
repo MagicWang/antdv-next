@@ -26,7 +26,7 @@ const { token } = theme.useToken()
     <!-- Main content wrapper -->
     <div
       class="antdv-home-group-mask-layer"
-      :style="{ paddingBlock: `${token?.marginSM || 80}px` }"
+      :style="{ paddingBlock: `80px` }"
     >
       <!-- Typography wrapper -->
       <div class="antdv-home-group-typography-wrapper text-center">
@@ -44,7 +44,7 @@ const { token } = theme.useToken()
         <a-typography-paragraph
           :style="{
             color: titleColor,
-            marginBottom: `${token?.marginXS || 48}px`,
+            marginBottom: `48px`,
           }"
         >
           {{ description }}
