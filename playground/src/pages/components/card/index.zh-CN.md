@@ -32,11 +32,11 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*5WDvQp_H7LUAAA
 
 ## API
 
-### 属性 {#property}
-
 通用属性参考：[通用属性](/docs/vue/common-props)
 
-#### Card
+### Card
+
+#### 属性 {#card-props}
 
 | 属性 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
@@ -59,34 +59,16 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*5WDvQp_H7LUAAA
 | tabProps | [Tabs](/components/tabs-cn#tabs) | Record&lt;string, any&gt; | - | - |
 | classes | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | CardClassNamesType | - | - |
 | styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | CardStylesType | - | - |
-| variant | 形态变体 | 'borderless' \| 'outlined' | `outlined` | 5.24.0 |
+| variant | 形态变体 | 'borderless' \| 'outlined' | `outlined` | - |
 
-#### CardGrid
-
-| 属性 | 说明 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | --- | --- |
-| prefixCls | - | string | - | - |
-| hoverable | 鼠标移过时可浮起 | boolean | false | - |
-
-#### CardMeta
-
-| 属性 | 说明 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | --- | --- |
-| prefixCls | - | string | - | - |
-| avatar | - | VueNode | - | - |
-| title | 卡片标题 | VueNode | - | - |
-| description | - | VueNode | - | - |
-| classes | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | CardMetaClassNamesType | - | - |
-| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | CardMetaStylesType | - | - |
-
-### 事件 {#events}
+### 事件 {#card-events}
 
 | 事件 | 说明 | 类型 | 版本 |
 | --- | --- | --- | --- |
 | tabChange | 页签切换的回调 | (key: string) =&gt; void | - |
 | update:activeTabKey | - | (key: string) =&gt; void | - |
 
-### 插槽 {#slots}
+### 插槽 {#card-slots}
 
 | 插槽 | 说明 | 类型 | 版本 |
 | --- | --- | --- | --- |
@@ -97,3 +79,33 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*5WDvQp_H7LUAAA
 | tabContentRender | - | TabsSlots['contentRender'] | - |
 | tabLabelRender | - | TabsSlots['labelRender'] | - |
 | tabBarExtraContent | tab bar 上额外的元素 | () =&gt; any | - |
+
+### CardGrid
+
+#### Props {#card-grid-props}
+
+| 属性 | 说明 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | --- | --- |
+| prefixCls | - | string | - | - |
+| hoverable | 鼠标移过时可浮起 | boolean | false | - |
+
+### CardMeta
+
+#### Props {#card-meta-props}
+
+| 属性 | 说明 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | --- | --- |
+| prefixCls | - | string | - | - |
+| avatar | - | VueNode | - | - |
+| title | 卡片标题 | VueNode | - | - |
+| description | - | VueNode | - | - |
+| classes | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | CardMetaClassNamesType | - | - |
+| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | CardMetaStylesType | - | - |
+
+#### Slots {#card-meta-slots}
+
+| 插槽 | 说明 | 类型 | 版本 |
+| --- | --- | --- | --- |
+| avatar | 头像 | () =&gt; any | - |
+| title | 标题 | () =&gt; any | - |
+| description | 描述 | () =&gt; any | - |

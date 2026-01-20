@@ -55,7 +55,7 @@ group:
 
 ## API
 
-### 属性 {#property}
+### 属性 {#props}
 
 通用属性参考：[通用属性](/docs/vue/common-props)
 
@@ -93,6 +93,8 @@ group:
 | --- | --- |----| --- |
 | `icon` | 设置按钮的图标组件 | - | - |
 | `loadingIcon` | 设置按钮载入的图标组件 | - | - |
+
+## 类型
 
 ### PresetColors
 

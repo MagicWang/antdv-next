@@ -18,7 +18,7 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*-p-wQLik200AAA
 
 ## API
 
-### Property {#property}
+### Props
 
 Common props ref：[Common props](/docs/vue/common-props)
 
@@ -35,25 +35,25 @@ Common props ref：[Common props](/docs/vue/common-props)
 | dateCellRender | Deprecated. | (date: DateType) =&gt; VueNode | - | - |
 | monthFullCellRender | Deprecated. | (date: DateType) =&gt; VueNode | - | - |
 | monthCellRender | Deprecated. | (date: DateType) =&gt; VueNode | - | - |
-| cellRender | Customize cell content | (date: DateType, info: any) =&gt; VueNode | - | 5.4.0 |
-| fullCellRender | Customize cell content | (date: DateType, info: any) =&gt; VueNode | - | 5.4.0 |
+| cellRender | Customize cell content | (date: DateType, info: any) =&gt; VueNode | - | - |
+| fullCellRender | Customize cell content | (date: DateType, info: any) =&gt; VueNode | - | - |
 | headerRender | Render custom header in panel | HeaderRender&lt;DateType&gt; | - | - |
 | value | The current selected date | DateType | - | - |
 | defaultValue | The date selected by default | DateType | - | - |
 | mode | The display mode of the calendar | CalendarMode | `month` | - |
 | fullscreen | Whether to display in full-screen | boolean | true | - |
-| showWeek | Whether to display week number | boolean | false | 5.23.0 |
+| showWeek | Whether to display week number | boolean | false | - |
 
-### Events {#events}
+### Events
 
 | Event | Description | Type | Version |
 | --- | --- | --- | --- |
 | change | Callback for when date changes | (date: DateType) =&gt; void | - |
 | update:value | - | (date: DateType) =&gt; void | - |
 | panelChange | Callback for when panel changes | (date: DateType, mode: CalendarMode) =&gt; void | - |
-| select | Callback for when a date is selected, include source info | (date: DateType, selectInfo: SelectInfo) =&gt; void | `info`: 5.6.0 |
+| select | Callback for when a date is selected, include source info | (date: DateType, selectInfo: SelectInfo) =&gt; void | - |
 
-### Slots {#slots}
+### Slots
 
 | Slot | Description | Type | Version |
 | --- | --- | --- | --- |
@@ -61,6 +61,6 @@ Common props ref：[Common props](/docs/vue/common-props)
 | dateCellRender | - | (ctx: &#123; date: AnyObject &#125;) =&gt; any | - |
 | monthFullCellRender | - | (ctx: &#123; date: AnyObject &#125;) =&gt; any | - |
 | monthCellRender | - | (ctx: &#123; date: AnyObject &#125;) =&gt; any | - |
-| cellRender | Customize cell content | (ctx: &#123; date: AnyObject, info: any &#125;) =&gt; any | 5.4.0 |
-| fullCellRender | Customize cell content | (ctx: &#123; date: AnyObject, info: any &#125;) =&gt; any | 5.4.0 |
+| cellRender | Customize cell content | (ctx: &#123; date: AnyObject, info: any &#125;) =&gt; any | - |
+| fullCellRender | Customize cell content | (ctx: &#123; date: AnyObject, info: any &#125;) =&gt; any | - |
 | headerRender | Render custom header in panel | (config: &#123; value: AnyObject, type: CalendarMode, onChange: (date: AnyObject) =&gt; void, onTypeChange: (type: CalendarMode) =&gt; void &#125;) =&gt; any | - |

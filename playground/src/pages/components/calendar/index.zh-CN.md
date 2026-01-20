@@ -19,7 +19,7 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*-p-wQLik200AAA
 
 ## API
 
-### 属性 {#property}
+### 属性 {#props}
 
 通用属性参考：[通用属性](/docs/vue/common-props)
 
@@ -32,18 +32,18 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*-p-wQLik200AAA
 | locale | 国际化配置 | typeof enUS | [(默认配置)](https://github.com/ant-design/ant-design/blob/master/components/date-picker/locale/example.json) | - |
 | validRange | 设置可以显示的日期 | [DateType, DateType] | - | - |
 | disabledDate | 不可选择的日期，参数为当前 `value`，注意使用时[不要直接修改](https://github.com/ant-design/ant-design/issues/30987) | (date: DateType) =&gt; boolean | - | - |
-| dateFullCellRender | 自定义渲染日期单元格，返回内容覆盖单元格，&gt;= 5.4.0 请用 `fullCellRender` | (date: DateType) =&gt; VueNode | - | &lt; 5.4.0 |
+| dateFullCellRender | 自定义渲染日期单元格，返回内容覆盖单元格，&gt;= 5.4.0 请用 `fullCellRender` | (date: DateType) =&gt; VueNode | - | - |
 | dateCellRender | Deprecated. | (date: DateType) =&gt; VueNode | - | - |
 | monthFullCellRender | Deprecated. | (date: DateType) =&gt; VueNode | - | - |
 | monthCellRender | Deprecated. | (date: DateType) =&gt; VueNode | - | - |
-| cellRender | 自定义单元格的内容 | (date: DateType, info: any) =&gt; VueNode | - | 5.4.0 |
-| fullCellRender | 自定义单元格的内容 | (date: DateType, info: any) =&gt; VueNode | - | 5.4.0 |
+| cellRender | 自定义单元格的内容 | (date: DateType, info: any) =&gt; VueNode | - | - |
+| fullCellRender | 自定义单元格的内容 | (date: DateType, info: any) =&gt; VueNode | - | - |
 | headerRender | 自定义头部内容 | HeaderRender&lt;DateType&gt; | - | - |
 | value | 展示日期 | DateType | - | - |
 | defaultValue | 默认展示的日期 | DateType | - | - |
 | mode | 初始模式 | CalendarMode | `month` | - |
 | fullscreen | 是否全屏显示 | boolean | true | - |
-| showWeek | 是否显示周数列 | boolean | false | 5.23.0 |
+| showWeek | 是否显示周数列 | boolean | false | - |
 
 ### 事件 {#events}
 
@@ -52,16 +52,16 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*-p-wQLik200AAA
 | change | 日期变化回调 | (date: DateType) =&gt; void | - |
 | update:value | - | (date: DateType) =&gt; void | - |
 | panelChange | 日期面板变化回调 | (date: DateType, mode: CalendarMode) =&gt; void | - |
-| select | 选择日期回调，包含来源信息 | (date: DateType, selectInfo: SelectInfo) =&gt; void | `info`: 5.6.0 |
+| select | 选择日期回调，包含来源信息 | (date: DateType, selectInfo: SelectInfo) =&gt; void | - |
 
 ### 插槽 {#slots}
 
 | 插槽 | 说明 | 类型 | 版本 |
 | --- | --- | --- | --- |
-| dateFullCellRender | 自定义渲染日期单元格，返回内容覆盖单元格，&gt;= 5.4.0 请用 `fullCellRender` | (ctx: &#123; date: AnyObject &#125;) =&gt; any | &lt; 5.4.0 |
+| dateFullCellRender | 自定义渲染日期单元格，返回内容覆盖单元格，&gt;= 5.4.0 请用 `fullCellRender` | (ctx: &#123; date: AnyObject &#125;) =&gt; any | - |
 | dateCellRender | - | (ctx: &#123; date: AnyObject &#125;) =&gt; any | - |
 | monthFullCellRender | - | (ctx: &#123; date: AnyObject &#125;) =&gt; any | - |
 | monthCellRender | - | (ctx: &#123; date: AnyObject &#125;) =&gt; any | - |
-| cellRender | 自定义单元格的内容 | (ctx: &#123; date: AnyObject, info: any &#125;) =&gt; any | 5.4.0 |
-| fullCellRender | 自定义单元格的内容 | (ctx: &#123; date: AnyObject, info: any &#125;) =&gt; any | 5.4.0 |
+| cellRender | 自定义单元格的内容 | (ctx: &#123; date: AnyObject, info: any &#125;) =&gt; any | - |
+| fullCellRender | 自定义单元格的内容 | (ctx: &#123; date: AnyObject, info: any &#125;) =&gt; any | - |
 | headerRender | 自定义头部内容 | (config: &#123; value: AnyObject, type: CalendarMode, onChange: (date: AnyObject) =&gt; void, onTypeChange: (type: CalendarMode) =&gt; void &#125;) =&gt; any | - |

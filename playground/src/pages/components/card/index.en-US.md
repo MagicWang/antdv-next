@@ -31,11 +31,11 @@ A card can be used to display content related to a single subject. The content c
 
 ## API
 
-### Property {#property}
-
 Common props ref：[Common props](/docs/vue/common-props)
 
-#### Card
+### Card
+
+#### Props {#card-props}
 
 | Property | Description | Type | Default | Version |
 | --- | --- | --- | --- | --- |
@@ -58,34 +58,16 @@ Common props ref：[Common props](/docs/vue/common-props)
 | tabProps | [Tabs](/components/tabs/#tabs) | Record&lt;string, any&gt; | - | - |
 | classes | Customize class for each semantic structure inside the component. Supports object or function. | CardClassNamesType | - | - |
 | styles | Customize inline style for each semantic structure inside the component. Supports object or function. | CardStylesType | - | - |
-| variant | Variants of Card | 'borderless' \| 'outlined' | `outlined` | 5.24.0 |
+| variant | Variants of Card | 'borderless' \| 'outlined' | `outlined` | - |
 
-#### CardGrid
-
-| Property | Description | Type | Default | Version |
-| --- | --- | --- | --- | --- |
-| prefixCls | - | string | - | - |
-| hoverable | Lift up when hovering card | boolean | false | - |
-
-#### CardMeta
-
-| Property | Description | Type | Default | Version |
-| --- | --- | --- | --- | --- |
-| prefixCls | - | string | - | - |
-| avatar | - | VueNode | - | - |
-| title | Card title | VueNode | - | - |
-| description | - | VueNode | - | - |
-| classes | Customize class for each semantic structure inside the component. Supports object or function. | CardMetaClassNamesType | - | - |
-| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | CardMetaStylesType | - | - |
-
-### Events {#events}
+### Events {#card-events}
 
 | Event | Description | Type | Version |
 | --- | --- | --- | --- |
 | tabChange | Callback when tab is switched | (key: string) =&gt; void | - |
 | update:activeTabKey | - | (key: string) =&gt; void | - |
 
-### Slots {#slots}
+### Slots {#card-slots}
 
 | Slot | Description | Type | Version |
 | --- | --- | --- | --- |
@@ -96,3 +78,32 @@ Common props ref：[Common props](/docs/vue/common-props)
 | tabContentRender | - | TabsSlots['contentRender'] | - |
 | tabLabelRender | - | TabsSlots['labelRender'] | - |
 | tabBarExtraContent | Extra content in tab bar | () =&gt; any | - |
+### CardGrid
+
+#### Props {#card-grid-props}
+
+| Property | Description | Type | Default | Version |
+| --- | --- | --- | --- | --- |
+| prefixCls | - | string | - | - |
+| hoverable | Lift up when hovering card | boolean | false | - |
+
+### CardMeta
+
+#### Props {#card-meta-props}
+
+| Property | Description | Type | Default | Version |
+| --- | --- | --- | --- | --- |
+| prefixCls | - | string | - | - |
+| avatar | - | VueNode | - | - |
+| title | Card title | VueNode | - | - |
+| description | - | VueNode | - | - |
+| classes | Customize class for each semantic structure inside the component. Supports object or function. | CardMetaClassNamesType | - | - |
+| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | CardMetaStylesType | - | - |
+
+#### Slots {#card-meta-slots}
+
+| Slot | Description | Type | Version |
+| --- | --- | --- | --- |
+| avatar | Avatar | () =&gt; any | - |
+| title | Title | () =&gt; any | - |
+| description | Description | () =&gt; any | - |

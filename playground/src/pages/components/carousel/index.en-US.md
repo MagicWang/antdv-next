@@ -31,9 +31,9 @@ demo:
 
 ## API
 
-### Property {#property}
-
 Common props ref：[Common props](/docs/vue/common-props)
+
+### Props {#carousel-props}
 
 | Property | Description | Type | Default | Version |
 | --- | --- | --- | --- | --- |
@@ -44,11 +44,11 @@ Common props ref：[Common props](/docs/vue/common-props)
 | dotPlacement | The position of the dots, which can be one of `top` `bottom` `start` `end` | DotPlacement | `bottom` | - |
 | dots | Whether to show the dots at the bottom of the gallery, `object` for `dotsClass` | boolean \| &#123; class?: string &#125; | true | - |
 | waitForAnimate | Whether to wait for the animation when switching | boolean | false | - |
-| autoplay | Whether to scroll automatically, you can specify `autoplay=&#123;&#123; dotDuration: true &#125;&#125;` to display the progress bar | boolean \| &#123; dotDuration?: boolean &#125; | false | dotDuration: 5.24.0 |
+| autoplay | Whether to scroll automatically, you can specify `autoplay=&#123;&#123; dotDuration: true &#125;&#125;` to display the progress bar | boolean \| &#123; dotDuration?: boolean &#125; | false | - |
 | prevArrow | - | VueNode | - | - |
 | nextArrow | - | VueNode | - | - |
 
-### Events {#events}
+### Events {#carousel-events}
 
 | Event | Description | Type | Version |
 | --- | --- | --- | --- |
@@ -59,14 +59,14 @@ Common props ref：[Common props](/docs/vue/common-props)
 | lazyLoad | - | NonNullable&lt;Settings['onLazyLoad']&gt; | - |
 | lazyLoadError | - | NonNullable&lt;Settings['onLazyLoadError']&gt; | - |
 
-### Slots {#slots}
+### Slots {#carousel-slots}
 
 | Slot | Description | Type | Version |
 | --- | --- | --- | --- |
 | prevArrow | - | () =&gt; any | - |
 | nextArrow | - | () =&gt; any | - |
 
-### Methods {#methods}
+### Methods {#carousel-methods}
 
 | Method | Description | Type | Version |
 | --- | --- | --- | --- |
