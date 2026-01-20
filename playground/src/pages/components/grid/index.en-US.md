@@ -21,7 +21,7 @@ In most business situations, Ant Design needs to solve a lot of information stor
 
 We name the divided area 'box'. We suggest four boxes for horizontal arrangement at most, one at least. Boxes are proportional to the entire screen as shown in the picture above. To ensure a high level of visual comfort, we customize the typography inside of the box based on the box unit.
 
-## Outline {#overview}
+## Outline
 
 In the grid system, we define the frame outside the information area based on `row` and `column`, to ensure that every area can have stable arrangement.
 
@@ -60,6 +60,8 @@ Common props ref：[Common props](/docs/vue/common-props)
 
 ### Row
 
+#### Props {#row-props}
+
 | Property | Description | Type | Default | Version |
 | --- | --- | --- | --- | --- |
 | align | Vertical alignment | `top` \| `middle` \| `bottom` \| `stretch` \| `&#123;[key in 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'xxl']: 'top' \| 'middle' \| 'bottom' \| 'stretch'&#125;` | `top` |  |
@@ -68,6 +70,8 @@ Common props ref：[Common props](/docs/vue/common-props)
 | wrap | Auto wrap line | boolean | true |  |
 
 ### Col
+
+#### Props {#col-props}
 
 | Property | Description | Type | Default | Version |
 | --- | --- | --- | --- | --- |

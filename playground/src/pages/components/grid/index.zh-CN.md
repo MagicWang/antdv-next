@@ -59,6 +59,8 @@ demo:
 
 ### Row
 
+#### 属性 {#row-props}
+
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | align | 垂直对齐方式 | `top` \| `middle` \| `bottom` \| `stretch` \| `&#123;[key in 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'xxl']: 'top' \| 'middle' \| 'bottom' \| 'stretch'&#125;` | `top` |  |
@@ -67,6 +69,8 @@ demo:
 | wrap | 是否自动换行 | boolean | true |  |
 
 ### Col
+
+#### 属性 {#col-props}
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |

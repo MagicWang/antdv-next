@@ -58,11 +58,9 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*ylFATY6w-ygAAA
 
 ## API
 
-
 通用属性参考：[通用属性](/docs/vue/common-props)
 
 ### Form
-
 
 ### 属性 {#form-props}
 
@@ -108,9 +106,11 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*ylFATY6w-ygAAA
 ### 方法 {#form-methods}
 
 ```ts
-import { FormInstance } from "antdv-next"
-const formRef = ref<FormInstance>();
+import { FormInstance } from 'antdv-next'
+
+const formRef = ref<FormInstance>()
 ```
+
 | 方法 | 说明 | 类型 | 版本 |
 | --- | --- | --- | --- |
 | getFieldValue | - | (name: NamePath) =&gt; StoreValue | - |
@@ -170,7 +170,7 @@ Form 提供默认校验提示文案，你可以通过 `validateMessages` 自定�
 
 ```ts
 const validateMessages = {
-  required: "'${name}' is required!",
+  required: '\'${name}\' is required!',
 }
 ```
 

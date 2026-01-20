@@ -57,11 +57,11 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*ylFATY6w-ygAAA
 
 ## API
 
-### Property {#property}
-
 Common props ref：[Common props](/docs/vue/common-props)
 
-#### Form
+### Form
+
+### Props {#form-props}
 
 | Property | Description | Type | Default | Version |
 | --- | --- | --- | --- | --- |
@@ -90,7 +90,7 @@ Common props ref：[Common props](/docs/vue/common-props)
 | rootClass | Root container class | string | - | - |
 | prefixCls | Prefix class name | string | - | - |
 
-### Events {#events}
+### Events {#form-events}
 
 | Event | Description | Type | Version |
 | --- | --- | --- | --- |
@@ -102,9 +102,13 @@ Common props ref：[Common props](/docs/vue/common-props)
 | valuesChange | Trigger when value updated | (changedValues: Record&lt;string, any&gt;, values: Record&lt;string, any&gt;) =&gt; void | - |
 | fieldsChange | Trigger when field updated | (changedFields: FieldData[], allFields: FieldData[]) =&gt; void | - |
 
-### Methods {#methods}
+### Methods {#form-methods}
 
-#### FormInstance
+```ts
+import { FormInstance } from 'antdv-next'
+
+const formRef = ref<FormInstance>()
+```
 
 | Method | Description | Type | Version |
 | --- | --- | --- | --- |
@@ -127,7 +131,9 @@ Common props ref：[Common props](/docs/vue/common-props)
 | submit | - | () =&gt; void | - |
 | nativeElement | - | HTMLFormElement \| undefined | - |
 
-### Form.Item {#form-item}
+### FormItem {#form-item}
+
+#### Props {#form-item-props}
 
 | Property | Description | Type | Default | Version |
 | --- | --- | --- | --- | --- |
@@ -155,13 +161,15 @@ Common props ref：[Common props](/docs/vue/common-props)
 | rootClass | Root container class | string | - | - |
 | prefixCls | Prefix class name | string | - | - |
 
-### validateMessages {#validatemessages}
+## Types
+
+### validateMessages
 
 Form provides default validation error messages. You can modify the template by configuring `validateMessages` property:
 
 ```ts
 const validateMessages = {
-  required: "'${name}' is required!",
+  required: '\'${name}\' is required!',
 }
 ```
 

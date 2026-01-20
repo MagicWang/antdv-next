@@ -20,139 +20,153 @@ demo:
 
 ## API
 
-### Property {#property}
-
 Common props ref：[Common props](/docs/vue/common-props)
 
-#### InputGroup
+### Input
+
+#### Props {#input-props}
 
 | Property | Description | Type | Default | Version |
 | --- | --- | --- | --- | --- |
-| size | The size of the input box. Note: in the context of a form, the `middle` size is used | SizeType | - | - |
-
-#### Input
-
-| Property | Description | Type | Default | Version |
-| --- | --- | --- | --- | --- |
-| value | The input content value | any | - | - |
-| defaultValue | The initial input content | any | - | - |
-| type | The type of input, see: [MDN](https://developer.mozilla.org/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types)( use `Input.TextArea` instead of `type="textarea"`) | VcInputProps['type'] | `text` | - |
-| showCount | Whether to show character count | VcInputProps['showCount'] | false | 4.18.0 info.value: 4.23.0 |
-| autoComplete | - | string | - | - |
-| htmlSize | - | number | - | - |
-| placeholder | - | string | - | - |
-| count | Character count config | VcInputProps['count'] | - | 5.10.0 |
-| maxlength | - | number | - | - |
-| readonly | - | boolean | - | - |
-| hidden | - | boolean | - | - |
-| dataAttrs | - | VcInputProps['dataAttrs'] | - | - |
-| components | - | VcInputProps['components'] | - | - |
-| prefix | The prefix icon for the Input | VueNode | - | - |
-| suffix | The suffix icon for the Input | VueNode | - | - |
-| allowClear | If allow to remove input content with clear icon | VcInputProps['allowClear'] | false | - |
-| autoFocus | - | boolean | - | - |
-| inputMode | - | string | - | - |
-| size | The size of the input box. Note: in the context of a form, the `middle` size is used | SizeType | - | - |
-| disabled | Whether the input is disabled | boolean | false | - |
-| status | Set validation status | InputStatus | - | 4.19.0 |
-| addonBefore | The label text displayed before (on the left side of) the input field, please use Space.Compact instead | VueNode | - | - |
-| addonAfter | The label text displayed after (on the right side of) the input field, please use Space.Compact instead | VueNode | - | - |
-| bordered | Whether has border style, please use `variant` instead | boolean | true | 4.5.0 |
-| variant | Variants of Input | Variant | `outlined` | 5.13.0 \| `underlined`: 5.24.0 |
-| classes | Customize class for each semantic structure inside the component. Supports object or function. | InputClassNamesType | - | - |
-| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | InputStylesType | - | - |
-
-#### OTP
-
-| Property | Description | Type | Default | Version |
-| --- | --- | --- | --- | --- |
-| length | - | number | - | - |
-| variant | Variants of Input | Variant | `outlined` | 5.13.0 \| `underlined`: 5.24.0 |
-| size | The size of the input box. Note: in the context of a form, the `middle` size is used | SizeType | - | - |
+| ~~addonAfter~~ | The label text displayed after (on the right side of) the input field, please use Space.Compact instead | VueNode | - | - |
+| ~~addonBefore~~ | The label text displayed before (on the left side of) the input field, please use Space.Compact instead | VueNode | - | - |
+| allowClear | If allow to remove input content with clear icon | boolean \| &#123; clearIcon: VueNode &#125; | false | - |
+| ~~bordered~~ | Whether has border style, please use `variant` instead | boolean | true | - |
+| classes | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-input), string&gt; \| (info: &#123; props &#125;) =&gt; Record&lt;[SemanticDOM](#semantic-input), string&gt; | - | - |
+| count | Character count config | [CountConfig](#countconfig) | - | - |
 | defaultValue | The initial input content | string | - | - |
-| value | The input content value | string | - | - |
-| formatter | - | (value: string) =&gt; string | - | - |
-| separator | - | VueNode \| ((index: number) =&gt; VueNode) | - | - |
 | disabled | Whether the input is disabled | boolean | false | - |
-| status | Set validation status | InputStatus | - | 4.19.0 |
-| mask | - | boolean \| string | - | - |
-| type | The type of input, see: [MDN](https://developer.mozilla.org/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types)( use `Input.TextArea` instead of `type="textarea"`) | HTMLInputElement['type'] | `text` | - |
-| inputMode | - | string | - | - |
-| autoFocus | - | boolean | - | - |
-| classes | Customize class for each semantic structure inside the component. Supports object or function. | OTPClassNamesType | - | - |
-| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | OTPStylesType | - | - |
-
-#### Password
-
-| Property | Description | Type | Default | Version |
-| --- | --- | --- | --- | --- |
-| inputPrefixCls | - | string | - | - |
-| action | - | PasswordAction | - | - |
-| visibilityToggle | - | VisibilityToggle | - | - |
+| id | The ID for input | string | - | - |
+| maxLength | The maximum number of characters in Input | number | - | - |
+| prefix | The prefix icon for the Input | VueNode | - | - |
+| showCount | Whether to show character count | boolean \| &#123; formatter: (info: &#123; value: string, count: number, maxLength?: number &#125;) =&gt; VueNode &#125; | false | - |
+| status | Set validation status | 'error' \| 'warning' | - | - |
+| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-input), CSSProperties&gt; \| (info: &#123; props &#125;) =&gt; Record&lt;[SemanticDOM](#semantic-input), CSSProperties&gt; | - | - |
+| size | The size of the input box. Note: in the context of a form, the `middle` size is used | `large` \| `middle` \| `small` | - | - |
 | suffix | The suffix icon for the Input | VueNode | - | - |
-| iconRender | - | (params: &#123; visible: boolean &#125;) =&gt; any | - | - |
-| iconVisible | - | boolean | - | - |
+| type | The type of input, see: [MDN](https://developer.mozilla.org/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types)( use `Input.TextArea` instead of `type="textarea"`) | string | `text` | - |
+| value | The input content value | string | - | - |
+| variant | Variants of Input | `outlined` \| `borderless` \| `filled` \| `underlined` | `outlined` | - |
 
-#### Search
+> When `Input` is used in a `Form.Item` context, if the `Form.Item` has the `id` props defined then `value`, `defaultValue`, and `id` props of `Input` are automatically set.
 
-| Property | Description | Type | Default | Version |
-| --- | --- | --- | --- | --- |
-| inputPrefixCls | - | string | - | - |
-| on | - | never | - | - |
-| enterButton | - | boolean \| VueNode | - | - |
-| loading | - | boolean | - | - |
-| size | The size of the input box. Note: in the context of a form, the `middle` size is used | SizeType | - | - |
-| hidden | - | boolean | - | - |
-| classes | Customize class for each semantic structure inside the component. Supports object or function. | InputSearchClassNamesType | - | - |
-| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | InputSearchStylesType | - | - |
+The rest of the props of Input are exactly the same as the original [input](https://cn.vuejs.org/guide/essentials/forms.html).
 
-#### TextArea
-
-| Property | Description | Type | Default | Version |
-| --- | --- | --- | --- | --- |
-| bordered | Whether has border style, please use `variant` instead | boolean | true | 4.5.0 |
-| size | The size of the input box. Note: in the context of a form, the `middle` size is used | SizeType | - | - |
-| status | Set validation status | InputStatus | - | 4.19.0 |
-| variant | Variants of Input | Variant | `outlined` | 5.13.0 \| `underlined`: 5.24.0 |
-| classes | Customize class for each semantic structure inside the component. Supports object or function. | TextAreaClassNamesType | - | - |
-| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | TextAreaStylesType | - | - |
-| rows | - | number | - | - |
-| maxlength | - | number | - | - |
-| minlength | - | number | - | - |
-| readonly | - | boolean | - | - |
-| showCount | Whether to show character count | InputProps['showCount'] | false | 4.18.0 info.value: 4.23.0 |
-
-### Events {#events}
+#### Events {#input-events}
 
 | Event | Description | Type | Version |
 | --- | --- | --- | --- |
-| pressEnter | The callback function that is triggered when Enter key is pressed | NonNullable&lt;VcInputProps['onPressEnter']&gt; | - |
-| clear | Callback when click the clear button | () =&gt; void | 5.20.0 |
-| change | Callback when user input | NonNullable&lt;VcInputProps['onChange']&gt; | - |
-| blur | - | NonNullable&lt;VcInputProps['onBlur']&gt; | - |
-| focus | - | NonNullable&lt;VcInputProps['onFocus']&gt; | - |
-| keydown | - | NonNullable&lt;VcInputProps['onKeyDown']&gt; | - |
-| keyup | - | NonNullable&lt;VcInputProps['onKeyUp']&gt; | - |
-| compositionstart | - | NonNullable&lt;VcInputProps['onCompositionStart']&gt; | - |
-| compositionend | - | NonNullable&lt;VcInputProps['onCompositionEnd']&gt; | - |
-| update:value | - | (value: VcInputProps['value']) =&gt; void | - |
+| change | Callback when user input | function(e) | - |
+| pressEnter | The callback function that is triggered when Enter key is pressed | function(e) | - |
+| clear | Callback when click the clear button | () =&gt; void | - |
 
-### Slots {#slots}
+#### Methods {#input-methods}
 
-| Slot | Description | Type | Version |
+| Name | Description | Parameters | Version |
 | --- | --- | --- | --- |
-| prefix | The prefix icon for the Input | () =&gt; any | - |
-| suffix | The suffix icon for the Input | () =&gt; any | - |
-| addonBefore | The label text displayed before (on the left side of) the input field, please use Space.Compact instead | () =&gt; any | - |
-| addonAfter | The label text displayed after (on the right side of) the input field, please use Space.Compact instead | () =&gt; any | - |
-| clearIcon | - | () =&gt; any | - |
+| blur | Remove focus | - | - |
+| focus | Get focus | (option?: &#123; preventScroll?: boolean, cursor?: 'start' \| 'end' \| 'all' &#125;) | - |
 
-### Methods {#methods}
+### TextArea {#input-textarea}
 
-#### TextArea
+#### Props {#input-textarea-props}
 
-| Method | Description | Type | Version |
+Same as Input, and more:
+
+| Property | Description | Type | Default | Version |
+| --- | --- | --- | --- | --- |
+| autoSize | Height auto size feature, can be set to true \| false or an object &#123; minRows: 2, maxRows: 6 &#125; | boolean \| object | false | - |
+| classes | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-textarea), string&gt; \| (info: &#123; props &#125;) =&gt; Record&lt;[SemanticDOM](#semantic-textarea), string&gt; | - | - |
+| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-textarea), CSSProperties&gt; \| (info: &#123; props &#125;) =&gt; Record&lt;[SemanticDOM](#semantic-textarea), CSSProperties&gt; | - | - |
+
+The rest of the props of `Input.TextArea` are the same as the original [textarea](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea).
+
+### InputSearch {#input-search}
+
+#### Props {#input-search-props}
+
+| Property | Description | Type | Default | Version |
+| --- | --- | --- | --- | --- |
+| classes | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-search), string&gt; \| (info: &#123; props &#125;) =&gt; Record&lt;[SemanticDOM](#semantic-search), string&gt; | - | - |
+| enterButton | false displays the default button color, true uses the primary color, or you can provide a custom button. Conflicts with addonAfter. | VueNode | false | - |
+| loading | Search box with loading | boolean | false | - |
+| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-search), CSSProperties&gt; \| (info: &#123; props &#125;) =&gt; Record&lt;[SemanticDOM](#semantic-search), CSSProperties&gt; | - | - |
+
+Supports all props of `Input`.
+
+#### Events {#input-search-events}
+
+| Event | Description | Type | Version |
 | --- | --- | --- | --- |
-| resizableTextArea | - | any | - |
-| focus | - | (...args: any[]) =&gt; void | - |
-| blur | - | () =&gt; void | - |
+| search | The callback function triggered when you click on the search-icon, the clear-icon or press the Enter key | function(value, event, &#123; source: "input" \| "clear" &#125;) | - |
+
+### InputPassword {#input-password}
+
+#### Props {#input-password-props}
+
+| Property | Description | Type | Default | Version |
+| --- | --- | --- | --- | --- |
+| classes | Semantic DOM class | Record&lt;[SemanticDOM](#semantic-password), string&gt; | - | - |
+| iconRender | Custom toggle button | (visible) =&gt; VueNode | (visible) =&gt; (visible ? &lt;EyeOutlined /> : &lt;EyeInvisibleOutlined />) | - |
+| styles | Semantic DOM style | Record&lt;[SemanticDOM](#semantic-password), CSSProperties&gt; | - | - |
+| visibilityToggle | Whether show toggle button or control password visible | boolean \| [VisibilityToggle](#visibilitytoggle) | true | - |
+
+### InputOTP {#input-otp}
+
+Added in `5.16.0`.
+
+> Notes for developers
+>
+> When the `mask` prop is string, we recommend receiving a single character or a single emoji. If multiple characters or multiple emoji are passed, a warning will be thrown.
+
+#### Props {#input-otp-props}
+
+| Property | Description | Type | Default | Version |
+| --- | --- | --- | --- | --- |
+| classes | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-otp), string&gt; \| (info: &#123; props &#125;) =&gt; Record&lt;[SemanticDOM](#semantic-otp), string&gt; | - | - |
+| defaultValue | Default value | string | - | - |
+| disabled | Whether the input is disabled | boolean | false | - |
+| formatter | Format display, blank fields will be filled with ` ` | (value: string) =&gt; string | - | - |
+| separator | render the separator after the input box of the specified index | VueNode \| ((i: number) =&gt; VueNode) | - | - |
+| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-otp), CSSProperties&gt; \| (info: &#123; props &#125;) =&gt; Record&lt;[SemanticDOM](#semantic-otp), CSSProperties&gt; | - | - |
+| mask | Custom display, the original value will not be modified | boolean \| string | `false` | - |
+| length | The number of input elements | number | 6 | - |
+| status | Set validation status | 'error' \| 'warning' | - | - |
+| size | The size of the input box | `small` \| `middle` \| `large` | `middle` | - |
+| variant | Variants of Input | `outlined` \| `borderless` \| `filled` \| `underlined` | `outlined` | - |
+| value | The input content value | string | - | - |
+
+#### Events {#input-otp-events}
+
+| Event | Description | Type | Version |
+| --- | --- | --- | --- |
+| change | Trigger when all the fields are filled | (value: string) =&gt; void | - |
+| input | Trigger when the input value changes | (value: string[]) =&gt; void | - |
+
+### Types {#types}
+
+#### CountConfig
+
+```tsx
+interface CountConfig {
+  // Max character count. Different from the native `maxLength`, it will be marked warning but not truncated
+  max?: number
+  // Custom character count, for example, the standard emoji length is greater than 1, you can customize the counting strategy to change it to 1
+  strategy?: (value: string) => number
+  // Same as `showCount`
+  show?: boolean | ((args: { value: string, count: number, maxLength?: number }) => VueNode)
+  // Custom clipping logic when the number of characters exceeds `count.max`, no clipping when not configured
+  exceedFormatter?: (value: string, config: { max: number }) => string
+}
+```
+
+#### VisibilityToggle
+
+```tsx
+interface VisibilityToggle {
+  // Whether the password is show or hide
+  visible?: boolean
+  // Callback executed when visibility of the password is changed
+  onVisibleChange?: (visible: boolean) => void
+}
+```
