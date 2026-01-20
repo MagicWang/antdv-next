@@ -33,7 +33,7 @@ demo:
 
 通用属性参考：[通用属性](/docs/vue/common-props)
 
-### 属性 {#carousel-props}
+### 属性 {#props}
 
 | 属性 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
@@ -48,7 +48,7 @@ demo:
 | prevArrow | - | VueNode | - | - |
 | nextArrow | - | VueNode | - | - |
 
-### 事件 {#carousel-events}
+### 事件 {#events}
 
 | 事件 | 说明 | 类型 | 版本 |
 | --- | --- | --- | --- |
@@ -59,14 +59,14 @@ demo:
 | lazyLoad | - | NonNullable&lt;Settings['onLazyLoad']&gt; | - |
 | lazyLoadError | - | NonNullable&lt;Settings['onLazyLoadError']&gt; | - |
 
-### 插槽 {#carousel-slots}
+### 插槽 {#slots}
 
 | 插槽 | 说明 | 类型 | 版本 |
 | --- | --- | --- | --- |
 | prevArrow | - | () =&gt; any | - |
 | nextArrow | - | () =&gt; any | - |
 
-### 方法 {#carousel-methods}
+### 方法 {#methods}
 
 | 方法 | 说明 | 类型 | 版本 |
 | --- | --- | --- | --- |

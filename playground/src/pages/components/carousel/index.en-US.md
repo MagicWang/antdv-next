@@ -33,7 +33,7 @@ demo:
 
 Common props ref：[Common props](/docs/vue/common-props)
 
-### Props {#carousel-props}
+### Props
 
 | Property | Description | Type | Default | Version |
 | --- | --- | --- | --- | --- |
@@ -48,7 +48,7 @@ Common props ref：[Common props](/docs/vue/common-props)
 | prevArrow | - | VueNode | - | - |
 | nextArrow | - | VueNode | - | - |
 
-### Events {#carousel-events}
+### Events
 
 | Event | Description | Type | Version |
 | --- | --- | --- | --- |
@@ -59,14 +59,14 @@ Common props ref：[Common props](/docs/vue/common-props)
 | lazyLoad | - | NonNullable&lt;Settings['onLazyLoad']&gt; | - |
 | lazyLoadError | - | NonNullable&lt;Settings['onLazyLoadError']&gt; | - |
 
-### Slots {#carousel-slots}
+### Slots
 
 | Slot | Description | Type | Version |
 | --- | --- | --- | --- |
 | prevArrow | - | () =&gt; any | - |
 | nextArrow | - | () =&gt; any | - |
 
-### Methods {#carousel-methods}
+### Methods
 
 | Method | Description | Type | Version |
 | --- | --- | --- | --- |
