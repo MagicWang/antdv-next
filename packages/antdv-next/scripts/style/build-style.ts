@@ -27,7 +27,7 @@ const ComponentCustomizeRender: Record<string, RenderFn> = {
   ]),
   Dropdown: Dropdown => h(Dropdown, { menu: { items: [] } }, { default: () => h('div') }),
   Menu: Menu => h(Menu, { items: [] }),
-  QRCode: QRCode => h(QRCode, { value: 'https://antdv-next.dev' }),
+  QRCode: QRCode => h(QRCode, { value: 'https://antdv-next.com' }),
   Tree: Tree => h(Tree, { treeData: [] }),
   Tag: Tag => h(Fragment, null, [
     h(Tag, { color: 'blue' }, { default: () => 'Tag' }),
