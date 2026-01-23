@@ -33,36 +33,41 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*LT2jR41Uj2EAAA
 
 通用属性参考：[通用属性](/docs/vue/common-props)
 
-### TypographyText {#typography-text}
+### Typography
 
-#### 属性
+#### 属性 {#typography-props}
 
-| 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| code | 添加代码样式 | boolean | false |
-| copyable | 是否可拷贝，为对象时可进行各种自定义 | boolean \| [copyable](#copyable) | false |
-| delete | 添加删除线样式 | boolean | false |
-| disabled | 禁用文本 | boolean | false |
-| editable | 是否可编辑，为对象时可对编辑进行控制 | boolean \| [editable](#editable) | false |
-| ellipsis | 自动溢出省略，为对象时不能设置省略行数、是否可展开、onExpand 展开事件。不同于 Typography.Paragraph，Text 组件自身不带 100% 宽度样式，因而默认情况下初次缩略后宽度便不再变化。如果需要自适应宽度，请手动配置宽度样式 | boolean \| [Omit&lt;ellipsis, 'expandable' \| 'rows' \| 'onExpand'&gt;](#ellipsis) | false |
-| keyboard | 添加键盘样式 | boolean | false |
-| mark | 添加标记样式 | boolean | false |
-| strong | 是否加粗 | boolean | false |
-| italic | 是否斜体 | boolean | false |
-| type | 文本类型 | `secondary` \| `success` \| `warning` \| `danger` | - |
-| underline | 添加下划线样式 | boolean | false |
-| classes | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | TypographyClassNamesType | - |
-| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | TypographyStylesType | - |
+| 参数 | 说明   | 类型 | 默认值 | 版本 |
+| --- |------|  | --- | --- |
+| direction | 方向控制 | 'ltr' \| 'rtl' | false |
 
-#### 事件
+### TypographyText 
+
+#### 属性 {#typographytext-props}
+
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | --- | --- |
+| code | 添加代码样式 | boolean | false |  |
+| copyable | 是否可拷贝，为对象时可进行各种自定义 | boolean \| [copyable](#copyable) | false |  |
+| delete | 添加删除线样式 | boolean | false |  |
+| disabled | 禁用文本 | boolean | false |  |
+| editable | 是否可编辑，为对象时可对编辑进行控制 | boolean \| [editable](#editable) | false |  |
+| ellipsis | 自动溢出省略，为对象时可设置省略行数、是否可展开、添加后缀等 | boolean \| [ellipsis](#ellipsis) | false |  |
+| level | 重要程度，相当于 `h1`、`h2`、`h3`、`h4`、`h5` | number: 1, 2, 3, 4, 5 | 1 |  |
+| mark | 添加标记样式 | boolean | false |  |
+| italic | 是否斜体 | boolean | false |  |
+| type | 文本类型 | `secondary` \| `success` \| `warning` \| `danger` | - | |
+| underline | 添加下划线样式 | boolean | false |  |
+
+#### 事件 {#typographytext-events}
 
 | 事件 | 说明 | 类型 |
 | --- | --- | --- |
 | click | 点击时的回调 | (event: MouseEvent) =&gt; void |
 
-### Typography.Title {#typography-title}
+### TypographyTitle
 
-#### 属性
+#### 属性 {#typographytitle-props}
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -80,15 +85,15 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*LT2jR41Uj2EAAA
 | classes | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | TypographyClassNamesType | - |
 | styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | TypographyStylesType | - |
 
-#### 事件
+#### 事件 {#typographytitle-events}
 
 | 事件 | 说明 | 类型 |
 | --- | --- | --- |
 | click | 点击时的回调 | (event: MouseEvent) =&gt; void |
 
-### Typography.Paragraph {#typography-paragraph}
+### TypographyParagraph 
 
-#### 属性
+#### 属性 {#typographyparagraph-props}
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -106,13 +111,17 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*LT2jR41Uj2EAAA
 | classes | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | TypographyClassNamesType | - |
 | styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | TypographyStylesType | - |
 
-#### 事件
+#### 事件 {#typographyparagraph-events}
 
 | 事件 | 说明 | 类型 |
 | --- | --- | --- |
 | click | 点击时的回调 | (event: MouseEvent) =&gt; void |
+| copy | 拷贝成功的回调函数 | (event: MouseEvent) =&gt; void |
 
-### copyable 配置 {#copyable}
+
+## 类型 {#types}
+
+### copyable
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -128,7 +137,7 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*LT2jR41Uj2EAAA
 | --- | --- | --- |
 | copy | 拷贝成功的回调函数 | (event: MouseEvent) =&gt; void |
 
-### editable 配置 {#editable}
+### editable 
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -151,7 +160,7 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*LT2jR41Uj2EAAA
 | start | 进入编辑中状态时触发 | () =&gt; void |
 | end | 按 ENTER 结束编辑状态时触发 | () =&gt; void |
 
-### ellipsis 配置 {#ellipsis}
+### ellipsis
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |

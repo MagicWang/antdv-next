@@ -35,22 +35,21 @@ demo:
 
 ## API
 
-### Props
+### TreeSelect Props {#props}
 
-Common props ref：[Common props](/docs/vue/common-props)
+Common props ref：[Common props](/docs/react/common-props)
 
 | Property | Description | Type | Default | Version |
 | --- | --- | --- | --- | --- |
 | allowClear | Show clear button | boolean \| &#123; clearIcon?: VueNode &#125; | false | - |
-| classes | Customize class for each semantic structure inside the component. Supports object or function. | TreeSelectClassNamesType | - | - |
-| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | TreeSelectStylesType | - | - |
-| rootClass | Root container class | string | - | - |
+| classes | Customize class for each semantic structure inside the component. Supports object or function. | Record<[SemanticDOM](#semantic-dom), string> \| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - | - |
+| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record<[SemanticDOM](#semantic-dom), CSSProperties> \| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - | - |
 | defaultOpen | Initial open state of dropdown | boolean | - | - |
-| defaultValue | To set the initial selected treeNode(s) | SelectValue | - | - |
+| defaultValue | To set the initial selected treeNode(s) | string \| string[] | - | - |
 | disabled | Disabled or not | boolean | false | - |
 | popupMatchSelectWidth | Determine whether the popup menu and the select input are the same width. Default set `min-width` same as input. Will ignore when value less than select width. `false` will disable virtual scroll | boolean \| number | true | - |
 | popupRender | Customize dropdown content | (menu: VueNode) =&gt; VueNode | - | - |
-| fieldNames | Customize node label, value, children field name | &#123; label?: string, value?: string, children?: string &#125; | &#123; label: 'label', value: 'value', children: 'children' &#125; | - |
+| fieldNames | Customize node label, value, children field name | object | &#123; label: `label`, value: `value`, children: `children` &#125; | - |
 | getPopupContainer | To set the container of the dropdown menu | (triggerNode: HTMLElement) =&gt; HTMLElement | () =&gt; document.body | - |
 | labelInValue | Whether to embed label in value, turn the format of value from `string` to &#123; value: string, label: VueNode, halfChecked: boolean &#125; | boolean | false | - |
 | listHeight | Config popup height | number | 256 | - |
@@ -63,50 +62,45 @@ Common props ref：[Common props](/docs/vue/common-props)
 | notFoundContent | Specify content to show when no result matches | VueNode | `Not Found` | - |
 | open | Controlled open state of dropdown | boolean | - | - |
 | placeholder | Placeholder of the select input | string | - | - |
-| placement | The position where the selection box pops up | SelectCommonPlacement | bottomLeft | - |
+| placement | The position where the selection box pops up | `bottomLeft` \| `bottomRight` \| `topLeft` \| `topRight` | `bottomLeft` | - |
 | prefix | The custom prefix | VueNode | - | - |
-| showCheckedStrategy | The way show selected item in box when `treeCheckable` set. `TreeSelect.SHOW_ALL`: show all checked treeNodes (include parent treeNode). `TreeSelect.SHOW_PARENT`: show checked treeNodes (just show parent treeNode). | TreeSelect.SHOW_ALL \| TreeSelect.SHOW_PARENT \| TreeSelect.SHOW_CHILD | TreeSelect.SHOW_CHILD | - |
+| showCheckedStrategy | The way show selected item in box when `treeCheckable` set. **Default:** just show child nodes. **`TreeSelect.SHOW_ALL`:** show all checked treeNodes (include parent treeNode). **`TreeSelect.SHOW_PARENT`:** show checked treeNodes (just show parent treeNode) | `TreeSelect.SHOW_ALL` \| `TreeSelect.SHOW_PARENT` \| `TreeSelect.SHOW_CHILD` | `TreeSelect.SHOW_CHILD` | - |
 | showSearch | Support search or not | boolean \| [Object](#showsearch) | single: false \| multiple: true | - |
-| size | To set the size of the select input | SizeType | - | - |
-| status | Set validation status | InputStatus | - | - |
-| variant | Variants of selector | Variant | `outlined` | - |
+| size | To set the size of the select input | `large` \| `middle` \| `small` | - | - |
+| status | Set validation status | `error` \| `warning` | - | - |
+| variant | Variants of selector | `outlined` \| `borderless` \| `filled` \| `underlined` | `outlined` | - |
 | suffixIcon | The custom suffix icon | VueNode | `&lt;DownOutlined /&gt;` | - |
-| switcherIcon | Customize collapse/expand icon of tree node | SwitcherIcon | - | - |
+| switcherIcon | Customize collapse/expand icon of tree node | VueNode \| ((props: AntTreeNodeProps) =&gt; VueNode) | - | - |
 | tagRender | Customize tag render when `multiple` | (props: any) =&gt; VueNode | - | - |
 | treeCheckable | Whether to show checkbox on the treeNodes | boolean | false | - |
 | treeCheckStrictly | Whether to check nodes precisely (in the `checkable` mode), means parent and child nodes are not associated, and it will make `labelInValue` be true | boolean | false | - |
-| treeData | Data of the treeNodes | DataNode[] | [] | - |
-| treeDataSimpleMode | Enable simple mode of treeData | boolean \| &#123; id: string, pId: string, rootPId: string &#125; | false | - |
+| treeData | Data of the treeNodes, manual construction work is no longer needed if this property has been set(ensure the Uniqueness of each value) | array&lt;&#123; value, title, children, [disabled, disableCheckbox, selectable, checkable] &#125;&gt; | [] | - |
+| treeDataSimpleMode | Enable simple mode of treeData. Changes the `treeData` schema to: [&#123;id:1, pId:0, value:'1', title:"test1",...&#125;,...] where pId is parent node's id). It is possible to replace the default `id` and `pId` keys by providing object to `treeDataSimpleMode` | boolean \| object&lt;&#123; id: string, pId: string, rootPId: string &#125;&gt; | false | - |
 | treeTitleRender | Customize tree node title render | (nodeData: DataNode) =&gt; VueNode | - | - |
 | treeDefaultExpandAll | Whether to expand all treeNodes by default | boolean | false | - |
-| treeDefaultExpandedKeys | Default expanded treeNodes | Key[] | - | - |
-| treeExpandAction | Tree title open logic when click, optional: false \| `click` \| `doubleClick` | false \| 'click' \| 'doubleClick' | false | - |
-| treeExpandedKeys | Set expanded keys | Key[] | - | - |
+| treeDefaultExpandedKeys | Default expanded treeNodes | string[] | - | - |
+| treeExpandAction | Tree title open logic when click, optional: false \| `click` \| `doubleClick` | string \| boolean | false | - |
+| treeExpandedKeys | Set expanded keys | string[] | - | - |
 | treeIcon | Shows the icon before a TreeNode's title | boolean | false | - |
-| treeLine | Show the line. Ref [Tree - showLine](/components/tree/#tree-demo-line) | TreeProps['showLine'] | false | - |
-| treeLoadedKeys | (Controlled) Set loaded tree nodes, work with `loadData` only | Key[] | [] | - |
+| treeLine | Show the line. Ref [Tree - showLine](/components/tree/#tree-demo-line) | boolean \| object | false | - |
+| treeLoadedKeys | (Controlled) Set loaded tree nodes, work with `loadData` only | string[] | [] | - |
 | treeNodeLabelProp | Will render as content of select | string | `title` | - |
-| value | To set the current selected treeNode(s) | SelectValue | - | - |
+| value | To set the current selected treeNode(s) | string \| string[] | - | - |
 | virtual | Disable virtual scroll when set to false | boolean | true | - |
 | bordered | Deprecated. Use `variant` instead | boolean | - | - |
 | showArrow | Deprecated. Set `suffixIcon` to null to hide | boolean | - | - |
 
-### Events
+### Events {#events}
 
 | Event | Description | Type | Version |
 | --- | --- | --- | --- |
+| change | A callback function, can be executed when selected treeNodes or input value change | function(value, label, extra) | - |
 | openChange | Callback when dropdown open state changes | (open: boolean) =&gt; void | - |
-| dropdownVisibleChange | Called when dropdown open, use `openChange` instead | (open: boolean) =&gt; void | - |
-| select | A callback function, can be executed when you select a treeNode | NonNullable&lt;VcTreeSelectProps['onSelect']&gt; | - |
-| treeExpand | A callback function, can be executed when treeNode expanded | NonNullable&lt;VcTreeSelectProps['onTreeExpand']&gt; | - |
-| treeLoad | Callback when tree node is loaded | NonNullable&lt;VcTreeSelectProps['onTreeLoad']&gt; | - |
-| change | A callback function, can be executed when selected treeNodes or input value change | NonNullable&lt;VcTreeSelectProps['onChange']&gt; | - |
-| update:value | Emit when value changes | (value: any) =&gt; void | - |
-| deselect | Callback when a tree node is deselected | NonNullable&lt;VcTreeSelectProps['onDeselect']&gt; | - |
-| popupScroll | Called when dropdown scrolls | NonNullable&lt;VcTreeSelectProps['onPopupScroll']&gt; | - |
-| search | A callback function, can be executed when the search input changes | NonNullable&lt;VcTreeSelectProps['onSearch']&gt; | - |
+| select | A callback function, can be executed when you select a treeNode | function(value, node, extra) | - |
+| treeExpand | A callback function, can be executed when treeNode expanded | function(expandedKeys) | - |
+| popupScroll | Called when dropdown scrolls | (event: UIEvent) =&gt; void | - |
 
-### Slots
+### Slots {#slots}
 
 | Slot | Description | Type | Version |
 | --- | --- | --- | --- |
@@ -116,14 +110,14 @@ Common props ref：[Common props](/docs/vue/common-props)
 | switcherIcon | Customize collapse/expand icon of tree node | () =&gt; any | - |
 | treeTitleRender | Customize tree node title render | (nodeData: DataNode) =&gt; any | - |
 
-### Methods
+### Methods {#methods}
 
 | Name | Description | Version |
 | --- | --- | --- |
 | blur() | Remove focus | - |
 | focus() | Get focus | - |
 
-## Types
+## Types {#types}
 
 ### showSearch {#showsearch}
 
@@ -135,7 +129,7 @@ Common props ref：[Common props](/docs/vue/common-props)
 | treeNodeFilterProp | Will be used for filtering if `filterTreeNode` returns true | string | `value` | - |
 | onSearch | A callback function, can be executed when the search input changes | (value: string) =&gt; void | - | - |
 
-### TreeNode props {#treenode-props}
+### TreeNode Props {#treenode-props}
 
 > We recommend you to use `treeData` rather than `TreeNode`, to avoid the trouble of manual construction.
 
