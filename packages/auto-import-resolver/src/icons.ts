@@ -830,5 +830,4 @@ export default [
   'ZhihuSquareFilled',
   'ZoomInOutlined',
   'ZoomOutOutlined',
-  'index',
 ] as string[]
