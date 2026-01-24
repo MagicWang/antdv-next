@@ -55,7 +55,7 @@ If you are in a bad network environment, you can try other registries and tools 
 
 Add `script` and `link` tags in your browser and use the global variable `antd`.
 
-We provide `antd.js` and `reset.css` under the `dist` folder in antdv-next's npm package. You can also download these files directly from [![CDNJS](https://img.shields.io/cdnjs/v/antd-next.svg?style=flat-square)](https://cdnjs.com/libraries/antdv-next), [![](https://data.jsdelivr.com/v1/package/npm/antd-next/badge)](https://www.jsdelivr.com/package/npm/antd-next) or [UNPKG](https://unpkg.com/antd-next/dist/).
+We provide `antd.js` and `reset.css` under the `dist` folder in antdv-next's npm package. You can also download these files directly from [![CDNJS](https://img.shields.io/cdnjs/v/antdv-next.svg?style=flat-square)](https://cdnjs.com/libraries/antdv-next), [![](https://data.jsdelivr.com/v1/package/npm/antdv-next/badge)](https://www.jsdelivr.com/package/npm/antdv-next) or [UNPKG](https://unpkg.com/antdv-next/dist/).
 
 > **We strongly discourage loading the entire files** this will add bloat to your application and make it more difficult to receive bugfixes and updates.
 
